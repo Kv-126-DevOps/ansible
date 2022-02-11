@@ -1,0 +1,78 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: {{ cookiecutter.molecule_driver }}
+lint: |
+  set -e
+  yamllint -c ../../linter_rules/yamllint.yaml .
+  ansible-lint -Rr ../../linter_rules/ansiblelint .
+platforms:
+  - name: {{ cookiecutter.role_name }}_instance
+{%- if cookiecutter.molecule_driver == "docker" %}
+    image: {{ cookiecutter.main_docker_image }}
+#    registry:
+#      url: docker.private-repository.com
+#      credentials:
+#        username: $REGISTRY_DOCKER_ID
+#        password: $REGISTRY_DOCKER_PWD
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    networks:
+      - name: {{ cookiecutter.role_name }}_docker_network
+{%- elif cookiecutter.molecule_driver == "delegated" %}
+    address: ssh_endpoint
+    user: centos
+    identity_file: ssh_identity_file
+{%- endif %}
+provisioner:
+  name: ansible
+  playbooks:
+{%- if cookiecutter.molecule_driver == "delegated" %}
+    cleanup: cleanup.yml
+{%- endif %}
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  options:
+    v: true
+    tags: "{{ cookiecutter.role_name }}_molecule_test"
+    # extra-vars: "app_version=0.0.1"
+  config_options:
+    defaults:
+      stdout_callback: yaml
+  log: false  # set to 'true' if you need detailed info about creating platforms instances
+scenario:
+  test_sequence:
+{%- if cookiecutter.molecule_driver == "docker" %}
+    # - dependency
+    - lint
+    # - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    # - cleanup
+    - destroy
+{%- elif cookiecutter.molecule_driver == "delegated" %}
+    # - dependency
+    - lint
+    - cleanup
+    # - destroy
+    - syntax
+    # - create
+    - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    # - cleanup
+    # - destroy
+{%- endif %}
+verifier:
+  name: ansible

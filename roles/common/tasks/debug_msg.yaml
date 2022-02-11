@@ -1,0 +1,4 @@
+---
+- name: Display debug massage
+  ansible.builtin.debug:
+    msg: "{{ (common_debug_massage + '!') | lower | capitalize }}"

@@ -1,0 +1,41 @@
+### Intellij IDEA ###
+.idea/
+.idea_modules/
+
+### Linux ###
+*~
+.Trash-*
+
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+# Flask stuff:
+instance/
+.webassets-cache
+
+### Other ###
+*.backup
+*.log
+*.bak
+*.tmp
+*.swp
+*.retry
+*.out
+roles/_*
