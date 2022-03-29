@@ -1,0 +1,38 @@
+---
+#server
+- name: configure SSH (daemon config)
+  hosts: Linux_Ubuntu_Server_1 #192.168.0.189
+  become: yes
+
+  tasks:
+    - name: replace Ports in /etc/ssh/sshd_config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: "^(.*)#Port(.*)$"
+        line: "Port 22"
+        backup: yes
+
+    - name: add Port in /etc/ssh/sshd_config
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        line: "Port 2022"
+        backup: yes
+
+#client
+- name: configure SSH (client config)
+  hosts: Linux_Ubuntu_Server_Client_1 #192.168.0.169
+  become: yes
+
+  tasks:
+    - name: replace Ports in /etc/ssh/ssh_config
+      lineinfile:
+        path: /etc/ssh/ssh_config
+        regexp: "^(.*)#   Port(.*)$"
+        line: "    Port 22"
+        backup: yes
+
+    - name: add Port in /etc/ssh/ssh_config
+      lineinfile:
+        path: /etc/ssh/ssh_config
+        line: "    Port 2022"
+        backup: yes
