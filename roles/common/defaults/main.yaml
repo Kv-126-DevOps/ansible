@@ -1,2 +1,10 @@
 ---
 common_debug_massage: "hElLo tHeRe"
+
+---
+- import_tasks: ssh.yaml
+  tags:
+    - never
+    - common_install
+    - common_ssh_configure
+...
