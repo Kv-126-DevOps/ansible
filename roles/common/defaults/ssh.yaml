@@ -1,0 +1,14 @@
+---
+#server
+- name: Update SSH daemon config
+  copy:
+    src: example/sshd_config
+    dest: /etc/ssh/sshd_config
+    mode: '0644'
+
+#client
+- name: Update SSH client config
+  copy:
+    src: example/ssh_config
+    dest: /etc/ssh/ssh_config
+    mode: '0644'
