@@ -1,0 +1,26 @@
+---
+- name: Install NTP 
+  apt: 
+    name: ntp
+    state: latest
+    update_cache: yes
+
+- name: Configure NTP
+  template:
+    src: ../templates/ntp/ntp.conf 
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify:
+    - restart ntp
+
+- name: Start ntp
+  service:
+    name: ntp
+    state: started
+    enabled: yes
+
+handlers:
+  - name: restart ntp
