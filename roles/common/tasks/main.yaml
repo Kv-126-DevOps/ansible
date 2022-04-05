@@ -3,10 +3,8 @@
   tags:
     - never
     - common_msg
-    
 - import_tasks: ssh.yaml
   tags:
     - never
     - common_install
     - common_ssh_configure
-    

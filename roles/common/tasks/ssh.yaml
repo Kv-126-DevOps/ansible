@@ -3,10 +3,9 @@
   copy:
     src: files/sshd_config
     dest: /etc/ssh/sshd_config
-    mode: '0644'
-
+    mode: "0644"
 - name: Update SSH client config
   copy:
     src: files/ssh_config
     dest: /etc/ssh/ssh_config
-    mode: '0644'
+    mode: "0644"
