@@ -1,11 +1,9 @@
 ---
-handlers:
-  - name: Restart sshd
-    ansible.builtin.service:
-      name: sshd
-      state: restarted
-
-  - name: Restart ssh
-    ansible.builtin.service:
-      name: ssh
-      state: restarted
+- name: Restart sshd
+  service:
+    name: sshd
+    state: restarted
+- name: Restart ssh
+  service:
+    name: ssh
+    state: restarted
