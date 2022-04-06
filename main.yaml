@@ -1,0 +1,11 @@
+---
+- import_tasks: debug_msg.yaml
+  tags:
+    - never
+    - common_install
+
+- import_tasks: ntp.yaml
+  tags:
+    - never
+    - common_install
+    - common_ntp_install
