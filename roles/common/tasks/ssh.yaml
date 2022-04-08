@@ -1,9 +1,17 @@
 ---
+- name: Install openssh-server
+  yum:
+    name: openssh-server
+- name: Start ssh service
+  service:
+    name: sshd
+    state: started
 - name: Update SSH daemon config
   copy:
     src: files/sshd_config
     dest: /etc/ssh/sshd_config
     mode: "0644"
+  notify: Restart sshd
 - name: Update SSH client config
   copy:
     src: files/ssh_config
