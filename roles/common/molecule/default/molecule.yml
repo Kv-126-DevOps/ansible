@@ -10,9 +10,10 @@ lint: |
   ansible-lint -Rr ../../linter_rules/ansiblelint .
 platforms:
   - name: common_instance
-    image: amazonlinux:2.0.20220121.0
+    image: anatolek/docker-amazonlinux2:latest
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: ${MOLECULE_DOCKER_COMMAND:-"/usr/lib/systemd/systemd"}
     privileged: true
     pre_build_image: true
     networks:
@@ -23,7 +24,7 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   options:
     v: true
-    tags: "common_msg"
+    tags: "common_install"
   config_options:
     defaults:
       stdout_callback: yaml
