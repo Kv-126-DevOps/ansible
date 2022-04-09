@@ -1,0 +1,27 @@
+---
+- name: 'NTP. Install Package'
+  yum:
+    name: ntp
+    state: present
+    update_cache: true
+
+- name: 'NTP. Configure Service'
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: true
+  notify:
+    - restart ntp
+
+- name: 'NTP. Start Service'
+  service:
+    name: ntpd
+    state: started
+    enabled: true
+
+- name: 'Setting up {{ common_ntp_timezone }} timezone'
+  timezone:
+    name: "{{ common_ntp_timezone }}"
