@@ -1,14 +1,21 @@
 ---
 common_debug_massage: "hElLo tHeRe"
 
+# NTP Role
+ntp_package: ntp
+ntp_service: ntpd
+ntp_configfile: /etc/ntp.conf
+ntp_configfile_user: root
+ntp_configfile_group: root
+ntp_timezone: Europe/Kiev
+
+# ntp.conf
 # Drift file path
 ntp_driftfile: /var/lib/ntp/drift
-
 # Restrict acces on ntp server
 ntp_restrict:
   - 127.0.0.1
   - ::1
-
 # Default NTP Servers from www.pool.ntp.org
 ntp_servers:
   - 0.ua.pool.ntp.org iburst
