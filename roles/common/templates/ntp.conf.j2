@@ -1,16 +1,16 @@
 #  Path and name of the file used to record the	frequency of the local clock oscillator.
-driftfile {{ ntp_driftfile }}
+driftfile {{ common_ntp_driftfile }}
 
 # Location of an alternate log file to be used instead of the default system
 # logfile /var/log/ntp.log
 
 # Servers pool
-{% for pool in ntp_servers %}
+{% for pool in common_ntp_servers %}
 server {{ pool }}
 {% endfor %}
 
 # Local users may interrogate the ntp server more closely.
-{% for restrict_ip in ntp_restrict %}
+{% for restrict_ip in common_ntp_restrict %}
 restrict {{ restrict_ip }}
 {% endfor %}
 

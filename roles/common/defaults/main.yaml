@@ -1,27 +1,19 @@
 ---
 common_debug_massage: "hElLo tHeRe"
 
-# Packages that would be installed
-package_list:
-  - ntp
-
 # Default Timezone
-ntp_timezone:
-  - Europe/Kiev
-  - Europe/London
-  - America/New_York
-  - Australia/Sydney
+common_ntp_timezone: Europe/Kiev
 
 # Drift file path
-ntp_driftfile: /var/lib/ntp/drift
+common_ntp_driftfile: /var/lib/ntp/drift
 
 # Restrict acces on ntp server
-ntp_restrict:
+common_ntp_restrict:
   - 127.0.0.1
   - ::1
 
 # Default NTP Servers from www.pool.ntp.org
-ntp_servers:
+common_ntp_servers:
   - 0.ua.pool.ntp.org iburst
   - 1.ua.pool.ntp.org iburst
   - 2.ua.pool.ntp.org iburst
