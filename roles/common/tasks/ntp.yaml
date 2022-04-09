@@ -1,11 +1,11 @@
 ---
-- name: Install NTP
+- name: 'NTP. Install Package'
   yum:
     name: ntp
     state: present
     update_cache: true
 
-- name: Configure NTP
+- name: 'NTP. Configure Service'
   template:
     src: ntp.conf
     dest: /etc/ntp.conf
@@ -15,4 +15,13 @@
     backup: true
   notify:
     - restart ntp
-    - start ntp
+
+- name: 'NTP. Start Service'
+  service:
+    name: ntpd
+    state: started
+    enabled: true
+
+- name: 'Timezone. Set to Europe/Kiev'
+  timezone:
+    name: Europe/Kiev
