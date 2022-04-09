@@ -7,7 +7,7 @@
 
 - name: 'NTP. Configure Service'
   template:
-    src: ntp.conf
+    src: ntp.conf.j2
     dest: /etc/ntp.conf
     owner: root
     group: root
