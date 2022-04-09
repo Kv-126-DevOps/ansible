@@ -1,16 +1,16 @@
 ---
 - name: 'NTP. Install Package'
   yum:
-    name: ntp
+    name: "{{ ntp_package }}"
     state: present
     update_cache: true
 
 - name: 'NTP. Configure Service'
   template:
     src: ntp.conf.j2
-    dest: /etc/ntp.conf
-    owner: root
-    group: root
+    dest: "{{ ntp_configfile }}"
+    owner: "{{ ntp_configfile_user }}"
+    group: "{{ ntp_configfile_group }}"
     mode: 0644
     backup: true
   notify:
@@ -18,10 +18,10 @@
 
 - name: 'NTP. Start Service'
   service:
-    name: ntpd
+    name: "{{ ntp_service }}"
     state: started
     enabled: true
 
 - name: 'Timezone. Set to Europe/Kiev'
   timezone:
-    name: Europe/Kiev
+    name: "{{ ntp_timezone }}"
