@@ -3,9 +3,3 @@
   service:
     name: ntpd
     state: restarted
-
-- name: start ntp
-  service:
-    name: ntpd
-    state: started
-    enabled: true
