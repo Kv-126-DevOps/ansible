@@ -9,3 +9,9 @@
     - never
     - common_install
     - common_ntp_install
+
+- import_tasks: ssh.yaml
+  tags:
+    - never
+    - common_install
+    - common_ssh_configure
