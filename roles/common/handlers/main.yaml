@@ -5,6 +5,6 @@
     state: restarted
 
 - name: restart ssh
-  systemd:
+  service:
     name: sshd
     state: restarted
