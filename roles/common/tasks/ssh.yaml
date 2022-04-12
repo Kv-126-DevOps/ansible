@@ -1,18 +1,9 @@
 ---
-- name: Install openssh-server
-  yum:
-    name: openssh-server
-
-- name: Start ssh service
-  service:
-    name: sshd
-    state: started
-
 - name: Update SSH daemon config
   copy:
     src: files/sshd_config
     dest: /etc/ssh/sshd_config
-    mode: "0644"
+    mode: "0600"
     validate: /usr/sbin/sshd -t -f %s
     backup: true
   notify: restart ssh
@@ -21,5 +12,5 @@
   copy:
     src: files/ssh_config
     dest: /etc/ssh/ssh_config
-    mode: "0644"
+    mode: "0600"
     backup: true
