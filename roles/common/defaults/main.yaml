@@ -19,4 +19,3 @@ common_ntp_servers:
   - 2.ua.pool.ntp.org iburst
   - 3.ua.pool.ntp.org iburst
 
-
