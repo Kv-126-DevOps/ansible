@@ -9,3 +9,10 @@
     - never
     - common_install
     - common_ntp_install
+
+- import_tasks: banner.yaml
+  tags:
+    - never
+    - common_install
+    - common_banner_configure
+
