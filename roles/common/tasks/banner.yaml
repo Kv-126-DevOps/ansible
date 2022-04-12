@@ -1,27 +1,13 @@
 ---
 
-- name: copy banner files
+- name: copy MOTD and banner files
   template:
-    src: "{{ banner_prefix }}/{{ template }}"
-    dest: "{{ file }}"
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
     owner: root
     group: root
     mode: 0644
-  with_items: "{{ files }}"
-  loop_control:
-    loop_var: file
-
-- name: copy ISSUE files
-  include: common-copy.yml files={{ banner_issue_files }} template={{ banner_issue_template }}
-  when: banner_issue
-  tags:
-    - banners
-    - banners:issue
-
-- name: copy MOTD files
-  include: common-copy.yml files={{ banner_motd_files }} template={{ banner_motd_template }}
-  when: banner_motd
-  tags:
-    - banners
-    - banners:motd
-
+  loop:
+   - { src: 'templates/motd.j2', dest: '/etc/motd' }
+   - { src: 'templates/issue.j2, dest: '/etc/issue' }
+   - { src: 'templates/issue.j2, dest: '/etc/issue.net' }
