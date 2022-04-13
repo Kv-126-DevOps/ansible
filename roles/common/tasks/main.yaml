@@ -16,3 +16,8 @@
     - common_install
     - common_banner_configure
 
+- import_tasks: ssh.yaml
+  tags:
+    - never
+    - common_install
+    - common_ssh_configure
