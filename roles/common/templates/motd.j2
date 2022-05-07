@@ -5,15 +5,8 @@
  |_|\_\\_/    |_/___\___/   |___/\___|\_/ \___/| .__/__/
                                                |_|      
 
-ANSIBLE_RUN    : {{ ansible_date_time.iso8601 }}
 HOST           : {{ ansible_fqdn }}
 OS             : {{ ansible_system }}
-{% if ansible_default_ipv4 is defined and ansible_default_ipv4['address'] is defined %}
-IPv4 address   : {{ ansible_default_ipv4['address'] }} ({{ ansible_default_ipv4['interface'] }})
-{% endif %}
-{% if ansible_default_ipv6 is defined and ansible_default_ipv6['address'] is defined %}
-IPv6  address  : {{ ansible_default_ipv6['address'] }} ({{ ansible_default_ipv6['interface'] }})
-{% endif %}
 RELEASE        : {{ ansible_distribution }} {{ ansible_distribution_version }}
 KERNEL_RELEASE : {{ ansible_kernel }}
 CPU            : {{ ansible_processor[1] }}

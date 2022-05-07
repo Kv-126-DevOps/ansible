@@ -1,6 +1,4 @@
 ---
-common_debug_massage: "hElLo tHeRe"
-
 # Default Timezone
 common_ntp_timezone: Europe/Kiev
 
@@ -18,4 +16,3 @@ common_ntp_servers:
   - 1.ua.pool.ntp.org iburst
   - 2.ua.pool.ntp.org iburst
   - 3.ua.pool.ntp.org iburst
-
