@@ -1,0 +1,21 @@
+---
+- name: Gather instance metadata facts
+  setup:
+    gather_subset:
+      - '!all'
+      - hardware
+
+- name: Copy motd and issue files to the instance
+  template:
+    src: '{{ item.src }}'
+    dest: '/etc/{{ item.dest }}'
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - src: 'motd.j2'
+      dest: 'motd'
+    - src: 'issue.j2'
+      dest: 'issue'
+    - src: 'issue.j2'
+      dest: 'issue.net'

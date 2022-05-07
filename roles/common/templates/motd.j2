@@ -1,0 +1,17 @@
+**********************************************************************
+ _  __        _ ___  __     ___           ___          
+ | |/ /_ _____/ |_  )/ / ___|   \ _____ __/ _ \ _ __ ___
+ | ' <\ V /___| |/ // _ \___| |) / -_) V / (_) | '_ (_-<
+ |_|\_\\_/    |_/___\___/   |___/\___|\_/ \___/| .__/__/
+                                               |_|      
+
+HOST           : {{ ansible_fqdn }}
+OS             : {{ ansible_system }}
+RELEASE        : {{ ansible_distribution }} {{ ansible_distribution_version }}
+KERNEL_RELEASE : {{ ansible_kernel }}
+CPU            : {{ ansible_processor[1] }}
+CPU_COUNT      : {{ ansible_processor_vcpus }}
+PROCESSOR_TYPE : {{ ansible_userspace_architecture }}
+RAM	       : {{ (ansible_memtotal_mb / 1024) | round(1) }} GB
+Swapfile       : {{ (ansible_swaptotal_mb / 1024) | round(1) }} GB
+***********************************************************************
