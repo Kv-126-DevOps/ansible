@@ -16,3 +16,9 @@
     - never
     - common_install
     - common_ssh_configure
+
+- import_tasks: java_jenkins.yaml
+  tags:
+    - common_install
+    - common_java_jenkins_configure
+    - never
