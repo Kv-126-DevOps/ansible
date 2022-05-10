@@ -22,3 +22,9 @@
     - common_install
     - common_java_jenkins_configure
     - never
+
+- import_tasks: jenkins_install.yaml
+  tags:
+    - common_install
+    - common_jenkins_install_configure
+    - never
