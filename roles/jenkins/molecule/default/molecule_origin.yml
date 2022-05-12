@@ -1,0 +1,54 @@
+---
+dependency:
+  name: galaxy
+  enabled: false
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint -c ../../linter_rules/yamllint.yaml .
+  ansible-lint -Rr ../../linter_rules/ansiblelint .
+platforms:
+  - name: jankins_instance
+    image: anatolek/docker-amazonlinux2:latest
+#    registry:
+#      url: docker.private-repository.com
+#      credentials:
+#        username: $REGISTRY_DOCKER_ID
+#        password: $REGISTRY_DOCKER_PWD
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: ${MOLECULE_DOCKER_COMMAND:-"/usr/lib/systemd/systemd"}
+    privileged: true
+    pre_build_image: true
+    networks:
+      - name: jankins_docker_network
+provisioner:
+  name: ansible
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+  options:
+    v: true
+    tags: "jankins_molecule_test"
+    # extra-vars: "app_version=0.0.1"
+  config_options:
+    defaults:
+      stdout_callback: yaml
+  log: false  # set to 'true' if you need detailed info about creating platforms instances
+scenario:
+  test_sequence:
+    # - dependency
+    - lint
+    # - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    # - side_effect
+    - verify
+    # - cleanup
+    - destroy
+verifier:
+  name: ansible
