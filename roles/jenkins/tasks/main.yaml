@@ -1,1 +1,13 @@
 ---
+- import_tasks: java_jenkins.yaml
+  tags:
+    - never
+    - common_install
+    - common_java_jenkins_configure
+
+- import_tasks: jenkins_install.yaml
+  tags:
+    - never
+    - common_install
+    - common_jenkins_install_configure
+
