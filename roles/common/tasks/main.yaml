@@ -1,19 +1,19 @@
 ---
 - import_tasks: ntp.yaml
   tags:
-    - never
+    #- never
     - common_install
     - common_ntp_install
 
 - import_tasks: banner.yaml
   tags:
-    - never
+    #- never
     - common_install
     - common_banner_configure
 
 - import_tasks: ssh.yaml
   tags:
-    - never
+    #- never
     - common_install
     - common_ssh_configure
 
@@ -21,10 +21,10 @@
   tags:
     - common_install
     - common_java_jenkins_configure
-    - never
+      #- never
 
 - import_tasks: jenkins_install.yaml
   tags:
     - common_install
     - common_jenkins_install_configure
-    - never
+      #- never
