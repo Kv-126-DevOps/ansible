@@ -1,6 +1,6 @@
 ---
 # Git branches
-frontend_git_branch: develop
+frontend_git_branch: 1_frontend_code_refactoring
 
 # Paths to services folder
 frontend_workdir: /opt/frontend
