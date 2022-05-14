@@ -112,27 +112,6 @@ Changes made to the Jenkins init script; the default set of changes set the conf
 
 If you are running Jenkins behind a proxy server, configure these options appropriately. Otherwise Jenkins will be configured with a direct Internet connection.
 
-## Dependencies
-
-None.
-
-## Example Playbook
-
-```yaml
-- hosts: jenkins
-  become: true
-  
-  vars:
-    jenkins_hostname: jenkins.example.com
-    java_packages:
-      - openjdk-8-jdk
-
-  roles:
-    - role: geerlingguy.java
-    - role: geerlingguy.jenkins
-```
-
-Note that `java_packages` may need different versions depending on your distro (e.g. `openjdk-11-jdk` for Debian 10, or `java-1.8.0-openjdk` for RHEL 7 or 8).
 
 
 
