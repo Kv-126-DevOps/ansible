@@ -1,0 +1,21 @@
+[Unit]
+Description=rest-api
+Wants=rabbit-to-db.service
+After=rabbit-to-db.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/rest-api
+
+Restart=always
+
+Environment=POSTGRES_HOST={{ rest_api_postgres_host }}
+Environment=POSTGRES_PORT={{ rest_api_postgres_port }}
+Environment=POSTGRES_USER={{ rest_api_postgres_user }}
+Environment=POSTGRES_PW={{ rest_api_postgres_pw }}
+Environment=POSTGRES_DB={{ rest_api_postgres_db }}
+
+ExecStart={{ rest_api_workdir }}/venv/bin/python3 -m flask run --host=0.0.0.0 --port=5433
+
+[Install]
+WantedBy=multi-user.target

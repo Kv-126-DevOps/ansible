@@ -1,0 +1,27 @@
+---
+- name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
+  ansible.builtin.git:
+    repo: https://github.com/Kv-126-DevOps/json-filter.git
+    dest: '{{ json_filter_workdir }}'
+    version: '{{ json_filter_git_branch }}'
+
+- name: json-filter | Install python packeges into virtualenv
+  pip:
+    name:
+      - pika
+      - flask
+      - python-dotenv
+    virtualenv: '{{ json_filter_workdir }}/venv'
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+
+- name: json-filter | Copy service
+  template:
+    src: json-filter.service.j2
+    dest: '{{ json_filter_service_dir }}/json-filter.service'
+    owner: root
+    group: root
+    mode: 0644
+    backup: true
+  notify:
+    - start json-filter.service

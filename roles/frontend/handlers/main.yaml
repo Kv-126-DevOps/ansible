@@ -1,0 +1,6 @@
+---
+- name: start frontend.service
+  service:
+    name: frontend.service
+    state: started
+    enabled: true

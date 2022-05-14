@@ -1,0 +1,6 @@
+---
+- name: start json-filter.service
+  service:
+    name: json-filter.service
+    state: started
+    enabled: true

@@ -1,0 +1,16 @@
+---
+# Git branches
+rest_api_git_branch: develop
+
+# Paths to services folder
+rest_api_workdir: /opt/rest-api
+
+# systemd unit folder
+rest_api_service_dir: /etc/systemd/system
+
+# Variables
+rest_api_postgres_host: postgres
+rest_api_postgres_port: 5433
+rest_api_postgres_user: dbuser
+rest_api_postgres_pw: dbpass
+rest_api_postgres_db: postgres

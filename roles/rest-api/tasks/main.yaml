@@ -1,0 +1,5 @@
+---
+- import_tasks: rest-api.yaml
+  tags:
+    - never
+    - rest_api_install

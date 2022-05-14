@@ -16,3 +16,15 @@
     - never
     - common_install
     - common_ssh_configure
+
+- import_tasks: git.yaml
+  tags:
+    - never
+    - common_install
+    - common_git_install
+
+- import_tasks: virtualenv.yaml
+  tags:
+    - never
+    - common_install
+    - common_install_virtualenv
