@@ -3,4 +3,5 @@
 #   - java-1.8.0-openjdk-devel
 #   - java-11-openjdk-devel
 __java_packages:
-  - java-11-openjdk
+  - java-11-amazon-corretto
+#  - java-1.8.0-openjdk
