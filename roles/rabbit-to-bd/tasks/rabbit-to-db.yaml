@@ -15,7 +15,7 @@
 - name: rabbit-to-db| Copy service
   template:
     src: rabbit-to-db.service.j2
-    dest: '{{ rabbit_to_db_service_dir }}/rabbit-to-db.service'
+    dest: '/etc/systemd/system/rabbit-to-db.service'
     owner: root
     group: root
     mode: 0644

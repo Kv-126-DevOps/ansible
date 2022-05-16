@@ -5,9 +5,6 @@ json_filter_git_branch: develop
 # Paths to services folder
 json_filter_workdir: /opt/json-filter
 
-# systemd unit folder
-json_filter_service_dir: /etc/systemd/system
-
 # Variables
 json_filter_rmq_host: rabbit
 json_filter_rmq_port: 5672

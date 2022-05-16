@@ -15,7 +15,7 @@
 - name: rest-api | Copy service
   template:
     src: rest-api.service.j2
-    dest: '{{ rest_api_service_dir }}/rest-api.service'
+    dest: '/etc/systemd/system/rest-api.service'
     owner: root
     group: root
     mode: 0644

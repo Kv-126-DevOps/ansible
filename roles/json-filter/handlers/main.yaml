@@ -2,5 +2,5 @@
 - name: start json-filter.service
   service:
     name: json-filter.service
-    state: started
+    state: restarted
     enabled: true

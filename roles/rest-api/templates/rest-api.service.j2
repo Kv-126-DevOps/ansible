@@ -15,7 +15,7 @@ Environment=POSTGRES_USER={{ rest_api_postgres_user }}
 Environment=POSTGRES_PW={{ rest_api_postgres_pw }}
 Environment=POSTGRES_DB={{ rest_api_postgres_db }}
 
-ExecStart={{ rest_api_workdir }}/venv/bin/python3 -m flask run --host=0.0.0.0 --port=5433
+ExecStart={{ rest_api_workdir }}/venv/bin/python3 -m flask run --host=0.0.0.0
 
 [Install]
 WantedBy=multi-user.target
