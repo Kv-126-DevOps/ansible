@@ -1,0 +1,17 @@
+[Unit]
+Description=Json-Filter
+
+[Service]
+WorkingDirectory={{ json_filter_workdir }}
+
+Restart=always
+
+Environment=RMQ_HOST={{ json_filter_rmq_host }}
+Environment=RRMQ_PORT={{ json_filter_rmq_port }}
+Environment=RRMQ_LOGIN={{ json_filter_rmq_login }}
+Environment=RRMQ_PASS={{ json_filter_rmq_pass }}
+
+ExecStart={{ json_filter_workdir }}/venv/python3 jsonfilter.py
+
+[Install]
+WantedBy=multi-user.target

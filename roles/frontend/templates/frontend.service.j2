@@ -1,0 +1,18 @@
+[Unit]
+Description=Frontend
+Wants=rest-api.service
+After=rest-api.service
+
+[Service]
+Type=simple
+WorkingDirectory={{ frontend_workdir }}
+
+Restart=always
+
+Environment=RESTAPI_HOST={{ frontend_restapi_host }}
+Environment=RESTAPI_PORT={{ frontend_restapi_port }}
+
+ExecStart={{ frontend_workdir }}/venv/bin/python3 -m flask run --host=0.0.0.0
+
+[Install]
+WantedBy=multi-user.target
