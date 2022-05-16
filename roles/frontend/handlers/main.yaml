@@ -2,5 +2,5 @@
 - name: start frontend.service
   service:
     name: frontend.service
-    state: started
+    state: restarted
     enabled: true

@@ -1,12 +1,9 @@
 ---
 # Git branches
-frontend_git_branch: 1_frontend_code_refactoring
+frontend_git_branch: develop
 
 # Paths to services folder
 frontend_workdir: /opt/frontend
-
-# systemd unit folder
-frontend_service_dir: /etc/systemd/system
 
 # Variables
 frontend_restapi_host: localhost

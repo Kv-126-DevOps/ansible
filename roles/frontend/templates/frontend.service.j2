@@ -1,6 +1,6 @@
 [Unit]
 Description=Frontend
-Requires=rest-api.service
+Wants=rest-api.service
 After=rest-api.service
 
 [Service]
