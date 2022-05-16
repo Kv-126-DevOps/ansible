@@ -23,8 +23,8 @@
     - common_install
     - common_git_install
 
-- import_tasks: virtualenv.yaml
+- import_tasks: pithon-pkg.yaml
   tags:
     - never
     - common_install
-    - common_install_virtualenv
+    - common_install_pithon_pkg
