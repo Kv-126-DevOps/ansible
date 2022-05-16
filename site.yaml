@@ -3,26 +3,26 @@
   become: true
   gather_facts: false
   roles:
-    - role: common
-    - role: json-filter
+    - common
+    - json-filter
 
 - hosts: rabbit-to-bd
   become: true
   gather_facts: false
   roles:
-    - role: common
-    - role: rabbit-to-bd
+    - common
+    - rabbit-to-bd
 
 - hosts: rest-api
   become: true
   gather_facts: false
   roles:
-    - role: common
-    - role: rest-api
+    - common
+    - rest-api
 
 - hosts: frontend
   become: true
   gather_facts: false
   roles:
-    - role: common
-    - role: frontend
+    - common
+    - frontend
