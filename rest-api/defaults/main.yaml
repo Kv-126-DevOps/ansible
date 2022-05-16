@@ -1,6 +1,6 @@
 ---
 # Git branches
-rest_api_git_branch: develop
+rest_api_git_branch: main
 
 # Paths to services folder
 rest_api_workdir: /opt/rest-api

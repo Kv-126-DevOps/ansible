@@ -1,6 +1,6 @@
 ---
 # Git branches
-rabbit_to_db_git_branch: develop
+rabbit_to_db_git_branch: main
 
 # Paths to services folder
 rabbit_to_db_workdir: /opt/rabbit-to-db
