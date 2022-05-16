@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('1-Checkout') {
+            steps {
+                git branch: '26-ansible-add-jenkins-server-installation', url: 'https://github.com/Kv-126-DevOps/ansible.git'
+            }
+        }
+        stage('2-Execute') {
+            steps {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible_plugins/aws_ec2.yaml', playbook: 'site.yaml'
+            }
+        }
+    }
+}
