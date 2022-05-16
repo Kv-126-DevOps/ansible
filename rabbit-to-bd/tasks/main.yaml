@@ -1,0 +1,5 @@
+---
+- import_tasks: rabbit-to-db.yaml
+  tags:
+    - never
+    - rabbit_to_db_install

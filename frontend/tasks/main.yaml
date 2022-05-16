@@ -1,0 +1,5 @@
+---
+- import_tasks: frontend.yaml
+  tags:
+    - never
+    - frontend_install
