@@ -45,13 +45,17 @@ pipeline {
 
         stage('2-Execute') {
             steps {
-                ansiblePlaybook(
-                    credentialsId: 'private-key',
-                    disableHostKeyChecking: true,
-                    installation: 'Ansible',
-                    inventory: 'ansible_plugins/aws_ec2.yaml',
-                    playbook: 'site.yaml'
-                )
+                ansiColor('xterm') {
+                    ansiblePlaybook(
+                        colorized: true,
+                        credentialsId: 'private-key',
+                        disableHostKeyChecking: true,
+                        installation: 'Ansible',
+                        inventory: 'ansible_plugins/aws_ec2.yaml',
+                        playbook: 'site.yaml'
+                    )
+                }
+
             }
         }
     }
