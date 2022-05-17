@@ -2,19 +2,58 @@ pipeline {
     agent any
 
     options {
-        ansiColor('vga')
-        disableConcurrentBuilds()  // Do not run 2 concurrent builds at the same time
-        buildDiscarder logRotator(numToKeepStr: '10')  // Maximum number of builds to save
+        ansiColor('css')
+        disableConcurrentBuilds()  // Don't run 2 concurrent builds at the same time
+        buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
     }
+
+    parameters {
+        //Extended info param for builds list
+        extendedChoice name: 'ACTION',
+                       value: 'tract_config_logback, bapi_config_logback',
+                       defaultValue: 'tract_config_logback, bapi_config_logback',
+                       type: 'PT_CHECKBOX',
+                       description: 'Ansible action tags'
+        //GitHunb branch param
+        gitParameter   name: 'ANSIBLE_BRANCH',
+                       defaultValue: 'main',
+                       listSize: '5',
+                       selectedValue: 'DEFAULT',
+                       sortMode: 'DESCENDING_SMART',
+                       type: 'PT_BRANCH',
+                       quickFilterEnabled: true,
+                       useRepository: '.*ansible.git',
+                       branchFilter: 'origin/(.*)',
+                       description: 'Ansible GitHub branch'
+    }
+
     stages {
-        stage('1-Checkout') {
-            steps {
-                git branch: '26-ansible-add-jenkins-server-installation', url: 'https://github.com/Kv-126-DevOps/ansible.git'
+        stage ('1-Checkout') {
+            steps{
+                // Add useful information to build description
+                script {
+                    currentBuild.description = "ACTION: ${ACTION}\nANSIBLE BRANCH: ${ANSIBLE_BRANCH}\n"
+                }
+                // Getting ansible repo
+                dir('ansible-branch') {
+                    git(
+                        poll: true,
+                        url: "https://github.com/Kv-126-DevOps/ansible.git",
+                        branch: "${params.ANSIBLE_BRANCH}"
+                    )
+                }
             }
         }
         stage('2-Execute') {
             steps {
-                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ansible_plugins/aws_ec2.yaml', playbook: 'site.yaml'
+                ansiblePlaybook(
+                    colorized: true,
+                    credentialsId: 'private-key',
+                    disableHostKeyChecking: true,
+                    installation: 'Ansible',
+                    inventory: 'ansible_plugins/aws_ec2.yaml',
+                    playbook: 'site.yaml'
+                )
             }
         }
     }
