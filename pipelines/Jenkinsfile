@@ -23,7 +23,7 @@ pipeline {
                        type: 'PT_BRANCH',
                        //quickFilterEnabled: true,
                        useRepository: '.*ansible.git',
-                       //branchFilter: 'origin/(.*)',
+                       branchFilter: 'origin/(.*)',
                        description: 'Ansible GitHub branch'
     }
 
