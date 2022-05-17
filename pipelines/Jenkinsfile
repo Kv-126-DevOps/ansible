@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     options {
-        ansiColor('css')
+        ansiColor('xterm')
         disableConcurrentBuilds()  // Don't run 2 concurrent builds at the same time
         buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
     }
