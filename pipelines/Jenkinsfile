@@ -39,10 +39,10 @@ pipeline {
                     poll: true,
                     url: "https://github.com/Kv-126-DevOps/ansible.git",
                     branch: "${params.ANSIBLE_BRANCH}"
-                    )
-                }
+                )
             }
         }
+
         stage('2-Execute') {
             steps {
                 ansiblePlaybook(
