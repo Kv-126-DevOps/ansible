@@ -46,7 +46,6 @@ pipeline {
         stage('2-Execute') {
             steps {
                 ansiblePlaybook(
-                    colorized: true,
                     credentialsId: 'private-key',
                     disableHostKeyChecking: true,
                     installation: 'Ansible',
