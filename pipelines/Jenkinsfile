@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    options {
+        ansiColor('xterm')
+        disableConcurrentBuilds()  // Do not run 2 concurrent builds at the same time
+        buildDiscarder logRotator(numToKeepStr: '10')  // Maximum number of builds to save
+    }
     stages {
         stage('1-Checkout') {
             steps {
