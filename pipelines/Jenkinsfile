@@ -35,11 +35,10 @@ pipeline {
                     currentBuild.description = "ACTION: ${ACTION}\nANSIBLE BRANCH: ${ANSIBLE_BRANCH}\n"
                 }
                 // Getting ansible repo
-                dir('ansible-branch') {
-                    git(
-                        poll: true,
-                        url: "https://github.com/Kv-126-DevOps/ansible.git",
-                        branch: "${params.ANSIBLE_BRANCH}"
+                git(
+                    poll: true,
+                    url: "https://github.com/Kv-126-DevOps/ansible.git",
+                    branch: "${params.ANSIBLE_BRANCH}"
                     )
                 }
             }
