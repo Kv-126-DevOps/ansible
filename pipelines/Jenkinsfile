@@ -21,9 +21,9 @@ pipeline {
                        selectedValue: 'DEFAULT',
                        sortMode: 'DESCENDING_SMART',
                        type: 'PT_BRANCH',
-                       quickFilterEnabled: true,
-                       useRepository: '.*ansible.git',
-                       branchFilter: 'origin/(.*)',
+                       //quickFilterEnabled: true,
+                       //useRepository: '.*ansible.git',
+                       //branchFilter: 'origin/(.*)',
                        description: 'Ansible GitHub branch'
     }
 
