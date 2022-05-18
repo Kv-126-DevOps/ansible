@@ -6,6 +6,13 @@
     - common
     - json-filter
 
+- hosts: rabbit-to-slack
+  become: true
+  gather_facts: false
+  roles:
+    - common
+    - rabbit-to-slack
+
 - hosts: rabbit-to-bd
   become: true
   gather_facts: false
