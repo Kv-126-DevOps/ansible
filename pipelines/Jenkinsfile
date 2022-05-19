@@ -12,11 +12,12 @@ pipeline {
     //}
 
     parameters {
-        extendedChoice name: 'VERBOSITY',
-                       value: '-v, -vv, -vvv, -vvvv',
+        ////Extended info param for tags
+        extendedChoice name: 'ANSIBLE_VERBOSE_FLAG',
+                       value: ' , -v, -vv, -vvv, -vvvv',
                        defaultValue: '-vv',
                        type: 'PT_SINGLE_SELECT',
-                       description: 'Ansible verbosity level'
+                       description: 'Ansible level of verbose'
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
                        value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
@@ -62,7 +63,7 @@ pipeline {
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml',
                     tags: ACTION,
-                    extras: VERBOSITY
+                    extras: ANSIBLE_VERBOSE_FLAG
                 )
             }
         }
