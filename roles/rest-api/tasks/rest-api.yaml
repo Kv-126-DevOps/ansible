@@ -21,4 +21,10 @@
     mode: 0644
     backup: true
   notify:
-    - start rest-api.service
+    - restart rest-api.service
+
+- name: rest-api | Start service
+  service:
+    name: rest-api.service
+    state: started
+    enabled: true
