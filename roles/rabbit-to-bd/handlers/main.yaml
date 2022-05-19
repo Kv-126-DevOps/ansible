@@ -1,5 +1,5 @@
 ---
-- name: start rabbit-to-db.service
+- name: restart rabbit-to-db.service
   service:
     name: rabbit-to-db.service
     state: restarted

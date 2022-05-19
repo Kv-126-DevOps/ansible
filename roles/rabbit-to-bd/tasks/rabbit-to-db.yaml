@@ -21,4 +21,10 @@
     mode: 0644
     backup: true
   notify:
-    - start rabbit-to-db.service
+    - restart rabbit-to-db.service
+
+- name: rabbit-to-db | Start service
+  service:
+    name: rabbit-to-db.service
+    state: started
+    enabled: true
