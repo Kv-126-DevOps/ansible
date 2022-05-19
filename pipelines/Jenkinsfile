@@ -8,10 +8,10 @@ pipeline {
     }
 
     parameters {
-        ////Extended info param for tags
+        ////Extended param for tags
         extendedChoice name: 'ANSIBLE_VERBOSE_FLAG',
                        value: ' , -v, -vv, -vvv, -vvvv',
-                       defaultValue: '-vv',
+                       defaultValue: ' ',
                        type: 'PT_SINGLE_SELECT',
                        description: 'Ansible level of verbose'
         //Extended info param for builds list
