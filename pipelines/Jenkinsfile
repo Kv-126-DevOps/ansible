@@ -7,10 +7,6 @@ pipeline {
         buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
     }
 
-    //enviroment environment {
-    //    DEFAULT_VERBOSITY=${ANSIBLE_VERBOSITY}
-    //}
-
     parameters {
         ////Extended info param for tags
         extendedChoice name: 'ANSIBLE_VERBOSE_FLAG',
