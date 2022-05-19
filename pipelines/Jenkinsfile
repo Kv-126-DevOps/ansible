@@ -15,7 +15,7 @@ pipeline {
         //Verbosity level
         choise(
             name: 'VERBOSITY'
-            choices: '0\n2\n1\n3\n4',
+            choices: "0\n1\n2\n3\n4",
             description: 'Ansible verbosity levels'
         )
         //Extended info param for builds list
