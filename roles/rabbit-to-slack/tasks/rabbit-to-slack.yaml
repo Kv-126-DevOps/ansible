@@ -21,4 +21,10 @@
     mode: 0644
     backup: true
   notify:
-    - start rabbit-to-slack.service
+    - restart rabbit-to-slack.service
+
+- name: rabbit-to-slack | Start service
+  service:
+    name: rabbit-to-slack.service
+    state: started
+    enabled: true
