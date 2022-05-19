@@ -62,8 +62,7 @@ pipeline {
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml',
-                    ANSIBLE_VERBOSITY: VERBOSITY,
-                    tags: ACTION
+                    tags: VERBOSITY, ACTION
                 )
             }
         }
