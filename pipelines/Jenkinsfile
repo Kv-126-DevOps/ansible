@@ -10,12 +10,8 @@ pipeline {
     parameters {
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
-                       value: 'common_install, common_ntp_install,
-                               common_utilities_install, common_ssh_configure,
-                               common_banner_configure, common_account_configure'
-                       defaultValue: 'common_install, common_ntp_install,
-                                      common_utilities_install, common_ssh_configure,
-                                      common_banner_configure, common_account_configure'
+                       value: 'common_install, common_ntp_install,\ncommon_utilities_install, common_ssh_configure,\ncommon_banner_configure, common_account_configure'
+                       defaultValue: 'common_install, common_ntp_install,\ncommon_utilities_install, common_ssh_configure,\ncommon_banner_configure, common_account_configure'
                        type: 'PT_CHECKBOX',
                        description: 'Ansible action tags'
         //GitHunb branch param
@@ -56,9 +52,7 @@ pipeline {
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml'
-                    tags: 'common_install, common_ntp_install,
-                           common_utilities_install, common_ssh_configure,
-                           common_banner_configure, common_account_configure'
+                    tags: ACTION
                 )
             }
         }
