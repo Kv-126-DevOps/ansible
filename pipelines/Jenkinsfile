@@ -51,7 +51,7 @@ pipeline {
                     disableHostKeyChecking: true,
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
-                    playbook: 'site.yaml'
+                    playbook: 'site.yaml',
                     tags: ACTION
                 )
             }
