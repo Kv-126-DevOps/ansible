@@ -21,4 +21,10 @@
     mode: 0644
     backup: true
   notify:
-    - start frontend.service
+    - restart frontend.service
+
+- name: frontend | Start service
+  service:
+    name: frontend.service
+    state: started
+    enabled: true

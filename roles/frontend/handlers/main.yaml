@@ -1,5 +1,5 @@
 ---
-- name: start frontend.service
+- name: restart frontend.service
   service:
     name: frontend.service
     state: restarted
