@@ -7,7 +7,15 @@ pipeline {
         buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
     }
 
+    //enviroment environment {
+    //    DEFAULT_VERBOSITY=${ANSIBLE_VERBOSITY}
+    //}
+
     parameters {
+        //Verbosity level
+        choise name: 'VERBOSITY'
+               choices: "0\n2\n1\n3\n4",
+               description: 'Ansible verbosity levels'
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
                        value: 'common_install, common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure',
@@ -52,6 +60,7 @@ pipeline {
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml',
+                    ANSIBLE_VERBOSITY: VERBOSITY,
                     tags: ACTION
                 )
             }
