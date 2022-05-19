@@ -21,4 +21,10 @@
     mode: 0644
     backup: true
   notify:
-    - start json-filter.service
+    - restart json-filter.service
+
+- name: json-filter | Start service
+  service:
+    name: json-filter.service
+    state: started
+    enabled: true
