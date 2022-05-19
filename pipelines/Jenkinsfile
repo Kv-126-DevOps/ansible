@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+
+    options {
+        ansiColor('xterm')
+        disableConcurrentBuilds()  // Don't run 2 concurrent builds at the same time
+        buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
+    }
+
+    parameters {
+        ////Extended param for tags
+        extendedChoice name: 'ANSIBLE_VERBOSE_FLAG',
+                       value: ' , -v, -vv, -vvv, -vvvv',
+                       defaultValue: ' ',
+                       type: 'PT_SINGLE_SELECT',
+                       description: 'Ansible level of verbose'
+        //Extended info param for builds list
+        extendedChoice name: 'ACTION',
+                       value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
+                       defaultValue: 'common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
+                       type: 'PT_CHECKBOX',
+                       description: 'Ansible action tags'
+        //GitHunb branch param
+        gitParameter   name: 'ANSIBLE_BRANCH',
+                       defaultValue: 'main',
+                       listSize: '4',
+                       selectedValue: 'DEFAULT',
+                       sortMode: 'DESCENDING_SMART',
+                       type: 'PT_BRANCH',
+                       quickFilterEnabled: true,
+                       useRepository: '.*ansible.git',
+                       branchFilter: 'origin/(.*)',
+                       description: 'Ansible GitHub branch'
+    }
+
+    stages {
+        stage ('1-Checkout') {
+            steps{
+                // Add useful information to build description
+                script {
+                    currentBuild.description = "ACTION: ${ACTION}\nANSIBLE BRANCH: ${ANSIBLE_BRANCH}\n"
+                }
+                // Getting ansible repo
+                git(
+                    poll: true,
+                    url: "https://github.com/Kv-126-DevOps/ansible.git",
+                    branch: "${params.ANSIBLE_BRANCH}"
+                )
+            }
+        }
+
+        stage('2-Execute') {
+            steps {
+                ansiblePlaybook(
+                    colorized: true,
+                    credentialsId: 'private-key',
+                    disableHostKeyChecking: true,
+                    installation: 'Ansible',
+                    inventory: 'ansible_plugins/aws_ec2.yaml',
+                    playbook: 'site.yaml',
+                    tags: ACTION,
+                    extras: ANSIBLE_VERBOSE_FLAG
+                )
+            }
+        }
+    }
+}
