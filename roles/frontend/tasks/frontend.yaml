@@ -1,0 +1,30 @@
+---
+- name: frontend | Clone repo. branch:'{{ frontend_git_branch }}'
+  git:
+    repo: https://github.com/Kv-126-DevOps/frontend.git
+    dest: '{{ frontend_workdir }}'
+    version: '{{ frontend_git_branch }}'
+
+- name: frontend | Install python packeges into virtualenv
+  pip:
+    requirements: '{{ frontend_workdir }}/requirements.txt'
+    virtualenv: '{{ frontend_workdir }}/venv'
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+
+- name: frontend | Copy service
+  template:
+    src: frontend.service.j2
+    dest: '/etc/systemd/system/frontend.service'
+    owner: root
+    group: root
+    mode: 0644
+    backup: true
+  notify:
+    - restart frontend.service
+
+- name: frontend | Start service
+  service:
+    name: frontend.service
+    state: started
+    enabled: true

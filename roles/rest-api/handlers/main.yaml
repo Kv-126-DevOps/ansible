@@ -1,0 +1,6 @@
+---
+- name: restart rest-api.service
+  service:
+    name: rest-api.service
+    state: restarted
+    enabled: true

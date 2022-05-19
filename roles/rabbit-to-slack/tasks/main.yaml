@@ -1,0 +1,5 @@
+---
+- import_tasks: rabbit-to-slack.yaml
+  tags:
+    - never
+    - rabbit_to_slack_install
