@@ -12,16 +12,15 @@ pipeline {
     //}
 
     parameters {
-        //Verbosity level
-        choise(
-            name: 'VERBOSITY',
-            choices: "0\n1\n2\n3\n4",
-            description: 'Ansible verbosity levels'
-        )
+        extendedChoice name: 'VERBOSITY',
+                       value: '-v, -vv, -vvv, -vvvv',
+                       defaultValue: '-vv',
+                       type: 'PT_SINGLE_SELECT',
+                       description: 'Ansible verbosity level'
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
-                       value: 'common_install, common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure',
-                       defaultValue: 'common_install, common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure',
+                       value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
+                       defaultValue: 'common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
                        type: 'PT_CHECKBOX',
                        description: 'Ansible action tags'
         //GitHunb branch param
@@ -62,7 +61,8 @@ pipeline {
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml',
-                    tags: VERBOSITY, ACTION
+                    tags: ACTION,
+                    extras: VERBOSITY
                 )
             }
         }
