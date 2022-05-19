@@ -13,9 +13,11 @@ pipeline {
 
     parameters {
         //Verbosity level
-        choise name: 'VERBOSITY'
-               choices: '0\n2\n1\n3\n4',
-               description: 'Ansible verbosity levels'
+        choise(
+            name: 'VERBOSITY'
+            choices: '0\n2\n1\n3\n4',
+            description: 'Ansible verbosity levels'
+        )
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
                        value: 'common_install, common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure',
