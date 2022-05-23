@@ -10,7 +10,7 @@
     name:
       - virtualenv
     extra_args: --user
-    executable: pip3    
+    executable: pip3.7   
   become: true
 
 - name: json-filter | Install python packeges into virtualenv
