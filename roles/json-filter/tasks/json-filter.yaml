@@ -8,9 +8,7 @@
 - name: Upgrade pip/ Install python packages
   pip:
     name:
-      - pip
       - virtualenv
-    extra_args: --upgrade
     executable: pip3
   become: true
 
