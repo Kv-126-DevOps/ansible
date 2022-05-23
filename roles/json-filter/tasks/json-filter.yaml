@@ -9,7 +9,6 @@
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
-    virtualenv_command: "virtualenv-3"
     virtualenv_site_packages: true
   become: true
   
