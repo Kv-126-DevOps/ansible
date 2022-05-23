@@ -8,4 +8,4 @@
     executable: pip3
   become: true
   vars:
-    ansible_python_interpreter: '/usr/bin/python'
+    ansible_python_interpreter: '/usr/bin/python3'
