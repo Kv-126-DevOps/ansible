@@ -5,6 +5,14 @@
     dest: '{{ json_filter_workdir }}'
     version: '{{ json_filter_git_branch }}'
 
+- name: Upgrade pip/ Install python packages
+  pip:
+    name:
+      - virtualenv
+    extra_args: --user
+    executable: pip3    
+  become: true
+
 - name: json-filter | Install python packeges into virtualenv
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
