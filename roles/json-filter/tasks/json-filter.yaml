@@ -5,19 +5,11 @@
     dest: '{{ json_filter_workdir }}'
     version: '{{ json_filter_git_branch }}'
 
-- name: Upgrade pip/ Install python packages
-  pip:
-    name:
-      - pip
-      - virtualenv
-    extra_args: --upgrade
-    executable: pip3
-  become: true
-
 - name: json-filter | Install python packeges into virtualenv
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
+  become: true
 
 - name: json-filter | Copy service
   template:
