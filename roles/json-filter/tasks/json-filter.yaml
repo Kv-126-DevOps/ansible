@@ -9,7 +9,7 @@
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
-  become: true
+  sudo: yes
 
 - name: json-filter | Copy service
   template:
