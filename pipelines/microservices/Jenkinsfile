@@ -58,7 +58,7 @@ pipeline {
                     installation: 'Ansible',
                     inventory: 'ansible_plugins/aws_ec2.yaml',
                     playbook: 'site.yaml',
-                    tags: ACTION,
+                    tags: common_install_pithon_pkg, ACTION,
                     extras: ANSIBLE_VERBOSE_FLAG
                 )
             }
