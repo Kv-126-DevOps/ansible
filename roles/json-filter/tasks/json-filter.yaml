@@ -9,6 +9,7 @@
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
+    virtualenv_python: python3
   become: true
   
 - name: json-filter | Copy service
