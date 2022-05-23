@@ -9,8 +9,9 @@
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
-  become: true
-  
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+
 - name: json-filter | Copy service
   template:
     src: json-filter.service.j2
