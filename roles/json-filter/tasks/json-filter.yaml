@@ -12,6 +12,8 @@
     extra_args: --user
     executable: pip3.7   
   become: true
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
 
 - name: json-filter | Install python packeges into virtualenv
   pip:
@@ -19,6 +21,8 @@
     virtualenv: '{{ json_filter_workdir }}/venv'
     virtualenv_python: python3
   become: true
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
   
 - name: json-filter | Copy service
   template:
