@@ -7,5 +7,3 @@
     extra_args: --upgrade
     executable: pip3
   become: true
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
