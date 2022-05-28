@@ -4,7 +4,6 @@
   gather_facts: no
   roles:
     - common
-    - frontend
 
 - hosts: json-filter
   become: true
