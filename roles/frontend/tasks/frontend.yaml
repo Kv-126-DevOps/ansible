@@ -10,7 +10,6 @@
     name:
       - virtualenv
     state: forcereinstall
-  become: true
 
 - name: frontend | Install python packeges into virtualenv
   pip:
