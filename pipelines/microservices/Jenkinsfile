@@ -71,10 +71,9 @@ pipeline {
                         rabbit_to_slack_rabbit_pw: ${MQ_PASS},
                         rest_api_postgres_host: ${DB_HOST},
                         rest_api_postgres_pw: ${DB_PASS}
-                        ]
-                    }
+                    ]
                 )
             }
-        }
+         }
     }
 }
