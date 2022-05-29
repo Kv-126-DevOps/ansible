@@ -13,7 +13,7 @@
       - virtualenv
     executable: pip3
 
-- name: Upgrade pip
+- name: json-filter | Upgrade pip
   pip:
     name:
       - pip
