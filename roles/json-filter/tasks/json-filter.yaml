@@ -7,20 +7,21 @@
   become: true
   become_user: ec2-user
 
+- name: json-filter | Install virtualenv
+  pip:
+    name:
+      - virtualenv
+    executable: pip3
+
 - name: Upgrade pip
   pip:
     name:
       - pip
     extra_args: --upgrade
     executable: pip3
+    virtualenv: '{{ json_filter_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
-
-- name: json-filter | Install virtualenv
-  pip:
-    name:
-      - virtualenv
-    executable: pip3
 
 - name: json-filter | Install python packeges into virtualenv
   pip:
