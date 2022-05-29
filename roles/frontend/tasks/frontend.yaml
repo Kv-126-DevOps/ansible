@@ -7,14 +7,6 @@
   become: true
   become_user: ec2-user
 
-- name: Upgrade pip/ Install python packages
-  pip:
-    name:
-      - virtualenv
-    state: forcereinstall
-  become: true
-  become_user: ec2-user
-
 - name: frontend | Install python packeges into virtualenv
   pip:
     requirements: '{{ frontend_workdir }}/requirements.txt'
