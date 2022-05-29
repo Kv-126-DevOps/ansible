@@ -23,8 +23,8 @@
     - common_install
     - common_git_install
 
-- import_tasks: python-pkg.yaml
+- import_tasks: pithon-pkg.yaml
   tags:
     - never
     - common_install
-    - common_install_python_pkg
+    - common_install_pithon_pkg
