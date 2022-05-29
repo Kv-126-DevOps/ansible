@@ -1,10 +1,10 @@
 ---
-# Git branches
+# Git branches:
 frontend_git_branch: main
 
-# Paths to services folder
+# Paths to services folder:
 frontend_workdir: /opt/frontend
 
-# Variables
+# Variables:
 frontend_restapi_host: rest-api
 frontend_restapi_port: 5000
