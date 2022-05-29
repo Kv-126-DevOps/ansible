@@ -5,6 +5,18 @@
     dest: '{{ frontend_workdir }}'
     version: '{{ frontend_git_branch }}'
 
+- name: Upgrade pip/ Install python packages
+  pip:
+    name:
+      - pip
+      - virtualenv
+    extra_args: --upgrade
+    executable: pip3
+    state: forcereinstall
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+  become: true
+
 - name: frontend | Install python packeges into virtualenv
   pip:
     requirements: '{{ frontend_workdir }}/requirements.txt'
