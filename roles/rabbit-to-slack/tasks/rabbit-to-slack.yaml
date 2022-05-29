@@ -7,16 +7,6 @@
   become: true
   become_user: ec2-user
 
-- name: rabbit-to-slack | Install virtualenv
-  pip:
-    name:
-      - virtualenv
-    executable: pip3
-    state: forcereinstall
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: rabbit-to-slack | Install python packeges into virtualenv
   pip:
@@ -24,8 +14,6 @@
     virtualenv: '{{ rabbit_to_slack_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: rabbit-to-slack| Copy service
   template:
