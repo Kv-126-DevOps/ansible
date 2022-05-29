@@ -7,6 +7,9 @@
   become: true
   become_user: ec2-user
 
+- name: test
+  ansible.builtin.shell: pip uninstall virtualenv
+
 - name: json-filter | Install virtualenv
   pip:
     name:
