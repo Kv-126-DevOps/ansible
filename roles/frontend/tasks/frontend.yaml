@@ -4,6 +4,8 @@
     repo: https://github.com/Kv-126-DevOps/frontend.git
     dest: '{{ frontend_workdir }}'
     version: '{{ frontend_git_branch }}'
+  become: true
+  become_user: ec2-user
 
 - name: Upgrade pip/ Install python packages
   pip:
