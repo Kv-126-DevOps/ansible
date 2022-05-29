@@ -18,8 +18,6 @@
     name:
       - pip
     extra_args: --upgrade
-    executable: pip3
-    virtualenv: '{{ json_filter_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
 
