@@ -1,5 +1,5 @@
 ---
-- hosts: json-filter
+- hosts: json_filter
   become: true
   gather_facts: false
   roles:
