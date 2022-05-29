@@ -8,13 +8,8 @@
 - name: Upgrade pip/ Install python packages
   pip:
     name:
-      - pip
       - virtualenv
-    extra_args: --upgrade
-    executable: pip
     state: forcereinstall
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
   become: true
 
 - name: frontend | Install python packeges into virtualenv
