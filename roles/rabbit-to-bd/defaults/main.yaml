@@ -3,7 +3,7 @@
 rabbit_to_db_git_branch: main
 
 # Paths to services folder
-rabbit_to_db_workdir: /opt/rabbit-to-db
+rabbit_to_db_workdir: /home/ec2-user/rabbit-to-db
 
 # Variables
 rabbit_to_db_postgres_host: postgres

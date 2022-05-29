@@ -3,7 +3,7 @@
 rabbit_to_slack_git_branch: main
 
 # Paths to services folder
-rabbit_to_slack_workdir: /opt/rabbit-to-slack
+rabbit_to_slack_workdir: /home/ec2-user/rabbit-to-slack
 
 # Variables
 rabbit_to_slack_rabbit_host: rabbit

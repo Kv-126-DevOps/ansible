@@ -1,9 +1,9 @@
 ---
 # Git branches
-json_filter_git_branch: develop
+json_filter_git_branch: main
 
 # Paths to services folder
-json_filter_workdir: /opt/json-filter
+json_filter_workdir: /home/ec2-user/json-filter
 
 # Variables
 json_filter_rmq_host: rabbit

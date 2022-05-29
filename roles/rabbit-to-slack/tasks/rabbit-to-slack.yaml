@@ -4,6 +4,8 @@
     repo: https://github.com/Kv-126-DevOps/rabbit_to_slack.git
     dest: '{{ rabbit_to_slack_workdir }}'
     version: '{{ rabbit_to_slack_git_branch }}'
+  become: true
+  become_user: ec2-user
 
 - name: rabbit-to-slack | Install python packeges into virtualenv
   pip:
@@ -11,6 +13,8 @@
     virtualenv: '{{ rabbit_to_slack_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
+  become: true
+  become_user: ec2-user
 
 - name: rabbit-to-slack| Copy service
   template:

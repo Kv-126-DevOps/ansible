@@ -3,7 +3,7 @@
 rest_api_git_branch: main
 
 # Paths to services folder
-rest_api_workdir: /opt/rest-api
+rest_api_workdir: /home/ec2-user/rest-api
 
 # Variables
 rest_api_postgres_host: postgres

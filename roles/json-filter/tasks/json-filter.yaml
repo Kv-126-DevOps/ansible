@@ -4,6 +4,8 @@
     repo: https://github.com/Kv-126-DevOps/json-filter.git
     dest: '{{ json_filter_workdir }}'
     version: '{{ json_filter_git_branch }}'
+  become: true
+  become_user: ec2-user
 
 - name: json-filter | Install python packeges into virtualenv
   pip:
@@ -11,6 +13,8 @@
     virtualenv: '{{ json_filter_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
+  become: true
+  become_user: ec2-user
 
 - name: json-filter | Copy service
   template:
