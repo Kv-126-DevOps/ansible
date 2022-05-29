@@ -12,17 +12,11 @@
     name:
       - virtualenv
     executable: pip3
-    state: present
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: json-filter | Install python packeges into virtualenv
   pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
-    virtualenv_python: python3
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
   become: true
