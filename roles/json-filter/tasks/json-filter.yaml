@@ -12,8 +12,7 @@
     name:
       - virtualenv
     executable: pip3
-    state: forcereinstall
-    extra_args: --user
+    state: present
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
   become: true
