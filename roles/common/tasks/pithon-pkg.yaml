@@ -1,8 +1,9 @@
 ---
-- name: Upgrade pip/ Install python packages
+- name: Upgrade pip
   pip:
     name:
       - pip
-      - virtualenv
     extra_args: --upgrade
     executable: pip3
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'

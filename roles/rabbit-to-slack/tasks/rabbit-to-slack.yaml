@@ -7,6 +7,19 @@
   become: true
   become_user: ec2-user
 
+- name: json-filter | Install virtualenv
+  pip:
+    name:
+      - virtualenv
+    executable: pip3
+
+- name: Upgrade pip
+  pip:
+    name:
+      - pip
+    extra_args: --upgrade
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
 
 - name: rabbit-to-slack | Install python packeges into virtualenv
   pip:
