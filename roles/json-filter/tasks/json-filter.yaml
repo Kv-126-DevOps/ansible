@@ -7,15 +7,13 @@
   become: true
   become_user: ec2-user
 
-- name: test
-  ansible.builtin.shell: pip uninstall virtualenv
-
 - name: json-filter | Install virtualenv
   pip:
     name:
       - virtualenv
     executable: pip3
     state: forcereinstall
+    extra_args: --user
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
   become: true
