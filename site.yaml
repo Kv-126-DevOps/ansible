@@ -1,10 +1,4 @@
 ---
-- hosts: jenkins
-  become: yes
-  gather_facts: no
-  roles:
-    - common
-
 - hosts: json-filter
   become: true
   gather_facts: false
