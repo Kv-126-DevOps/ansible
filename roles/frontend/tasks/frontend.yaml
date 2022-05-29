@@ -17,6 +17,8 @@
   pip:
     requirements: '{{ frontend_workdir }}/requirements.txt'
     virtualenv: '{{ frontend_workdir }}/venv'
+  become: true
+  become_user: ec2-user
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
 
