@@ -27,6 +27,8 @@
     virtualenv: '{{ rabbit_to_slack_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
+    become: true
+  become_user: ec2-user
 
 - name: rabbit-to-slack| Copy service
   template:
