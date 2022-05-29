@@ -1,33 +1,33 @@
 ---
-- hosts: json-filter
+- hosts: json-filter-euc101-sandbox.private-kv126.pp.ua
   become: true
   gather_facts: false
   roles:
     - common
     - json-filter
 
-- hosts: rabbit-to-slack
+- hosts: rabbit-to-slack-euc101-sandbox.private-kv126.pp.ua
   become: true
   gather_facts: false
   roles:
     - common
     - rabbit-to-slack
 
-- hosts: rabbit-to-bd
+- hosts: rabbit-to-db-euc101-sandbox.private-kv126.pp.ua
   become: true
   gather_facts: false
   roles:
     - common
     - rabbit-to-bd
 
-- hosts: rest-api
+- hosts: rest-api-euc101-sandbox.private-kv126.pp.ua
   become: true
   gather_facts: false
   roles:
     - common
     - rest-api
 
-- hosts: frontend
+- hosts: frontend-euc101-sandbox.private-kv126.pp.ua
   become: true
   gather_facts: false
   roles:
