@@ -26,12 +26,6 @@
   roles:
     - common
     - rest-api
-  environment:
-    POSTGRES_HOST: postgres-euc101-sandbox.c12upqdlsuot.eu-central-1.rds.amazonaws.com
-    POSTGRES_PORT: 5432
-    POSTGRES_USER: bduser
-    POSTGRES_PW: 123456123456
-    POSTGRES_DB: postgres
 
 - hosts: frontend
   become: true
