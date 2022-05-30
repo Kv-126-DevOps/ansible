@@ -16,7 +16,7 @@ Environment=RABBIT_PW={{ rabbit_to_slack_rabbit_pw }}
 Environment=RABBIT_QUEUE={{ rabbit_to_slack_rabbit_queue }}
 Environment=SLACK_URL=https://hooks.slack.com/services/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
 
-ExecStart={{ rabbit_to_slack_workdir }}/venv/bin/python3 app.py
+ExecStart={{ rabbit_to_slack_workdir }}/venv/bin/python3 {{ rabbit_to_slack_workdir }}/app.py
 
 [Install]
 WantedBy=multi-user.target
