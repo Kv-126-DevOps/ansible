@@ -6,5 +6,5 @@ frontend_git_branch: main
 frontend_workdir: /home/ec2-user/frontend
 
 # Variables:
-frontend_restapi_host: rest_api
+frontend_restapi_host: rest_api_euc101_sandbox.private-kv126.pp.ua
 frontend_restapi_port: 5000
