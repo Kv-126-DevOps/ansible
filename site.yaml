@@ -13,7 +13,7 @@
     - common
     - rabbit-to-slack
 
-- hosts: rabbit_to_bd
+- hosts: rabbit_to_db
   become: true
   gather_facts: false
   roles:
