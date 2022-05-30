@@ -4,7 +4,7 @@ pipeline {
     options {
         ansiColor('xterm')
         disableConcurrentBuilds()  // Don't run 2 concurrent builds at the same time
-        buildDiscarder logRotator(numToKeepStr: '8')  // Maximum number of builds to save
+        buildDiscarder logRotator(numToKeepStr: '5')  // Maximum number of builds to save
     }
 
     parameters {
@@ -16,8 +16,8 @@ pipeline {
                        description: 'Ansible level of verbose'
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
-                       value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
-                       defaultValue: 'common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
+                       value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install',
+                       defaultValue: 'common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install',
                        type: 'PT_CHECKBOX',
                        description: 'Ansible action tags'
         //GitHunb branch param
