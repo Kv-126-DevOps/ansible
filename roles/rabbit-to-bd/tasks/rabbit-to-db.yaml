@@ -9,8 +9,7 @@
   pip:
     requirements: '{{ rabbit_to_db_workdir }}/requirements.txt'
     virtualenv: '{{ rabbit_to_db_workdir }}/venv'
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
+    virtualenv_command: python3 -m venv
 
 - name: rabbit-to-db| Copy service
   template:
