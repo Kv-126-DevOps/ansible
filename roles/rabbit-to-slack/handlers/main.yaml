@@ -3,4 +3,5 @@
   service:
     name: rabbit-to-slack.service
     state: restarted
+    daemon-reload: true
     enabled: true
