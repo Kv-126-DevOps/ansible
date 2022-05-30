@@ -7,7 +7,7 @@
       become: true
       become_user: ec2-user
     
-    - name: json-filter | Install python packeges into virtualenv
+    - name: json-filter | Install python packeges
       pip:
         requirements: '{{ json_filter_workdir }}/requirements.txt'
       vars:
@@ -31,3 +31,4 @@
         name: json-filter.service
         state: started
         enabled: true
+      become: true
