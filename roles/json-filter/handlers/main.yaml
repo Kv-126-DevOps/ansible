@@ -4,3 +4,5 @@
     name: json-filter.service
     state: restarted
     enabled: true
+    become: true
+    become_user: ec2-user
