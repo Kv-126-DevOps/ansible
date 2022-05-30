@@ -13,10 +13,6 @@
       - virtualenv
     executable: pip3
     state: forcereinstall
-  vars:
-    ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: rabbit-to-db | Install python packeges into virtualenv
   pip:
