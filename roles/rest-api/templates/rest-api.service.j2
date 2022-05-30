@@ -5,7 +5,7 @@ After=rabbit-to-db.service
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/rest-api
+WorkingDirectory={{ rest_api_workdir }}
 
 Restart=always
 
