@@ -3,7 +3,7 @@
   shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
-- name: nstall python packages
+- name: Install python packages
   pip:
     name:
       - pip
