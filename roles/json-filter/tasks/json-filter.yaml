@@ -8,12 +8,11 @@
   become_user: ec2-user
 
 - name: json-filter | Install python packeges into virtualenv
-  pip3:
+  pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
+  executable: pip3
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: json-filter | Copy service
   template:
