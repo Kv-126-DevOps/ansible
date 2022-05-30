@@ -24,6 +24,7 @@
         mode: 0644
         backup: true
       notify:
+        - systemctl daemon-reload
         - restart json-filter.service
     
     - name: json-filter | Start service
@@ -31,4 +32,3 @@
         name: json-filter.service
         state: started
         enabled: true
-      become: true
