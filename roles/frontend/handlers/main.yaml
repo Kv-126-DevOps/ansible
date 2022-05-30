@@ -3,4 +3,5 @@
   service:
     name: frontend.service
     state: restarted
+    daemon-reload: true
     enabled: true
