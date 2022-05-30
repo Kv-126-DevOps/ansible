@@ -7,3 +7,4 @@
     extra_args: --upgrade
     executable: pip
   become: true
+  become_user: ec2-user
