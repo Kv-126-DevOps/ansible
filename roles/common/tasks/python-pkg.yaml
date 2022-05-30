@@ -1,6 +1,6 @@
 ---
 - name: Install PIP
-  shell: get_url https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
+  shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
 - name: Upgrade pip/ Install python packages
