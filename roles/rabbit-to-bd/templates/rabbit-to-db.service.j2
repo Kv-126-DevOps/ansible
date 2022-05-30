@@ -20,7 +20,7 @@ Environment=RABBIT_USER={{ rabbit_to_db_rabbit_user }}
 Environment=RABBIT_PW={{ rabbit_to_db_rabbit_pw }}
 Environment=RABBIT_QUEUE={{ rabbit_to_db_rabbit_queue }}
 
-ExecStart={{ rabbit_to_db_workdir }}/venv/bin/python3 app.py
+ExecStart={{ rabbit_to_db_workdir }}/venv/bin/python3 {{ rabbit_to_db_workdir }}/app.py
 
 [Install]
 WantedBy=multi-user.target

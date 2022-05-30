@@ -3,4 +3,5 @@
   service:
     name: rabbit-to-db.service
     state: restarted
+    daemon-reload: true
     enabled: true
