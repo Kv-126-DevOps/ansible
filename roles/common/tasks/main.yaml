@@ -22,9 +22,3 @@
     - never
     - common_install
     - common_git_install
-
-- import_tasks: pithon-pkg.yaml
-  tags:
-    - never
-    - common_install
-    - common_install_pithon_pkg

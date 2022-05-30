@@ -6,28 +6,28 @@
     - common
     - frontend
 
-- hosts: json-filter
+- hosts: json_filter
   become: true
   gather_facts: false
   roles:
     - common
     - json-filter
 
-- hosts: rabbit-to-slack
+- hosts: rabbit_to_slack
   become: true
   gather_facts: false
   roles:
     - common
     - rabbit-to-slack
 
-- hosts: rabbit-to-bd
+- hosts: rabbit_to_db
   become: true
   gather_facts: false
   roles:
     - common
     - rabbit-to-bd
 
-- hosts: rest-api
+- hosts: rest_api
   become: true
   gather_facts: false
   roles:
