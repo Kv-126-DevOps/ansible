@@ -1,9 +1,7 @@
 ---
-- name: systemctl daemon-reload
-  systemd: daemon_reload=yes
-
 - name: restart json-filter.service
   service:
     name: json-filter.service
     state: restarted
+    daemon-reload: true
     enabled: true
