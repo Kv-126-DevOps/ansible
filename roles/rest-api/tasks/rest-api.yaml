@@ -15,8 +15,6 @@
     state: forcereinstall
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: rest-api | Install python packeges into virtualenv
   pip:
@@ -24,8 +22,6 @@
     virtualenv: '{{ rest_api_workdir }}/venv'
   vars:
     ansible_python_interpreter: '/usr/bin/python3'
-  become: true
-  become_user: ec2-user
 
 - name: rest-api | Copy service
   template:
