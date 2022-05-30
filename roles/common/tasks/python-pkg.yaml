@@ -1,9 +1,9 @@
 ---
-- name: Install PIP
+- name: Install/Update PIP
   shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
-- name: Upgrade pip/ Install python packages
+- name: nstall python packages
   pip:
     name:
       - pip
