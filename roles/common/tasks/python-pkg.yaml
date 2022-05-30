@@ -5,5 +5,4 @@
       - pip3
       - virtualenv
     extra_args: --upgrade
-    executable: pip3
   become: true
