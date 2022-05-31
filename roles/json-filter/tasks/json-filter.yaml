@@ -30,8 +30,8 @@
 
 - name: checking service status
   command: systemctl status json-filter.service
-  register: result
-  gnore_errors: yes
+    register: result
+    gnore_errors: yes
 - name: showing report
   debug:
     var: result
