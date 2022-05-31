@@ -36,4 +36,4 @@
 
 - name: showing report
   debug:
-    var: result.stdout
+    var: result.status
