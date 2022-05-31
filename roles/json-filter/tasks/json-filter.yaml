@@ -37,4 +37,4 @@
 
 - name: showing report
   debug:
-    var: result.stdout
+    msg: msg: "{{ result.stdout_lines|list }}"
