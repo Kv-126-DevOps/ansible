@@ -29,12 +29,11 @@
     enabled: true
 
 - name: checking service status
-  command: systemctl status "{{ item }}"
+  shell: systemctl status "{{ item }}"
   with_items:
   - json-filter.service
   register: result
-  ignore_errors: yes
 
 - name: showing report
   debug:
-    var: "{{ result.stdout|list }}"
+    var: result.stdout
