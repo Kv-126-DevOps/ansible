@@ -1,7 +1,7 @@
 ---
 - hosts: json_filter
   become: true
-  gather_facts: false
+  gather_facts: true
   roles:
     - common
     - json-filter
