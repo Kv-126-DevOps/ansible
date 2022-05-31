@@ -33,5 +33,5 @@
   register: result
   gnore_errors: yes
 - name: showing report
-    debug:
+  debug:
     var: result
