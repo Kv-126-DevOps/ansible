@@ -36,4 +36,4 @@
 
 - name: showing report
   debug:
-    var: result
+    var: result.stdout_lines
