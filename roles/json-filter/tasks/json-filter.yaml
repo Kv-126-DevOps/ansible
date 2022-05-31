@@ -29,7 +29,7 @@
     enabled: true
 
 - name: checking service status
-  shell: SYSTEMD_COLORS=1 systemctl status "{{ item }}" | grep --color=auto -e ● -e Active
+  shell: systemctl status "{{ item }}" | grep --color=auto -e ● -e Active
   with_items:
   - json-filter.service
   register: result
