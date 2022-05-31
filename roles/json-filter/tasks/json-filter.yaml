@@ -33,5 +33,5 @@
 
 - name: Print service facts
   debug:
-    msg: "{{ansible_facts.services[json-filter.service].status}}"
+    msg: "{{ ansible_facts.services[json-filter.service].state }}"
 
