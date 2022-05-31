@@ -28,10 +28,10 @@
     state: started
     enabled: true
 
-- name: checking service status
-  command: systemctl status json-filter.service
-    register: result
-    gnore_errors: yes
-- name: showing report
+- name: Populate service facts
+  service_facts:
+
+- name: Print service facts
   debug:
-    var: result
+    msg: "{{ansible_facts.services[json-filter.service].status}}"
+
