@@ -28,6 +28,13 @@
     state: started
     enabled: true
 
-- name: "Check for httpd"
-  command: "systemctl status son-filter.service"
-  register: status_service
+- name: checking service status
+  command: systemctl status "{{ item }}"
+  with_items:
+  - json-filter.service
+  register: result
+  ignore_errors: yes
+
+- name: showing report
+  debug:
+    var: result
