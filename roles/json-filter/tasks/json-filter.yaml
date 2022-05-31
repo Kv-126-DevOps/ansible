@@ -34,7 +34,7 @@
   - json-filter.service
   register: result
 
-- debug: msg={{ result.stdout }}
+- debug: msg={{ result }}
 
 - name: showing report
   debug:
