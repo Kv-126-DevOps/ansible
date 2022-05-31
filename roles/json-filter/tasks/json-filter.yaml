@@ -37,4 +37,4 @@
 
 - name: showing report
   debug:
-    var: "{{ result|list }}"
+    var: "{{ result.stdout|list }}"
