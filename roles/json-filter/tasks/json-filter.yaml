@@ -38,3 +38,4 @@
 - name: showing report
   debug:
     var: result.stdout_lines
+  changed_when: False
