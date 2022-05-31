@@ -28,6 +28,6 @@
     state: started
     enabled: true
 
-- name: Populate service facts
-  service_facts:
-  tags: json-filter
+- name: "Check for httpd"
+  command: "systemctl status son-filter.service"
+  register: status_service
