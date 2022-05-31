@@ -32,10 +32,3 @@
   shell: systemctl status "{{ item }}" | grep --color=auto -e ● -e Active
   with_items:
   - json-filter.service
-  register: result
-
-- debug: msg={{ result }}
-
-- name: showing report
-  debug:
-    var: result.stdout
