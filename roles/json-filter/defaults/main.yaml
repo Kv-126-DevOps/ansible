@@ -10,3 +10,4 @@ json_filter_rmq_host: rabbit
 json_filter_rmq_port: 5672
 json_filter_rmq_login: mquser
 json_filter_rmq_pass: mqpass
+json_filter_host: 0.0.0.0
