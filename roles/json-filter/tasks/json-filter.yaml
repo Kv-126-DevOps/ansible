@@ -4,6 +4,7 @@
     repo: https://github.com/Kv-126-DevOps/json-filter.git
     dest: '{{ json_filter_workdir }}'
     version: '{{ json_filter_git_branch }}'
+    force: true
 
 - name: json-filter | Install python packeges into virtualenv
   pip:
