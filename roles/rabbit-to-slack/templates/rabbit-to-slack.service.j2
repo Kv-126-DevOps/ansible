@@ -14,7 +14,7 @@ Environment=RABBIT_PORT={{ rabbit_to_slack_rabbit_port }}
 Environment=RABBIT_USER={{ rabbit_to_slack_rabbit_user }}
 Environment=RABBIT_PW={{ rabbit_to_slack_rabbit_pw }}
 Environment=RABBIT_QUEUE={{ rabbit_to_slack_rabbit_queue }}
-Environment=SLACK_URL=https://hooks.slack.com/services/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
+Environment=SLACK_URL={{ rabbit_to_slack_hook }}
 
 ExecStart={{ rabbit_to_slack_workdir }}/venv/bin/python3 {{ rabbit_to_slack_workdir }}/app.py
 

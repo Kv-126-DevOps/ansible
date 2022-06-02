@@ -11,3 +11,4 @@ rabbit_to_slack_rabbit_port: 5671
 rabbit_to_slack_rabbit_user: mquser
 rabbit_to_slack_rabbit_pw: mqpass
 rabbit_to_slack_rabbit_queue: slack
+rabbit_to_slack_hook: url
