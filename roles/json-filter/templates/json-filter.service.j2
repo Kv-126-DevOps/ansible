@@ -11,8 +11,8 @@ Environment=RABBIT_PORT={{ json_filter_rmq_port }}
 Environment=RABBIT_USER={{ json_filter_rmq_login }}
 Environment=RABBIT_PW={{ json_filter_rmq_pass }}
 Environment=HOST={{ json_filter_host }}
-Environment=QUEUE_SLACK=slack
-Environment=QUEUE_RESTAPI=restapi
+Environment=QUEUE_SLACK={{ json_filter_queue_slack }}
+Environment=QUEUE_RESTAPI={{ json_filter_queue_restapi }}
 
 ExecStart={{ json_filter_workdir }}/venv/bin/python3 {{ json_filter_workdir }}/jsonfilter.py
 

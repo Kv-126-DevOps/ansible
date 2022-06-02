@@ -28,8 +28,3 @@
     name: json-filter.service
     state: started
     enabled: true
-
-- name: checking service status
-  shell: systemctl status "{{ item }}" | grep --color=auto -e ● -e Active
-  with_items:
-  - json-filter.service
