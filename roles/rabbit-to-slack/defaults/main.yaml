@@ -1,6 +1,6 @@
 ---
 # Git branches
-rabbit_to_slack_git_branch: main
+rabbit_to_slack_git_branch: amazon_mq
 
 # Paths to services folder
 rabbit_to_slack_workdir: /opt/rabbit-to-slack
