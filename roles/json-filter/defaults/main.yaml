@@ -1,6 +1,7 @@
 ---
 # Git branches
-json_filter_git_branch: develop
+json_filter_git_branch: dev-rabbit
+#develop
 
 # Paths to services folder
 json_filter_workdir: /opt/json-filter
