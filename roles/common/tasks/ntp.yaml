@@ -1,6 +1,6 @@
 ---
 - name: lookup ssm parameter store in the current region
-  debug: msg="{{ lookup('amazon.aws.aws_secret', 'dbpass') }}"
+  debug: msg="{{ lookup('amazon.aws.aws_secret', 'dbpass', region='eu-central-1') }}"
 
 - name: 'NTP. Install Package'
   yum:
