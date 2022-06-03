@@ -4,6 +4,7 @@
     repo: https://github.com/Kv-126-DevOps/rest-api.git
     dest: '{{ rest_api_workdir }}'
     version: '{{ rest_api_git_branch }}'
+    force: true
 
 - name: rest-api | Install python packeges into virtualenv
   pip:
@@ -26,4 +27,5 @@
   service:
     name: rest-api.service
     state: started
+    daemon-reload: true
     enabled: true

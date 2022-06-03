@@ -27,4 +27,5 @@
   service:
     name: json-filter.service
     state: started
+    daemon-reload: true
     enabled: true

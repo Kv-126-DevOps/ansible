@@ -27,4 +27,5 @@
   service:
     name: rabbit-to-db.service
     state: started
+    daemon-reload: true
     enabled: true

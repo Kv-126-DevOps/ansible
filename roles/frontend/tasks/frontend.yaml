@@ -4,6 +4,7 @@
     repo: https://github.com/Kv-126-DevOps/frontend.git
     dest: '{{ frontend_workdir }}'
     version: '{{ frontend_git_branch }}'
+    force: true
 
 - name: frontend | Install python packeges into virtualenv
   pip:
@@ -26,4 +27,5 @@
   service:
     name: frontend.service
     state: started
+    daemon-reload: true
     enabled: true
