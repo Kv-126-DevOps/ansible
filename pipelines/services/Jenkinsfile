@@ -61,7 +61,7 @@ pipeline {
                     tags: ACTION,
                     extras: ANSIBLE_VERBOSE_FLAG,
                     extraVars:[
-                        json_filter_rmq_host: "${MQ_HOST}",
+                        json_filter_rabbit_host: "${MQ_HOST}",
                         rabbit_to_db_postgres_host: "${DB_HOST}",
                         rabbit_to_db_rabbit_host: "${MQ_HOST}",
                         rabbit_to_slack_rabbit_host: "${MQ_HOST}",
