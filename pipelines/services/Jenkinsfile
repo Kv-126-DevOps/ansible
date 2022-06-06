@@ -62,15 +62,10 @@ pipeline {
                     extras: ANSIBLE_VERBOSE_FLAG,
                     extraVars:[
                         json_filter_rmq_host: "${MQ_HOST}",
-                        //json_filter_rmq_pass: "${MQ_PASS}",
                         rabbit_to_db_postgres_host: "${DB_HOST}",
-                        rabbit_to_db_postgres_pw: "${DB_PASS}",
                         rabbit_to_db_rabbit_host: "${MQ_HOST}",
-                        rabbit_to_db_rabbit_pw: "${MQ_PASS}",
                         rabbit_to_slack_rabbit_host: "${MQ_HOST}",
-                        rabbit_to_slack_rabbit_pw: "${MQ_PASS}",
                         rest_api_postgres_host: "${DB_HOST}",
-                        rest_api_postgres_pw: "${DB_PASS}",
                         rabbit_to_slack_hook: "${WEB_HOOK}"
                     ]
                 )
