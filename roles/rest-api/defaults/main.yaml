@@ -9,5 +9,5 @@ rest_api_workdir: /opt/rest-api
 rest_api_postgres_host: postgres
 rest_api_postgres_port: 5432
 rest_api_postgres_user: dbuser
-rest_api_postgres_pw: dbpass
+rest_api_postgres_pw: "{{ lookup('aws_ssm', 'dbpass', region='eu-central-1') }}"
 rest_api_postgres_db: postgres

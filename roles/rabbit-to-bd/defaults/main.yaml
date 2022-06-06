@@ -9,11 +9,11 @@ rabbit_to_db_workdir: /opt/rabbit-to-db
 rabbit_to_db_postgres_host: postgres
 rabbit_to_db_postgres_port: 5432
 rabbit_to_db_postgres_user: dbuser
-rabbit_to_db_postgres_pw: dbpass
+rabbit_to_db_postgres_pw: "{{ lookup('aws_ssm', 'dbpass', region='eu-central-1') }}"
 rabbit_to_db_postgres_db: postgres
 
 rabbit_to_db_rabbit_host: rabbit
 rabbit_to_db_rabbit_port: 5671
 rabbit_to_db_rabbit_user: mquser
-rabbit_to_db_rabbit_pw: mqpass
+rabbit_to_db_rabbit_pw: "{{ lookup('aws_ssm', 'mqpass', region='eu-central-1') }}"
 rabbit_to_db_rabbit_queue: restapi

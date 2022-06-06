@@ -6,10 +6,10 @@ json_filter_git_branch: dev-rabbit
 json_filter_workdir: /opt/json-filter
 
 # Variables
-json_filter_rmq_host: rabbit
-json_filter_rmq_port: 5671
-json_filter_rmq_login: mquser
-json_filter_rmq_pass: "{{ lookup('aws_ssm', 'mqpass', region='eu-central-1') }}"
+json_filter_rabbit_host: rabbit
+json_filter_rabbit_port: 5671
+json_filter_rabbit_user: mquser
+json_filter_rabbit_pw: "{{ lookup('aws_ssm', 'mqpass', region='eu-central-1') }}"
 
 json_filter_host: 0.0.0.0
 json_filter_queue_slack: slack
