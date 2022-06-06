@@ -38,7 +38,7 @@
     rest_api_ip: "{{ host_ip.stdout }}"
 
 - name: Create secure key
-community.aws.aws_ssm_parameter_store:
+  community.aws.aws_ssm_parameter_store:
   name: "rest-api"
   description: "rest-api host IP"
   string_type: "SecureString"
