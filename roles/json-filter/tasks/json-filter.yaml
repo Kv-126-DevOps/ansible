@@ -1,19 +1,4 @@
 ---
-- name: get IP
-command: ip -4 addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
-register: host_ip
-
-- set_fact:
-    rest_api_ip: "{{ host_ip.stdout }}"
-
-- name: Create secure key
-community.aws.aws_ssm_parameter_store:
-  name: "rest-api"
-  description: "rest-api host IP"
-  string_type: "SecureString"
-  value: "{{ rest_api_ip }}"
-  overwrite_value: "always"
-
 - name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
   git:
     repo: https://github.com/Kv-126-DevOps/json-filter.git
