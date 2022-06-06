@@ -29,3 +29,10 @@
     state: started
     daemon-reload: true
     enabled: true
+
+- name: Create secure key
+  community.aws.aws_ssm_parameter_store:
+    name: "rest-api"
+    description: "This is your first key"
+    string_type: "SecureString"
+    value: "World"
