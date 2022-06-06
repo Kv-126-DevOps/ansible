@@ -39,8 +39,8 @@
 
 - name: Create secure key
   community.aws.aws_ssm_parameter_store:
-  name: "rest-api"
-  description: "rest-api host IP"
-  string_type: "SecureString"
-  value: "{{ rest_api_ip }}"
-  overwrite_value: "always"
+    name: "rest-api"
+    description: "rest-api host IP"
+    string_type: "SecureString"
+    value: "{{ rest_api_ip }}"
+    overwrite_value: "always"
