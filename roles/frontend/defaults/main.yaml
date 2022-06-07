@@ -6,5 +6,5 @@ frontend_git_branch: main
 frontend_workdir: /opt/frontend
 
 # Variables
-frontend_restapi_host: 172.31.43.121
+frontend_restapi_host: rest-api
 frontend_restapi_port: 5000
