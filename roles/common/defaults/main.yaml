@@ -18,6 +18,9 @@ required_pkgs:
   - ca-certificates
   - lsof
 
+# Repository priority protections
+protection: 0
+
 # Default Timezone
 common_ntp_timezone: Europe/Kiev
 

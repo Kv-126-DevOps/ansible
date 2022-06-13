@@ -1,11 +1,20 @@
 
-- name: Install epel repositories
+- name: 'Install epel repositories'
   shell: amazon-linux-extras install epel -y
   become: true
 
-- name: Enable epel repositories
+- name: 'Enable epel repositories'
   shell: yum-config-manager --enable epel
   become: true
+
+- name: 'Disable repository priority protections'
+  template:
+    src: priorities.conf.j2
+    dest: /etc/yum/pluginconf.d/priorities.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: true
 
 - name: Retrieve the installed packages
   package_facts:
@@ -22,3 +31,4 @@
   package:
     name: "{{ missing_packages }}"
     state: present
+    update_cache: true
