@@ -17,6 +17,7 @@ required_pkgs:
   - nmap
   - ca-certificates
   - lsof
+  - git
 
 # Repository priority protections
 protection: 0
