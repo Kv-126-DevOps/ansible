@@ -1,6 +1,6 @@
 ---
 # Pkgs to check
-required_pkgs:
+common_required_package:
   - bind-utils
   - curl
   - htop
@@ -21,7 +21,7 @@ required_pkgs:
   - ntp
 
 # Repository priority protections
-protection: 0
+common_protection: 0
 
 # Default Timezone
 common_ntp_timezone: Europe/Kiev

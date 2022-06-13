@@ -16,22 +16,13 @@
     mode: 0644
     backup: true
 
-- name: 'Retrieve the installed packages'
-  package_facts:
-
-- name: 'Get list of installed packages'
-  set_fact:
-    installed_packages: "{{ ansible_facts.packages.keys() }}"
-
-- name: 'Find missing packages'
-  set_fact:
-    missing_packages: "{{ required_pkgs | difference (installed_packages) }}"
-
-- name: 'Install missing packages'
-  package:
-    name: "{{ missing_packages }}"
+- name: "Check if listed package is installed or not on Debian Linux family"
+  yum:
+    name: "{{ item }}"
     state: present
-    update_cache: true
+    check_mode: true
+    loop: "{{ common_required_package }}"
+
 
 - name: Install/Update PIP
   shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
