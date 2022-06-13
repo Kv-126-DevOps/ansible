@@ -11,7 +11,7 @@ required_pkgs:
   - net-tools
   - tmux
   - telnet
-  - vim
+  - vim-enhanced
   - wget
   - mc
   - nmap
