@@ -1,11 +1,11 @@
 
 - name: Install epel repositories
-      become: yes
-      shell: amazon-linux-extras install epel -y
+    become: true
+    shell: amazon-linux-extras install epel -y
 
 - name: Enable epel repositories
-      become: yes
-      shell: yum-config-manager --enable epel
+    become: true
+    shell: yum-config-manager --enable epel
 
 - name: Retrieve the installed packages
   package_facts:
