@@ -1,10 +1,4 @@
 ---
-- name: 'NTP. Install Package'
-  yum:
-    name: ntp
-    state: present
-    update_cache: true
-
 - name: 'NTP. Configure Service'
   template:
     src: ntp.conf.j2

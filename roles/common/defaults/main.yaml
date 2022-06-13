@@ -18,6 +18,7 @@ required_pkgs:
   - ca-certificates
   - lsof
   - git
+  - ntp
 
 # Repository priority protections
 protection: 0
