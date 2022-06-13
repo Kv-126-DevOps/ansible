@@ -1,10 +1,4 @@
 ---
-- import_tasks: apps.yaml
-  tags:
-    - never
-    - common_install
-    - common_apps_install
-
 - import_tasks: ntp.yaml
   tags:
     - never
@@ -23,11 +17,11 @@
     - common_install
     - common_ssh_configure
 
-- import_tasks: git.yaml
+- import_tasks: utilities.yaml
   tags:
     - never
     - common_install
-    - common_git_install
+    - common_utilities_install
 
 - import_tasks: python-pkg.yaml
   tags:
