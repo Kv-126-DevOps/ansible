@@ -1,7 +1,7 @@
 ---
 - name: 'Install and enable epel repositories'
   shell: "{{ item }}"
-  with_items:
+  loop:
     - amazon-linux-extras install epel -y
     - yum-config-manager --enable epel
   become: true
