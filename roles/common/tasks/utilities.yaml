@@ -16,12 +16,22 @@
     mode: 0644
     backup: true
 
-- name: "Check if listed package is installed or not"
-  package:
-    name: "{{ common_required_package }}"
-    state: present
-    check_mode: true
+- name: 'Retrieve the installed packages'
+  package_facts:
 
+- name: 'Get list of installed packages'
+  set_fact:
+    installed_packages: "{{ ansible_facts.packages.keys() }}"
+
+- name: 'Find missing packages'
+  set_fact:
+    missing_packages: "{{ common_required_package | difference (installed_packages) }}"
+
+- name: 'Install missing packages'
+  package:
+    name: "{{ missing_packages }}"
+    state: present
+    update_cache: true
 
 - name: Install/Update PIP
   shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
