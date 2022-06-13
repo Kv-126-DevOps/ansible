@@ -1,4 +1,23 @@
 ---
+# Pkgs to check
+required_pkgs:
+  - bind-utils
+  - curl
+  - htop
+  - iotop
+  - atop
+  - iftop
+  - ncdu
+  - net-tools
+  - tmux
+  - telnet
+  - vim
+  - wget
+  - mc
+  - nmap
+  - ca-certificates
+  - lsof
+
 # Default Timezone
 common_ntp_timezone: Europe/Kiev
 

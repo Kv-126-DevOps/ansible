@@ -1,11 +1,14 @@
 - name: Retrieve the installed packages
   package_facts:
+
 - name: Get only list of name of installed packages
   set_fact:
      installed_packages: "{{ ansible_facts.packages.keys() }}"
-- name: Compute missing packages
+
+- name: Find missing packages
   set_fact:
-    missing_packages: "{{ curl,htop,vim | difference (installed_packages) }}"
+    missing_packages: "{{ required_pkgs | difference (installed_packages) }}"
+
 - name: Install missing packages
   package:
     name: "{{ missing_packages }}"
