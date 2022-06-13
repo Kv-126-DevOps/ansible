@@ -16,7 +16,7 @@
     mode: 0644
     backup: true
 
-- name: "Check if listed package is installed or not on Debian Linux family"
+- name: "Check if listed package is installed or not"
   package:
     name: "{{ item }}"
     state: present
