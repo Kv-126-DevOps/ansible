@@ -13,3 +13,4 @@
   package:
     name: "{{ missing_packages }}"
     state: present
+  ignore_errors: true
