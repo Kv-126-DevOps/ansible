@@ -18,10 +18,9 @@
 
 - name: "Check if listed package is installed or not"
   package:
-    name: "{{ item }}"
+    name: "{{ common_required_package }}"
     state: present
     check_mode: true
-    loop: "{{ common_required_package }}"
 
 
 - name: Install/Update PIP
