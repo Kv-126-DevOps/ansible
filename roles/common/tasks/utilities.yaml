@@ -1,8 +1,9 @@
 ---
 - name: 'Install and enable epel repositories'
-  shell: |
-    amazon-linux-extras install epel -y
-    yum-config-manager --enable epel
+  shell: "{{ item }}"
+  with_items:
+    - amazon-linux-extras install epel -y
+    - yum-config-manager --enable epel
   become: true
 
 - name: 'Disable repository priority protections'
