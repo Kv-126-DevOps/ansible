@@ -17,7 +17,7 @@
     backup: true
 
 - name: "Check if listed package is installed or not on Debian Linux family"
-  yum:
+  package:
     name: "{{ item }}"
     state: present
     check_mode: true
