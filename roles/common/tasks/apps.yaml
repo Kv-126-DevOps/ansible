@@ -16,14 +16,16 @@
     mode: 0644
     backup: true
 
-- name: Get list of installed packages
-  yum:
-    list=installed
-  register: yum_packages
+- name: Retrieve the installed packages
+  package_facts:
+
+- name: Get only list of name of installed packages
+  set_fact:
+     installed_packages: "{{ ansible_facts.packages.keys() }}"
 
 - name: Find missing packages
   set_fact:
-    missing_packages: "{{ required_pkgs | difference (yum_packages) }}"
+    missing_packages: "{{ required_pkgs | difference (installed_packages) }}"
 
 - name: Install missing packages
   package:
