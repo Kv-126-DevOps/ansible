@@ -16,18 +16,18 @@ template:
   mode: 0644
   backup: true
 
-- name: Retrieve the installed packages
+- name: 'Retrieve the installed packages'
 package_facts:
 
-- name: Get only list of name of installed packages
+- name: 'Get list of installed packages'
 set_fact:
    installed_packages: "{{ ansible_facts.packages.keys() }}"
 
-- name: Find missing packages
+- name: 'Find missing packages'
 set_fact:
   missing_packages: "{{ required_pkgs | difference (installed_packages) }}"
 
-- name: Install missing packages
+- name: 'Install missing packages'
 package:
   name: "{{ missing_packages }}"
   state: present
