@@ -3,7 +3,7 @@
   tags:
     - never
     - common_install
-    - common_apps_install 
+    - common_apps_install
 
 - import_tasks: ntp.yaml
   tags:
