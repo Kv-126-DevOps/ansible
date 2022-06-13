@@ -1,4 +1,10 @@
 ---
+- import_tasks: apps.yaml
+  tags:
+    - never
+    - common_install
+    - common_apps_install 
+
 - import_tasks: ntp.yaml
   tags:
     - never
