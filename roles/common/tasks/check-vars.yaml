@@ -7,12 +7,8 @@
       - "{{ item }}| length > 0"
     quiet: yes
   loop:
-    - common_required_package
-    - common_protection
     - common_ntp_timezone
     - common_ntp_driftfile
-    - common_ntp_restrict
-    - common_ntp_servers
 
 - name: Check that all Variables are set correctly 
   assert:
