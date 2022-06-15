@@ -7,7 +7,7 @@
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
-    - "{{ common_required_package | list }}"
+    - "{{ common_required_package | string }}"
 #    - "{{ common_protection }}"
     - "{{ common_ntp_timezone }}"
     - "{{ common_ntp_driftfile }}"
