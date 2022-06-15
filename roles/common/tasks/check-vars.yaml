@@ -17,7 +17,7 @@
       - "{{ item }} is list" 
       - "{{ item }}| length > 0"
     quiet: yes
-    msg: "{{ item | type_debug }}"
+    fail_msg: "{{ item | type_debug }}"
   loop:
     - common_required_package
     - common_ntp_restrict
