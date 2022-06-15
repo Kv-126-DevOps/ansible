@@ -1,0 +1,13 @@
+---
+- import_tasks: java_jenkins.yaml
+  tags:
+    - never
+    - jenkins_install
+    - jenkins_java_configure
+
+- import_tasks: jenkins_install.yaml
+  tags:
+    - never
+    - jenkins_install
+    - jenkins_jenkins_configure
+

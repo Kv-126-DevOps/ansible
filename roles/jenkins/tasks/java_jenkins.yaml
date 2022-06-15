@@ -1,0 +1,16 @@
+---
+- name: Include OS-specific variables
+#  include_vars: "{{ ansible_distribution }}.yml"
+  include_vars: java_veriable.yaml
+
+- name: Define java_packages.
+  set_fact:
+    java_packages: "{{ __java_packages | list }}"
+  when: java_packages is not defined
+
+# Setup/install tasks.
+- name: Ensure Java is installed.
+  package:
+    name: "{{ java_packages }}"
+    state: present
+

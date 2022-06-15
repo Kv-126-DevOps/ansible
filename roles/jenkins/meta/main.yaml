@@ -1,16 +1,16 @@
 ---
 galaxy_info:
-  author: {{ cookiecutter.full_name }}
-  description: {{ cookiecutter.short_description }}
+  author: Anatolii Pedchenko
+  description: This Ansible Role infuses antigravity, you are warned
   company: SoftServe Inc.
   license: MIT
-  min_ansible_version: {{ cookiecutter.min_ansible_version }}
+  min_ansible_version: 2.9.0
   platforms:
     - name: Amazon
       versions:
         - 2
   galaxy_tags:
-    - {{ cookiecutter.role_name | replace('_', '') }}
+    - jankins
 
 dependencies: []
 # Be sure to remove the '[]' above if you add dependencies
