@@ -14,7 +14,7 @@
   assert:
     that:
       - "{{ item }} is defined"
-      - "{{ item }} is dict" 
+      - "{{ item }} is list" 
       - "{{ item }}| length > 0"
     quiet: yes
     fail_msg: "{{ item | type_debug }}"
