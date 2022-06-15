@@ -13,6 +13,3 @@
     - "{{ common_ntp_driftfile }}"
     - "{{ common_ntp_restrict }}"
     - "{{ common_ntp_servers }}"
-  fail_msg: 'VARIABLE {{ item }} must be defined, have string type and length > 0'
-
-  
