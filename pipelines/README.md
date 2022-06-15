@@ -1,14 +1,17 @@
 # Description of pipelines
 
-## helloworld-Jenkinsfile
+## Jenkinsfile
 
 ### Dependencies
 
 This job has the following plugin dependencies:
 
-- none
+- Ansible plugin
+- Pipeline
+- Git plugin
 
 ### Requirements
 
-- none
-
+- Ansible plugin 1.1
+- Pipeline 2.7
+- Git plugin 4.11.1

@@ -3,29 +3,40 @@
   become: yes
   gather_facts: no
   roles:
-    - role: common
+    - common
+    - frontend
 
-- hosts: jenkins
-  become: yes
-  gather_facts: yes
+- hosts: json-filter
+  become: true
+  gather_facts: false
   roles:
-    - role: jenkins
+    - common
+    - json-filter
 
+- hosts: rabbit-to-slack
+  become: true
+  gather_facts: false
+  roles:
+    - common
+    - rabbit-to-slack
 
-      #- hosts: json-filter
-      # become: yes
-      #gather_facts: no
-      #roles:
-      #- role: common
+- hosts: rabbit-to-bd
+  become: true
+  gather_facts: false
+  roles:
+    - common
+    - rabbit-to-bd
 
-      #- hosts: rabbit-to-bd
-      #become: yes
-      #gather_facts: no
-      #roles:
-      #- role: common
+- hosts: rest-api
+  become: true
+  gather_facts: false
+  roles:
+    - common
+    - rest-api
 
-      #- hosts: rest-api
-      #become: yes
-      #gather_facts: no
-      #roles:
-      #- role: common
+- hosts: frontend
+  become: true
+  gather_facts: false
+  roles:
+    - common
+    - frontend
