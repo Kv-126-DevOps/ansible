@@ -11,5 +11,5 @@
 #    - "{{ common_protection }}"
     - "{{ common_ntp_timezone }}"
     - "{{ common_ntp_driftfile }}"
-    - "{{ common_ntp_restrict | list }}"
-    - "{{ common_ntp_servers | list }}"
+    - "{{ common_ntp_restrict | string }}"
+    - "{{ common_ntp_servers | string }}"
