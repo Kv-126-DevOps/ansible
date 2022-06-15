@@ -2,23 +2,14 @@
 - name: Check that all Variables are set correctly 
   assert:
     that:
-      - "{{ item }} is defined"
-      - "{{ item }} is string" 
-      - "{{ item }}| length > 0"
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
     quiet: yes
   loop:
-    - common_ntp_timezone
-    - common_ntp_driftfile
-
-- name: Check that all Variables are set correctly 
-  assert:
-    that:
-      - "{{ item }} is defined"
-      - "{{ item }} is list" 
-      - "{{ item }}| length > 0"
-    quiet: yes
-    fail_msg: "{{ item | type_debug }}"
-  loop:
-    - common_required_package
-    - common_ntp_restrict
-    - common_ntp_servers
+    - "{{ common_required_package | list }}"
+    - "{{ common_protection }}"
+    - "{{ common_ntp_timezone }}"
+    - "{{ common_ntp_driftfile }}"
+    - "{{ common_ntp_restrict | list }}"
+    - "{{ common_ntp_servers | list }}"
