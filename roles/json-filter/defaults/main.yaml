@@ -1,4 +1,8 @@
 ---
+# Global environment
+env_class: environment_class
+env_name: environment_name
+
 # Git branches
 json_filter_git_branch: dev-rabbit
 
@@ -9,7 +13,7 @@ json_filter_workdir: /opt/json-filter
 json_filter_rabbit_host: rabbit
 json_filter_rabbit_port: 5671
 json_filter_rabbit_user: mquser
-json_filter_rabbit_pw: "{{ lookup('aws_ssm', 'mqpass', region='eu-central-1') }}"
+json_filter_rabbit_pw: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mqpass', region='eu-central-1') }}"
 
 json_filter_host: 0.0.0.0
 json_filter_queue_slack: slack
