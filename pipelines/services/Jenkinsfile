@@ -62,7 +62,7 @@ pipeline {
                     extras: ANSIBLE_VERBOSE_FLAG,
                     extraVars:[
                         env_class: "${ENV_CLASS}",
-                        env_class: "${ENV_NAME}",
+                        env_name: "${ENV_NAME}",
                         frontend_restapi_host: "${RESTAPI_HOST}",
                         json_filter_rabbit_host: "${MQ_HOST}",
                         rabbit_to_db_postgres_host: "${DB_HOST}",
