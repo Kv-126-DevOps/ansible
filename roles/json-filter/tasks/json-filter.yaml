@@ -1,4 +1,6 @@
 ---
+- name: tst
+  msg: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_pass', region='eu-central-1') }}"
 - name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
   git:
     repo: https://github.com/Kv-126-DevOps/json-filter.git
