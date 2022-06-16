@@ -1,4 +1,8 @@
 ---
+# Global environment
+env_class: environment_class
+env_name: environment_name
+
 # Git branches
 rest_api_git_branch: main
 
@@ -8,6 +12,6 @@ rest_api_workdir: /opt/rest-api
 # Variables
 rest_api_postgres_host: postgres
 rest_api_postgres_port: 5432
-rest_api_postgres_user: dbuser
-rest_api_postgres_pw: "{{ lookup('aws_ssm', 'dbpass', region='eu-central-1') }}"
+rest_api_postgres_user: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/rds_user', region='eu-central-1') }}"
+rest_api_postgres_pw: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_pass', region='eu-central-1') }}"
 rest_api_postgres_db: postgres

@@ -1,4 +1,8 @@
 ---
+# Global environment
+env_class: environment_class
+env_name: environment_name
+
 # Git branches
 rabbit_to_db_git_branch: amazon_mq
 
@@ -8,12 +12,12 @@ rabbit_to_db_workdir: /opt/rabbit-to-db
 # Variables
 rabbit_to_db_postgres_host: postgres
 rabbit_to_db_postgres_port: 5432
-rabbit_to_db_postgres_user: dbuser
-rabbit_to_db_postgres_pw: "{{ lookup('aws_ssm', 'dbpass', region='eu-central-1') }}"
+rabbit_to_db_postgres_user: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/rds_user', region='eu-central-1') }}"
+rabbit_to_db_postgres_pw: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/rds_pass', region='eu-central-1') }}"
 rabbit_to_db_postgres_db: postgres
 
 rabbit_to_db_rabbit_host: rabbit
 rabbit_to_db_rabbit_port: 5671
-rabbit_to_db_rabbit_user: mquser
-rabbit_to_db_rabbit_pw: "{{ lookup('aws_ssm', 'mqpass', region='eu-central-1') }}"
+rabbit_to_db_rabbit_user: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_user', region='eu-central-1') }}"
+rabbit_to_db_rabbit_pw: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_pass', region='eu-central-1') }}"
 rabbit_to_db_rabbit_queue: restapi

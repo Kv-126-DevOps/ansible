@@ -12,7 +12,7 @@ json_filter_workdir: /opt/json-filter
 # Variables
 json_filter_rabbit_host: rabbit
 json_filter_rabbit_port: 5671
-json_filter_rabbit_user: mquser
+json_filter_rabbit_user: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_user', region='eu-central-1') }}"
 json_filter_rabbit_pw: "{{ lookup('aws_ssm', '/{{ env_class }}/{{ env_name }}/mq_pass', region='eu-central-1') }}"
 
 json_filter_host: 0.0.0.0
