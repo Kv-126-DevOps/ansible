@@ -4,7 +4,6 @@
     that:
       - "{{ item is defined }}"
       - (("{{ item is string }}") and ("{{ item | length > 0 }}")) or "{{ item is number }}"
-      - "{{ item | length > 0 }}"
     quiet: yes
   loop:
     - "{{ env_class }}"
