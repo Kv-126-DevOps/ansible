@@ -1,4 +1,42 @@
 ---
+- name: Check that Passwords Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ rabbit_to_slack_rabbit_pw }}"
+  no_log: true
+  
+- name: Check that String Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ env_class }}"
+    - "{{ env_name }}"
+    - "{{ env_region }}"
+    - "{{ rabbit_to_slack_git_branch }}"
+    - "{{ rabbit_to_slack_workdir }}"
+    - "{{ rabbit_to_slack_rabbit_host }}"
+    - "{{ rabbit_to_slack_rabbit_user }}"
+    - "{{ rabbit_to_slack_rabbit_queue }}"
+    - "{{ rabbit_to_slack_hook }}"
+
+- name: Check that Integer Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
+    - "{{ rabbit_to_slack_rabbit_port }}"
+
 - name: rabbit-to-slack | Clone repo. branch:'{{ rabbit_to_slack_git_branch }}'
   git:
     repo: https://github.com/Kv-126-DevOps/rabbit_to_slack.git
