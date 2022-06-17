@@ -15,7 +15,7 @@
   assert:
     that:
       - "{{ item is defined }}"
-      - "{{ item is int }}"
+      - "{{ item is number }}"
     quiet: yes
   loop:
     - "{{ frontend_restapi_port }}"
