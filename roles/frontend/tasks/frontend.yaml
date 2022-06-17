@@ -11,12 +11,11 @@
     - "{{ frontend_workdir }}"
     - "{{ frontend_restapi_host }}"
 
-- name: Check that String Variables are set correctly 
+- name: Check that Int Variables are set correctly 
   assert:
     that:
       - "{{ item is defined }}"
-      - "{{ item is number }}"
-      - "{{ item | length > 0 }}"
+      - "{{ item is int }}"
     quiet: yes
   loop:
     - "{{ frontend_restapi_port }}"
