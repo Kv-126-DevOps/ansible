@@ -18,7 +18,7 @@ rabbit_to_slack_rabbit_user: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
-  ) }}
+  ) | default('mquser', true) }}
 rabbit_to_slack_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',

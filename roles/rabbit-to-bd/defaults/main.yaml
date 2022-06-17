@@ -18,7 +18,7 @@ rabbit_to_db_postgres_user: >-
     'aws_ssm',
     ('/', env_class, env_name, 'rds_user') | path_join,
     region=env_region
-  ) }}
+  ) | default('dbuser', true) }}
 rabbit_to_db_postgres_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
@@ -34,7 +34,7 @@ rabbit_to_db_rabbit_user: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
-  ) }}
+  ) | default('mquser', true) }}
 rabbit_to_db_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
