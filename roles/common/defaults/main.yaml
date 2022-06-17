@@ -21,13 +21,13 @@ common_required_package:
   - ntp
 
 # Repository priority protections
-common_protection: 0
+common_protection: "0"
 
 # Default Timezone
-common_ntp_timezone: Europe/Kiev
+common_ntp_timezone: "Europe/Kiev"
 
 # Drift file path
-common_ntp_driftfile: /var/lib/ntp/drift
+common_ntp_driftfile: "/var/lib/ntp/drift"
 
 # Restrict acces on ntp server
 common_ntp_restrict:
