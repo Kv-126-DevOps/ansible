@@ -1,9 +1,21 @@
 ---
+- name: Check that Passwords Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ json_filter_rabbit_pw }}"
+  no_log: true
+  
 - name: Check that String Variables are set correctly 
   assert:
     that:
       - "{{ item is defined }}"
-      - (("{{ item is string }}") and ("{{ item | length > 0 }}")) or "{{ item is number }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
     quiet: yes
   loop:
     - "{{ env_class }}"
@@ -13,12 +25,18 @@
     - "{{ json_filter_workdir }}"
     - "{{ json_filter_rabbit_host }}"
     - "{{ json_filter_rabbit_user }}"
-    - "{{ json_filter_rabbit_pw }}"
     - "{{ json_filter_host }}"
     - "{{ json_filter_queue_slack }}"
     - "{{ json_filter_queue_restapi }}"
+
+- name: Check that Integer Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
     - "{{ json_filter_rabbit_port }}"
-  #no_log: true
 
 - name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
   git:
