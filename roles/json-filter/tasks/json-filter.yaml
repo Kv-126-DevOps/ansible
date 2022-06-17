@@ -18,6 +18,7 @@
     - "{{ json_filter_host }}"
     - "{{ json_filter_queue_slack }}"
     - "{{ json_filter_queue_restapi }}"
+  no_log: true
 
 - name: Check that Int Variables are set correctly 
   assert:
