@@ -18,16 +18,8 @@
     - "{{ json_filter_host }}"
     - "{{ json_filter_queue_slack }}"
     - "{{ json_filter_queue_restapi }}"
-  no_log: true
-
-- name: Check that Integer Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is number }}"
-    quiet: yes
-  loop:
     - "{{ json_filter_rabbit_port }}"
+  #no_log: true
 
 - name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
   git:
