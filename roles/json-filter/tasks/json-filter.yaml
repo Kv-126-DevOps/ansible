@@ -3,7 +3,7 @@
   assert:
     that:
       - "{{ item is defined }}"
-      - "{{ item is string }}"
+      - (("{{ item is string }}") and ("{{ item | length > 0 }}")) or "{{ item is number }}"
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
@@ -20,7 +20,7 @@
     - "{{ json_filter_queue_restapi }}"
   no_log: true
 
-- name: Check that Int Variables are set correctly 
+- name: Check that Integer Variables are set correctly 
   assert:
     that:
       - "{{ item is defined }}"
