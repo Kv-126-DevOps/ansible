@@ -65,7 +65,6 @@ pipeline {
                         env_name: "${ENV_NAME}",
                         env_region: "${ENV_REGION}",
                         env_qm_connection: "${ENV_QM_CONNECTION}",
-                        json_filter_rabbit_host: "${MQ_HOST}",
                         rabbit_to_db_postgres_host: "${DB_HOST}",
                         rabbit_to_db_rabbit_host: "${MQ_HOST}",
                         rabbit_to_slack_rabbit_host: "${MQ_HOST}",
