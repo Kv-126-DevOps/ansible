@@ -18,6 +18,7 @@ Environment=SLACK_URL={{ rabbit_to_slack_hook }}
 Environment=SLACK_BUG={{ rabbit_to_slack_hook }}
 Environment=SLACK_US={{ rabbit_to_slack_hook }}
 Environment=SLACK_TC={{ rabbit_to_slack_hook }}
+Environment=MQ_CONNECTION={{ env_qm_connection }}
 
 ExecStart={{ rabbit_to_slack_workdir }}/venv/bin/python3 {{ rabbit_to_slack_workdir }}/app.py
 
