@@ -28,6 +28,6 @@ json_filter_rabbit_pw: >-
     decrypt=true
   ) }}
 
-json_filter_host: 0.0.0.0
+json_filter_host: "0.0.0.0"
 json_filter_queue_slack: slack
 json_filter_queue_restapi: restapi
