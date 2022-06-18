@@ -15,7 +15,7 @@
   assert:
     that:
       - "{{ item is defined }}"
-      - "{{ item is ipv4 }}"
+      - "{{ item is ipaddr }}"
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
