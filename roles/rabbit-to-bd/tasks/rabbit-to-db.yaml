@@ -22,6 +22,7 @@
     - "{{ env_class }}"
     - "{{ env_name }}"
     - "{{ env_region }}"
+    - "{{ env_qm_connection }}"
     - "{{ rabbit_to_db_git_branch }}"
     - "{{ rabbit_to_db_workdir }}"
     - "{{ rabbit_to_db_postgres_host }}"
