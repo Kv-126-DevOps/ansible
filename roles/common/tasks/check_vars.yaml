@@ -10,16 +10,6 @@
     - "{{ common_ntp_timezone }}"
     - "{{ common_ntp_driftfile }}"
     - "{{ common_required_package | join(',') }}"
-
-- name: Check that List Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is list }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-
     - "{{ common_ntp_restrict | join(',') }}"
     - "{{ common_ntp_servers | join(',') }}"
 
