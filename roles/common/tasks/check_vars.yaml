@@ -13,9 +13,9 @@
 - name: Check that String Variables are set correctly 
   assert:
     that:
-      - "{{ item.name is defined }}"
-      - "{{ item.name is string }}"
-      - "{{ item.name | length > 0 }}"
+      - "{{ item is defined }}"
+    #  - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
     quiet: yes
   loop:
     - "{{ common_required_package }}"
