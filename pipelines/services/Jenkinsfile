@@ -63,7 +63,7 @@ pipeline {
                     extraVars:[
                         env_class: "${ENV_CLASS}",
                         env_name: "${ENV_NAME}",
-                        env_region: "${ENV_REGION}"
+                        env_region: "${ENV_REGION}",
                         env_qm_connection: "${ENV_QM_CONNECTION}",
                         frontend_restapi_host: "${RESTAPI_HOST}",
                         json_filter_rabbit_host: "${MQ_HOST}",
