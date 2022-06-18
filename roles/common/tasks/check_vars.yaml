@@ -14,7 +14,7 @@
   assert:
     that:
       - "{{ item is defined }}"
-     - "{{ item is iterable }}"
+      - "{{ item is iterable }}"
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
