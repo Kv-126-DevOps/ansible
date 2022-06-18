@@ -3,7 +3,6 @@
 env_class: "environment_class"
 env_name: "environment_name"
 env_region: "eu-central-1"
-env_qm_connection: "SSL/HTTP"
 
 # Git branches
 json_filter_git_branch: "dev-rabbit"
