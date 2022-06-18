@@ -11,16 +11,6 @@
     - "{{ frontend_workdir }}"
     - "{{ frontend_restapi_host }}"
 
-- name: Check that IP Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item | ipaddr }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-    - "{{ frontend_restapi_host }}"
-
 - name: Check that Int Variables are set correctly 
   assert:
     that:
