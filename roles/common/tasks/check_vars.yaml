@@ -18,9 +18,9 @@
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
-    - "{{ common_required_package | list }}"
-    - "{{ common_ntp_restrict | list }}"
-    - "{{ common_ntp_servers | list }}"
+    - "{{ common_required_package.split(',').values() | list }}"
+    - "{{ common_ntp_restrict.split(',').values() | list }}"
+    - "{{ common_ntp_servers.split(',').values() | list }}"
 
 - name: Check that Integer Variables are set correctly 
   assert:
