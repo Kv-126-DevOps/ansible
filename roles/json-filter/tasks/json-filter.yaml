@@ -21,6 +21,7 @@
     - "{{ env_class }}"
     - "{{ env_name }}"
     - "{{ env_region }}"
+    - "{{ env_qm_connection }}"
     - "{{ json_filter_git_branch }}"
     - "{{ json_filter_workdir }}"
     - "{{ json_filter_rabbit_host }}"
