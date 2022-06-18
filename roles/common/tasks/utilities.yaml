@@ -1,12 +1,31 @@
 ---
-- name: 'Install and enable epel repositories'
+- name: 'Utilities | Check that Iterable Variables are set correctly'
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is iterable }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ common_required_package }}"
+
+- name: 'Utilities | Check that Integer Variables are set correctly'
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
+    - "{{ common_protection }}"
+
+- name: 'Utilities | Install and enable epel repositories'
   shell: "{{ item }}"
   loop:
     - amazon-linux-extras install epel -y
     - yum-config-manager --enable epel
   become: true
 
-- name: 'Disable repository priority protections'
+- name: 'Utilities | Disable repository priority protections'
   template:
     src: priorities.conf.j2
     dest: /etc/yum/pluginconf.d/priorities.conf
@@ -15,24 +34,24 @@
     mode: 0644
     backup: true
 
-- name: 'Retrieve the installed packages'
+- name: 'Utilities | Retrieve the installed packages'
   package_facts:
 
-- name: 'Get names of installed packages'
+- name: 'Utilities | Get names of installed packages'
   set_fact:
     installed_packages: "{{ ansible_facts.packages.keys() }}"
 
-- name: 'Find missing packages'
+- name: 'Utilities | Find missing packages'
   set_fact:
     missing_packages: "{{ common_required_package | difference (installed_packages) }}"
 
-- name: 'Install missing packages'
+- name: 'Utilities | Install missing packages'
   package:
     name: "{{ missing_packages }}"
     state: present
     update_cache: true
 
-- name: Install/Update PIP
+- name: 'Utilities | Install/Update PIP'
   shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
