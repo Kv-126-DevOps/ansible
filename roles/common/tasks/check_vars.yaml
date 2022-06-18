@@ -1,5 +1,5 @@
 ---
-- name: Check that all Variables are set correctly 
+- name: Check that String Variables are set correctly 
   assert:
     that:
       - "{{ item is defined }}"
@@ -7,9 +7,26 @@
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
-    - "{{ common_required_package | string }}"
-    - "{{ common_protection }}"
     - "{{ common_ntp_timezone }}"
     - "{{ common_ntp_driftfile }}"
-    - "{{ common_ntp_restrict | string }}"
-    - "{{ common_ntp_servers | string }}"
+
+- name: Check that List Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is list }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ common_required_package | list }}"
+    - "{{ common_ntp_restrict | list }}"
+    - "{{ common_ntp_servers | list }}"
+
+- name: Check that Integer Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
+    - "{{ common_protection }}"

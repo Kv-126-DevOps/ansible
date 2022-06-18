@@ -21,7 +21,7 @@ common_required_package:
   - ntp
 
 # Repository priority protections
-common_protection: "0"
+common_protection: 0
 
 # Default Timezone
 common_ntp_timezone: "Europe/Kiev"
