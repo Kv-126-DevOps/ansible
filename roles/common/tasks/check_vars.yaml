@@ -20,8 +20,8 @@
     quiet: yes
   loop:
 
-    - "{{ common_ntp_restrict | list }}"
-    - "{{ common_ntp_servers | list }}"
+    - "{{ common_ntp_restrict | list | join("\n") }}"
+    - "{{ common_ntp_servers | list | join("\n") }}"
 
 - name: Check that Integer Variables are set correctly 
   assert:
