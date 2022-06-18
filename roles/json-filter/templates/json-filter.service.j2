@@ -13,7 +13,6 @@ Environment=RABBIT_PW={{ json_filter_rabbit_pw }}
 Environment=HOST={{ json_filter_host }}
 Environment=QUEUE_SLACK={{ json_filter_queue_slack }}
 Environment=QUEUE_RESTAPI={{ json_filter_queue_restapi }}
-Environment=MQ_CONNECTION={{ env_qm_connection }}
 
 ExecStart={{ json_filter_workdir }}/venv/bin/python3 {{ json_filter_workdir }}/jsonfilter.py
 
