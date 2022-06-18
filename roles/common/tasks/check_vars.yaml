@@ -10,7 +10,6 @@
     - "{{ common_ntp_timezone }}"
     - "{{ common_ntp_driftfile }}"
 
----
 - name: Check that String Variables are set correctly 
   assert:
     that:
