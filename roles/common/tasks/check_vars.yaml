@@ -15,13 +15,13 @@
   assert:
     that:
       - "{{ item is defined }}"
-      - "{{ item is string }}"
+      - "{{ item is list }}"
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
 
-    - "{{ common_ntp_restrict | list }}"
-    - "{{ common_ntp_servers | list }}"
+    - "{{ common_ntp_restrict | join(',') }}"
+    - "{{ common_ntp_servers | join(',') }}"
 
 - name: Check that Integer Variables are set correctly 
   assert:
