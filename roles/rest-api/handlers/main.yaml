@@ -3,4 +3,6 @@
   service:
     name: rest-api.service
     state: restarted
+    daemon-reload: true
     enabled: true
+  become: yes

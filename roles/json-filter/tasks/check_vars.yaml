@@ -1,0 +1,46 @@
+---
+- name: Check that Passwords Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ json_filter_rabbit_pw }}"
+  no_log: true
+  tags:
+    - json_filter_install
+  
+- name: Check that String Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ env_class }}"
+    - "{{ env_name }}"
+    - "{{ env_region }}"
+    - "{{ env_qm_connection }}"
+    - "{{ json_filter_git_branch }}"
+    - "{{ json_filter_workdir }}"
+    - "{{ json_filter_rabbit_host }}"
+    - "{{ json_filter_rabbit_user }}"
+    - "{{ json_filter_host }}"
+    - "{{ json_filter_queue_slack }}"
+    - "{{ json_filter_queue_restapi }}"
+  tags:
+    - json_filter_install
+
+- name: Check that Integer Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
+    - "{{ json_filter_rabbit_port }}"
+  tags:
+    - json_filter_install

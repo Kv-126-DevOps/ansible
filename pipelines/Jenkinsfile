@@ -16,9 +16,10 @@ pipeline {
                        description: 'Ansible level of verbose'
         //Extended info param for builds list
         extendedChoice name: 'ACTION',
-                       value: 'common_ntp_install, common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
-                       defaultValue: 'common_ntp_install,common_utilities_install, common_ssh_configure,common_banner_configure, common_account_configure, common_git_install, common_install_pithon_pkg',
+                       value: 'common_utilities_install, common_ntp_install, common_ssh_configure,common_banner_configure, common_account_configure',
+                       defaultValue: 'common_utilities_install, common_ntp_install, common_ssh_configure,common_banner_configure, common_account_configure',
                        type: 'PT_CHECKBOX',
+                       visibleItemCount: 8,
                        description: 'Ansible action tags'
         //GitHunb branch param
         gitParameter   name: 'ANSIBLE_BRANCH',

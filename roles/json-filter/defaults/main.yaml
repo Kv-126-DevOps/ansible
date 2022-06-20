@@ -1,12 +1,38 @@
 ---
+# Global environment
+env_class: "environment_class"
+env_name: "environment_name"
+env_region: "eu-central-1"
+env_qm_connection: "SSL/HTTP"
+
 # Git branches
-json_filter_git_branch: develop
+json_filter_git_branch: "main"
 
 # Paths to services folder
-json_filter_workdir: /opt/json-filter
+json_filter_workdir: "/opt/json-filter"
 
 # Variables
-json_filter_rmq_host: rabbit
-json_filter_rmq_port: 5672
-json_filter_rmq_login: mquser
-json_filter_rmq_pass: mqpass
+json_filter_rabbit_host:  >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'mq_endpoint') | path_join,
+    region=env_region
+  ) }}
+json_filter_rabbit_port: 5671
+json_filter_rabbit_user: >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'mq_user') | path_join,
+    region=env_region
+  ) | default('mquser', true) }}
+json_filter_rabbit_pw: >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'mq_pass') | path_join,
+    region=env_region,
+    decrypt=true
+  ) }}
+
+json_filter_host: "0.0.0.0"
+json_filter_queue_slack: slack
+json_filter_queue_restapi: restapi

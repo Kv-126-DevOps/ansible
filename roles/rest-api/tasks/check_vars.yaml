@@ -1,0 +1,43 @@
+---
+- name: Check that Passwords Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ rest_api_postgres_pw }}"
+  no_log: true
+  tags:
+    - rest_api_install
+  
+- name: Check that String Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is string }}"
+      - "{{ item | length > 0 }}"
+    quiet: yes
+  loop:
+    - "{{ env_class }}"
+    - "{{ env_name }}"
+    - "{{ env_region }}"
+    - "{{ rest_api_git_branch }}"
+    - "{{ rest_api_workdir }}"
+    - "{{ rest_api_postgres_host }}"
+    - "{{ rest_api_postgres_user }}"
+    - "{{ rest_api_postgres_db }}"
+  tags:
+    - rest_api_install
+
+- name: Check that Integer Variables are set correctly 
+  assert:
+    that:
+      - "{{ item is defined }}"
+      - "{{ item is number }}"
+    quiet: yes
+  loop:
+    - "{{ rest_api_postgres_port }}"
+  tags:
+    - rest_api_install

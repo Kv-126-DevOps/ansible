@@ -1,5 +1,12 @@
 ---
+- import_tasks: check_vars.yaml
+  tags:
+    - never
+    - rabbit_to_db_service_install
+    - rabbit_to_db_check_vars
+
 - import_tasks: rabbit-to-db.yaml
   tags:
     - never
+    - rabbit_to_db_service_install
     - rabbit_to_db_install

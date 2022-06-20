@@ -1,9 +1,33 @@
 ---
+# Pkgs to check
+common_required_package:
+  - bind-utils
+  - curl
+  - htop
+  - iotop
+  - atop
+  - iftop
+  - ncdu
+  - net-tools
+  - tmux
+  - telnet
+  - vim-enhanced
+  - wget
+  - mc
+  - nmap
+  - ca-certificates
+  - lsof
+  - git
+  - ntp
+
+# Repository priority protections
+common_protection: 0
+
 # Default Timezone
-common_ntp_timezone: Europe/Kiev
+common_ntp_timezone: "Europe/Kiev"
 
 # Drift file path
-common_ntp_driftfile: /var/lib/ntp/drift
+common_ntp_driftfile: "/var/lib/ntp/drift"
 
 # Restrict acces on ntp server
 common_ntp_restrict:

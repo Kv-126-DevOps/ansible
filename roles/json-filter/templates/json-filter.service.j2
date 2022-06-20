@@ -6,12 +6,16 @@ WorkingDirectory={{ json_filter_workdir }}
 
 Restart=always
 
-Environment=RMQ_HOST={{ json_filter_rmq_host }}
-Environment=RRMQ_PORT={{ json_filter_rmq_port }}
-Environment=RRMQ_LOGIN={{ json_filter_rmq_login }}
-Environment=RRMQ_PASS={{ json_filter_rmq_pass }}
+Environment=RABBIT_HOST={{ json_filter_rabbit_host }}
+Environment=RABBIT_PORT={{ json_filter_rabbit_port }}
+Environment=RABBIT_USER={{ json_filter_rabbit_user }}
+Environment=RABBIT_PW={{ json_filter_rabbit_pw }}
+Environment=HOST={{ json_filter_host }}
+Environment=QUEUE_SLACK={{ json_filter_queue_slack }}
+Environment=QUEUE_RESTAPI={{ json_filter_queue_restapi }}
+Environment=MQ_CONNECTION={{ env_qm_connection }}
 
-ExecStart={{ json_filter_workdir }}/venv/python3 jsonfilter.py
+ExecStart={{ json_filter_workdir }}/venv/bin/python3 {{ json_filter_workdir }}/jsonfilter.py
 
 [Install]
 WantedBy=multi-user.target
