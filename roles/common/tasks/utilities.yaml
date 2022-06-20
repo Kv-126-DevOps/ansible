@@ -1,23 +1,4 @@
 ---
-- name: 'Utilities | Check that Iterable Variables are set correctly'
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is iterable }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-    - "{{ common_required_package }}"
-
-- name: 'Utilities | Check that Integer Variables are set correctly'
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is number }}"
-    quiet: yes
-  loop:
-    - "{{ common_protection }}"
-
 - name: 'Utilities | Install and enable epel repositories'
   shell: "{{ item }}"
   loop:
