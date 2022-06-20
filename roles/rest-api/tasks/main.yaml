@@ -1,5 +1,12 @@
 ---
+- import_tasks: check_vars.yaml
+  tags:
+    - never
+    - rest_api_service_install
+    - rrest_api_check_vars
+
 - import_tasks: rest-api.yaml
   tags:
     - never
+    - rest_api_service_install
     - rest_api_install
