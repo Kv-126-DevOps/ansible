@@ -1,27 +1,4 @@
 ---
-- name: NTP | Check that String Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is string }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-    - "{{ common_ntp_timezone }}"
-    - "{{ common_ntp_driftfile }}"
-
-
-- name: NTP | Check that Iterable Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is iterable }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-    - "{{ common_ntp_restrict }}"
-    - "{{ common_ntp_servers }}"
-
 - name: 'NTP | Configure Service'
   template:
     src: ntp.conf.j2
