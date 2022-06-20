@@ -4,8 +4,6 @@
     - never
     - common_install
     - common_check_vars
-    - common_utilities_install
-    - common_ntp_install
 
 - import_tasks: utilities.yaml
   tags:
