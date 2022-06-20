@@ -6,7 +6,7 @@ env_region: "eu-central-1"
 env_qm_connection: "SSL/HTTP"
 
 # Git branches
-json_filter_git_branch: "dev-rabbit"
+json_filter_git_branch: "main"
 
 # Paths to services folder
 json_filter_workdir: "/opt/json-filter"
