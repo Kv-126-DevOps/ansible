@@ -1,25 +1,4 @@
 ---
-- name: Check that String Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is string }}"
-      - "{{ item | length > 0 }}"
-    quiet: yes
-  loop:
-    - "{{ frontend_git_branch }}"
-    - "{{ frontend_workdir }}"
-    - "{{ frontend_restapi_host }}"
-
-- name: Check that Int Variables are set correctly 
-  assert:
-    that:
-      - "{{ item is defined }}"
-      - "{{ item is number }}"
-    quiet: yes
-  loop:
-    - "{{ frontend_restapi_port }}"
-
 - name: frontend | Clone repo. branch:'{{ frontend_git_branch }}'
   git:
     repo: https://github.com/Kv-126-DevOps/frontend.git
