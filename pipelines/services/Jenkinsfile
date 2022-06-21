@@ -65,10 +65,6 @@ pipeline {
                         env_name: "${ENV_NAME}",
                         env_region: "${ENV_REGION}",
                         env_qm_connection: "${ENV_QM_CONNECTION}",
-                        rabbit_to_db_postgres_host: "${DB_HOST}",
-                        rabbit_to_db_rabbit_host: "${MQ_HOST}",
-                        rabbit_to_slack_rabbit_host: "${MQ_HOST}",
-                        rest_api_postgres_host: "${DB_HOST}",
                         rabbit_to_slack_hook: "${WEB_HOOK}"
                     ]
                 )
