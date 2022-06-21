@@ -11,8 +11,13 @@ rabbit_to_slack_git_branch: "main"
 # Paths to services folder
 rabbit_to_slack_workdir: "/opt/rabbit-to-slack"
 
-# Variables
-rabbit_to_slack_rabbit_host: "rabbit"
+# AmazonMQ/RabbitMQ Variables
+rabbit_to_slack_rabbit_host: >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'mq_endpoint') | path_join,
+    region=env_region
+  ) }}
 rabbit_to_slack_rabbit_port: 5671
 rabbit_to_slack_rabbit_user: >-
   {{ lookup(

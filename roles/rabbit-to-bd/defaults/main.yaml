@@ -6,13 +6,18 @@ env_region: "eu-central-1"
 env_qm_connection: "SSL/HTTP"
 
 # Git branches
-rabbit_to_db_git_branch: "main"
+rabbit_to_db_git_branch: "5-rabbit-to-db"
 
 # Paths to services folder
 rabbit_to_db_workdir: "/opt/rabbit-to-db"
 
-# Variables
-rabbit_to_db_postgres_host: "postgres"
+# RDS/PostgreSQL Variables
+rabbit_to_db_postgres_host: >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'rds_endpoint') | path_join,
+    region=env_region
+  ) }}
 rabbit_to_db_postgres_port: 5432
 rabbit_to_db_postgres_user: >-
   {{ lookup(
@@ -28,7 +33,13 @@ rabbit_to_db_postgres_pw: >-
   ) }}
 rabbit_to_db_postgres_db: "postgres"
 
-rabbit_to_db_rabbit_host: "rabbit"
+# AmazonMQ/RabbitMQ Variables
+rabbit_to_db_rabbit_host: >-
+  {{ lookup(
+    'aws_ssm',
+    ('/', env_class, env_name, 'mq_endpoint') | path_join,
+    region=env_region
+  ) }}
 rabbit_to_db_rabbit_port: 5671
 rabbit_to_db_rabbit_user: >-
   {{ lookup(
