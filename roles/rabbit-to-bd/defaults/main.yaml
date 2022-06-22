@@ -26,7 +26,7 @@ rabbit_to_db_postgres_user: >-
     region=env_region
   ) | default('dbuser', true) }}
 
-rabbit_to_db_postgres_pw: "{{ lookup("aws_ssm", "rds_pass", region={{ env_region }} }}"
+rabbit_to_db_postgres_pw: '{{ lookup("aws_ssm", "rds_pass", region={{ env_region }} }}'
 rabbit_to_db_postgres_db: "postgres"
 
 # AmazonMQ/RabbitMQ Variables
