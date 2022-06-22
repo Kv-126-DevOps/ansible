@@ -24,5 +24,5 @@ rest_api_postgres_user: >-
     ('/', env_class, env_name, 'rds_user') | path_join,
     region=env_region
   ) | default('dbuser', true) }}
-rest_api_postgres_pw: "{{ lookup('aws_ssm', {{ env_class }}/{{ env_name }}/rds_pass, region=region={{ env_region }} }}"
+rest_api_postgres_pw: "{{ lookup('aws_ssm', {{ env_class }}/{{ env_name }}/rds_pass, region={{ env_region }} }}"
 rest_api_postgres_db: "postgres"
