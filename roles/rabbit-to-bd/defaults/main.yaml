@@ -6,7 +6,7 @@ env_region: "eu-central-1"
 env_qm_connection: "SSL/HTTP"
 
 # Git branches
-rabbit_to_db_git_branch: "5-rabbit-to-db"
+rabbit_to_db_git_branch: "main"
 
 # Paths to services folder
 rabbit_to_db_workdir: "/opt/rabbit-to-db"
