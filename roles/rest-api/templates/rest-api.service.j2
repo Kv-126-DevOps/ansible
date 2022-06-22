@@ -10,8 +10,8 @@ Restart=always
 Environment=POSTGRES_HOST={{ rest_api_postgres_host }}
 Environment=POSTGRES_PORT={{ rest_api_postgres_port }}
 Environment=POSTGRES_USER={{ rest_api_postgres_user }}
-Environment=POSTGRES_PASS={{ rest_api_postgres_pw }}
 Environment=POSTGRES_DB={{ rest_api_postgres_db }}
+Environment=POSTGRES_PASS={{ rest_api_postgres_pw }}
 
 ExecStart={{ rest_api_workdir }}/venv/bin/python3 -m flask run --host=0.0.0.0
 
