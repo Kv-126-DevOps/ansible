@@ -18,7 +18,7 @@ Environment=RABBIT_HOST={{ rabbit_to_db_rabbit_host }}
 Environment=RABBIT_PORT={{ rabbit_to_db_rabbit_port }}
 Environment=RABBIT_USER={{ rabbit_to_db_rabbit_user }}
 Environment=RABBIT_QUEUE={{ rabbit_to_db_rabbit_queue }}
-Environment=RABBIT_PW={{ rabbit_to_db_rabbit_pw }}
+Environment=RABBIT_PW="{{ rabbit_to_db_rabbit_pw }}"
 Environment=MQ_CONNECTION={{ env_qm_connection }}
 
 ExecStart={{ rabbit_to_db_workdir }}/venv/bin/python3 {{ rabbit_to_db_workdir }}/app.py
