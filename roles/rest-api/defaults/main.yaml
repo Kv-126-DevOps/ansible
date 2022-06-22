@@ -27,7 +27,6 @@ rest_api_postgres_user: >-
 rest_api_postgres_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
-    region=env_region,
-    decrypt=true
+    region=env_region
   ) }}
 rest_api_postgres_db: "postgres"
