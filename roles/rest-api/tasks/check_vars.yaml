@@ -8,7 +8,7 @@
     quiet: yes
   loop:
     - "{{ rest_api_postgres_pw }}"
-  #no_log: true
+  no_log: true
   tags:
     - rest_api_install
   
