@@ -6,12 +6,12 @@ hostnames:
 # for using  - tag:hostname this hostname should be resolved to ip
 regions: "eu-central-1"
 filters:
-    instance-state-name: 'running'
+  instance-state-name: 'running'
 keyed_groups:
- - key: tags.group
+  - key: tags.group
    #   prefix: function
-   separator: ""
+    separator: ""
      # - key: placement.region
      #prefix: region
 compose:
-    ansible_host: private_ip_address
+  ansible_host: private_ip_address
