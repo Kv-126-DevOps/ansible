@@ -52,6 +52,7 @@
   until: "'OK' in jarfile_get.msg or '304' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
   delay: 10
+  mode: '0644'
 #  check_mode: false
 
 - name: Remove Jenkins security init scripts after first startup.
