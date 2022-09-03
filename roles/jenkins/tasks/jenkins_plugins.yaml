@@ -1,7 +1,7 @@
 ---
 # jenkins_plugin module doesn't support password files.
 - name: Get Jenkins admin password from file.
-  slurp:
+  ansible.builtin.slurp:
     src: "{{ jenkins_admin_password_file }}"
   register: adminpasswordfile
   no_log: true
@@ -9,13 +9,13 @@
   tags: ['skip_ansible_lint']
 
 - name: Set Jenkins admin password fact.
-  set_fact:
+  ansible.builtin.set_fact:
     jenkins_admin_password: "{{ adminpasswordfile['stdout'] | default(jenkins_admin_password) }}"
   no_log: true
 
 # Update Jenkins so that plugin updates don't fail.
 - name: Create Jenkins updates directory.
-  file:
+  ansible.builtin.file:
     path: "{{ jenkins_home }}/updates"
     state: directory
     owner: jenkins
@@ -23,7 +23,7 @@
     mode: 0755
 
 - name: Download current plugin updates from Jenkins update site.
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ jenkins_updates_url }}/update-center.json"
     dest: "{{ jenkins_home }}/updates/default.json"
     owner: jenkins
@@ -36,12 +36,12 @@
   delay: 2
 
 - name: Remove first and last line from json file.
-  replace:  # noqa 208
+  ansible.builtin.replace:  # noqa 208
     path: "{{ jenkins_home }}/updates/default.json"
     regexp: "1d;$d"
 
 - name: Install Jenkins plugins using password.
-  jenkins_plugin:
+  ansible.builtin.jenkins_plugin:
     name: "{{ item.name | default(item) }}"
     version: "{{ item.version | default(omit) }}"
     jenkins_home: "{{ jenkins_home }}"
