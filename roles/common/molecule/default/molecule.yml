@@ -6,8 +6,8 @@ driver:
   name: docker
 lint: |
   set -e
-  yamllint .
-  ansible-lint .
+  yamllint -c ./molecule/linter_rules/yamllint.yaml .
+  ansible-lint -Rr ./molecule/linter_rules/ansiblelint .
 platforms:
   - name: common_instance
     image: anatolek/docker-amazonlinux2:latest
