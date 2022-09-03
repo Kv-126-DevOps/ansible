@@ -24,7 +24,7 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   options:
     v: true
-    tags: "rabbit_to_db_install"
+    tags: "rabbit_to_db_service_install"
   config_options:
     defaults:
       stdout_callback: yaml
