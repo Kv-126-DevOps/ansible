@@ -1,6 +1,6 @@
 ---
 - name: 'Utilities | Install and enable epel repositories'
-  ansible.builtin.shell: "{{ item }}"
+  ansible.builtin.command: "{{ item }}"
   loop:
     - amazon-linux-extras install epel -y
   become: true
@@ -15,7 +15,7 @@
     backup: true
 
 - name: 'Utilities | Retrieve the installed packages'
-  package_facts:
+  ansible.builtin.package_facts:
 
 - name: 'Utilities | Get names of installed packages'
   ansible.builtin.set_fact:
@@ -31,8 +31,13 @@
     state: present
     update_cache: true
 
+- name: 'Utilities | Download PIP'
+  ansible.builtin.uri:
+    url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
+    dest: /tmp
+
 - name: 'Utilities | Install/Update PIP'
-  ansible.builtin.shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
+  ansible.builtin.command: python /tmp/get-pip.py
   become: true
 
 - name: 'Install python packages'
