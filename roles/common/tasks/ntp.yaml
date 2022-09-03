@@ -17,5 +17,5 @@
     enabled: true
 
 - name: 'NTP | Setting up {{ common_ntp_timezone }} timezone'
-  timezone:
+  community.general.timezone:
     name: "{{ common_ntp_timezone }}"
