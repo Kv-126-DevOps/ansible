@@ -18,7 +18,7 @@
   yum: 
     name: '*'
     state: latest
-    become: True
+#    become: True
     update_cache: True
 
 - name: 'Utilities | Disable repository priority protections'
