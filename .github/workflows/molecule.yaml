@@ -10,11 +10,6 @@ jobs:
 
   Ansible_Molecule:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        scenario:
-          - amazon-linux
 
     steps:
       - name: Checkout
