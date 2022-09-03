@@ -3,4 +3,4 @@
   hosts: all
   gather_facts: false
   roles:
-    - role: rabbit_to_db
+    - rabbit_to_db
