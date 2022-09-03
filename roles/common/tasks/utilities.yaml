@@ -3,7 +3,7 @@
   ansible.builtin.yum_repository:
     name: epel
     description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    baseurl: https://mirrors.fedoraproject.org/metalink?repo=epel-8.2&arch=x86_64&infra=$infra&content=$contentdir
     gpgcheck: no
     enabled: true
 
