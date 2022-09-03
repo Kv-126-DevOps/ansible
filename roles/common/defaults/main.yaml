@@ -1,10 +1,11 @@
 ---
 # Pkgs to check
 common_required_package:
+  - epel-release
   - bind-utils
   - curl
   - htop
-#  - iotop
+  - iotop
   - atop
   - iftop
   - ncdu
