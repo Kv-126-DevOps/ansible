@@ -1,5 +1,5 @@
 ---
-- name: Check that String Variables are set correctly 
+- name: 'Check that String Variables are set correctly'
   assert:
     that:
       - "{{ item is defined }}"
@@ -12,7 +12,7 @@
   tags:
     - common_ntp_install
 
-- name: Check that String Variables are set correctly 
+- name: 'Check that String Variables are set correctly'
   assert:
     that:
       - "{{ item is defined }}"
@@ -20,13 +20,12 @@
       - "{{ item | length > 0 }}"
     quiet: yes
   loop:
-  # - "{{ common_required_package }}"
     - "{{ common_ntp_restrict }}"
     - "{{ common_ntp_servers }}"
   tags:
     - common_ntp_install
 
-- name: Check that Integer Variables are set correctly 
+- name: 'Check that Integer Variables are set correctly'
   assert:
     that:
       - "{{ item is defined }}"
@@ -37,7 +36,7 @@
   tags:
     - common_utilities_install
 
-- name: Check that String Variables are set correctly 
+- name: 'Check that String Variables are set correctly'
   assert:
     that:
       - "{{ item is defined }}"
