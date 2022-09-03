@@ -19,7 +19,7 @@ jobs:
       
       - run: |
           cd ./Kv-126-DevOps/ansible/roles/common/
-          cd ls -a
+          
       
       - name: Molecule
         uses: gofrolist/molecule-action@v2
