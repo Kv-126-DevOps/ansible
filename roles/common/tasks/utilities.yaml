@@ -1,11 +1,10 @@
 ---
-- name: 'Utilities | Install and enable epel repositories'
-  shell: "{{ item }}"
-  loop:
-#    - amazon-linux-extras install epel -y
-    - yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    - yum-config-manager --enable epel
-  become: true
+- name: 'Add EPEL repositorie'
+  ansible.builtin.yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    become: true
 
 - name: 'Utilities | Disable repository priority protections'
   template:
