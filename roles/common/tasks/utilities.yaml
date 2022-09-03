@@ -2,9 +2,7 @@
 - name: 'Utilities | Install and enable epel repositories'
   shell: "{{ item }}"
   loop:
-#    - amazon-linux-extras install epel -y
     - amazon-linux-extras install epel -y
-    - yum install epel-release
   become: true
 
 - name: 'Utilities | Disable repository priority protections'
