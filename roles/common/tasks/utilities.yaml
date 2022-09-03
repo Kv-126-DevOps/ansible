@@ -6,6 +6,7 @@
     - amazon-linux-extras install epel -y
 #    - yum-config-manager --enable epel -y
   become: true
+  become_user: ec2-user
 
 - name: 'Utilities | Disable repository priority protections'
   template:
