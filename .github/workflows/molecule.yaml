@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  molecule:
+  Ansible_Molecule:
     runs-on: ubuntu-latest
 
     steps:
