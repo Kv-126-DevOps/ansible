@@ -1,21 +1,4 @@
 ---
-- name: 'Utilities | Install and enable epel repositories'
-  shell: "{{ item }}"
-  loop:
-    - yum install yum-utils
-    - amazon-linux-extras install epel -y
-    - yum-config-manager --enable epel -y
-  become: true
-
-- name: 'Utilities | Disable repository priority protections'
-  template:
-    src: priorities.conf.j2
-    dest: /etc/yum/pluginconf.d/priorities.conf
-    owner: root
-    group: root
-    mode: 0644
-    backup: true
-
 - name: 'Utilities | Retrieve the installed packages'
   package_facts:
 

@@ -4,7 +4,7 @@ common_required_package:
   - bind-utils
   - curl
   - htop
-  - iotop
+#  - iotop
   - atop
   - iftop
   - ncdu
