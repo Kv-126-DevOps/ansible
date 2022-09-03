@@ -6,6 +6,13 @@
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
     become: true
 
+- name: Install Apache >= 2.4
+  ansible.builtin.yum:
+    name: '*' 
+    state: present
+    releasever: 7
+  become: true
+
 - name: 'Utilities | Disable repository priority protections'
   template:
     src: priorities.conf.j2
