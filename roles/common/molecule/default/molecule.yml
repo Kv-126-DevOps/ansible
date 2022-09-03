@@ -6,7 +6,7 @@ driver:
   name: docker
 lint: |
   set -e
-  yamllint -c /molecule/linter_rules/yamllint.yaml .
+  yamllint -c /linter_rules/yamllint.yaml .
   ansible-lint -Rr /linter_rules/ansiblelint .
 platforms:
   - name: common_instance
