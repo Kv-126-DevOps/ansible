@@ -11,7 +11,7 @@
   gather_facts: false
   roles:
     - common
-    - rabbit-to-bd
+    - rabbit-to-db
 
 - hosts: rabbit_to_slack
   become: true
