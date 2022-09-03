@@ -1,12 +1,12 @@
 ---
 - name: 'Utilities | Install and enable epel repositories'
-  shell: "{{ item }}"
+  ansible.builtin.shell: "{{ item }}"
   loop:
     - amazon-linux-extras install epel -y
   become: true
 
 - name: 'Utilities | Disable repository priority protections'
-  template:
+  ansible.builtin.template:
     src: priorities.conf.j2
     dest: /etc/yum/pluginconf.d/priorities.conf
     owner: root
@@ -26,16 +26,16 @@
     missing_packages: "{{ common_required_package | difference (installed_packages) }}"
 
 - name: 'Utilities | Install missing packages'
-  package:
+  ansible.builtin.package:
     name: "{{ missing_packages }}"
     state: present
     update_cache: true
 
 - name: 'Utilities | Install/Update PIP'
-  shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
+  ansible.builtin.shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
-- name: Install python packages
+- name: 'Install python packages'
   pip:
     name:
       - pip
