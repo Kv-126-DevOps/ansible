@@ -4,13 +4,12 @@
   include_vars: java_veriable.yaml
 
 - name: Define java_packages.
-  set_fact:
+  ansible.builtin.set_fact:
     java_packages: "{{ __java_packages | list }}"
   when: java_packages is not defined
 
 # Setup/install tasks.
 - name: Ensure Java is installed.
-  package:
+  ansible.builtin.package:
     name: "{{ java_packages }}"
     state: present
-
