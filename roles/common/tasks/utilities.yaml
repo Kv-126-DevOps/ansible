@@ -4,8 +4,10 @@
     name: epel
     description: EPEL YUM repo
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgcheck: no
+    enabled: true
 
-- name: Install Apache >= 2.4
+- name: INST EPEL
   ansible.builtin.yum:
     name: '*' 
     state: present
