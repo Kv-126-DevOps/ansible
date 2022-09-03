@@ -1,11 +1,11 @@
 ---
-- name: Check that String Variables are set correctly 
-  assert:
+- name: Check that String Variables are set correctly
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is string }}"
       - "{{ item | length > 0 }}"
-    quiet: yes
+    quiet: true
   loop:
     - "{{ frontend_git_branch }}"
     - "{{ frontend_workdir }}"
@@ -13,12 +13,12 @@
   tags:
     - frontend_install
 
-- name: Check that Int Variables are set correctly 
-  assert:
+- name: Check that Int Variables are set correctly
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is number }}"
-    quiet: yes
+    quiet: true
   loop:
     - "{{ frontend_restapi_port }}"
   tags:
