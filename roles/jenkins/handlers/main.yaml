@@ -1,7 +1,7 @@
 ---
 - name: restart jenkins
   ansible.builtin.service:
-    name: jenkins 
+    name: jenkins
     state: restarted
 
 - name: configure default users
