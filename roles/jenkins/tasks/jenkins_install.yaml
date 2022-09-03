@@ -19,10 +19,10 @@
   when: jenkins_pkg_url is not defined
 
 # Setup/install tasks.
-- include_tasks: jenkins_setup_OS.yaml
+- ansible.builtin.include_tasks: jenkins_setup_OS.yaml
 
 # Configure Jenkins init settings.
-- include_tasks: jenkins_settings.yaml
+- ansible.builtin.include_tasks: jenkins_settings.yaml
 
 # Make sure Jenkins starts, then configure Jenkins.
 - name: Ensure Jenkins is started and runs on startup.
@@ -52,7 +52,6 @@
   until: "'OK' in jarfile_get.msg or '304' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
   delay: 10
-  mode: 0644
 #  check_mode: false
 
 - name: Remove Jenkins security init scripts after first startup.
@@ -61,4 +60,4 @@
     state: absent
 
 # Update Jenkins and install configured plugins.
-- include_tasks: jenkins_plugins.yaml
+- ansible.builtin.include_tasks: jenkins_plugins.yaml
