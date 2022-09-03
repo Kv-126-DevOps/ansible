@@ -1,7 +1,7 @@
 ---
 - name: Include OS-specific variables
 #  include_vars: "{{ ansible_distribution }}.yml"
-  include_vars: java_veriable.yaml
+  iansible.builtin.nclude_vars: java_veriable.yaml
 
 - name: Define java_packages.
   ansible.builtin.set_fact:

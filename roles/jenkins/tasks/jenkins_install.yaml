@@ -1,7 +1,7 @@
 ---
 # Variable setup.
 - name: Include OS-Specific variables
-  include_vars: jenkins_veriable.yaml
+  ansible.builtin.include_vars: jenkins_veriable.yaml
 
 - name: Define jenkins_repo_url
   ansible.builtin.set_fact:
@@ -52,8 +52,8 @@
   until: "'OK' in jarfile_get.msg or '304' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
   delay: 10
-  check_mode: false
-  changed_when: false
+  mode: 0644
+#  check_mode: false
 
 - name: Remove Jenkins security init scripts after first startup.
   ansible.builtin.file:
