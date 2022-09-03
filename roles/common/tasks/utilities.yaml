@@ -1,18 +1,22 @@
 ---
-- name: 'Add EPEL repositorie'
-  ansible.builtin.yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    gpgcheck: no
-    enabled: true
-
-- name: INST EPEL
-  ansible.builtin.yum:
-    name: '*' 
+- name: Install EPEL repository
+  yum:
+    name: epel-release
     state: present
-    releasever: 7
-  become: true
+
+- name: Ensure EPEL repo is enabled
+  ini_file:
+    dest: /etc/yum.repos.d/epel.repo
+    section: epel
+    option: enabled
+    value: '1'
+
+- name: Conduct yum update 
+  yum: 
+    name: '*'
+    state: latest
+    become: True
+    update_cache: True
 
 - name: 'Utilities | Disable repository priority protections'
   template:
