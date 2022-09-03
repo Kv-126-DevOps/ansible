@@ -37,5 +37,3 @@ rules:
   truthy:
     allowed-values: ['yes', 'no', 'true', 'false']
     level: warning
-  skip_list:
-  - 'fqcn-builtins'
