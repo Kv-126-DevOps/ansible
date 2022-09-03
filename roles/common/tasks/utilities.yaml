@@ -1,8 +1,11 @@
 ---
-- name: Install EPEL repository
-  yum:
-    name: epel-release
-    state: present
+- name: 'Add EPEL repositorie'
+  ansible.builtin.yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgcheck: no
+    enabled: true
 
 - name: Ensure EPEL repo is enabled
   ini_file:
