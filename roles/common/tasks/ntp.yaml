@@ -16,6 +16,6 @@
     state: started
     enabled: true
 
-- name: "NTP"
+- name: 'NTP | Setting up {{ common_ntp_timezone }} timezone'
   timezone:
     name: "{{ common_ntp_timezone }}"
