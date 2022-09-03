@@ -2,9 +2,9 @@
 - name: 'Utilities | Install and enable epel repositories'
   shell: "{{ item }}"
   loop:
-    - yum install yum-utils
-    - amazon-linux-extras install epel -y
-#    - yum-config-manager --enable epel -y
+#    - amazon-linux-extras install epel -y
+    - yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    - yum-config-manager --enable epel
   become: true
 
 - name: 'Utilities | Disable repository priority protections'
