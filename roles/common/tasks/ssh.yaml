@@ -1,6 +1,6 @@
 ---
 - name: Update SSH daemon config
-  copy:
+  ansible.builtin.copy:
     src: files/sshd_config
     dest: /etc/ssh/sshd_config
     mode: "0600"
@@ -9,7 +9,7 @@
   notify: restart ssh
 
 - name: Update SSH client config
-  copy:
+  ansible.builtin.copy:
     src: files/ssh_config
     dest: /etc/ssh/ssh_config
     mode: "0644"

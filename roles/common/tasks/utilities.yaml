@@ -18,11 +18,11 @@
   package_facts:
 
 - name: 'Utilities | Get names of installed packages'
-  set_fact:
+  ansible.builtin.set_fact:
     installed_packages: "{{ ansible_facts.packages.keys() }}"
 
 - name: 'Utilities | Find missing packages'
-  set_fact:
+  ansible.builtin.set_fact:
     missing_packages: "{{ common_required_package | difference (installed_packages) }}"
 
 - name: 'Utilities | Install missing packages'

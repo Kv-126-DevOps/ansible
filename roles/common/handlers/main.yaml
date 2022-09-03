@@ -1,10 +1,10 @@
 ---
-- name: restart ntp
-  service:
+- name: 'restart ntp'
+  ansible.builtin.service:
     name: ntpd
     state: restarted
 
-- name: restart ssh
-  service:
+- name: 'restart ssh'
+  ansible.builtin.service:
     name: sshd
     state: restarted

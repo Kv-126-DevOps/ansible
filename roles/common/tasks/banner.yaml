@@ -1,12 +1,12 @@
 ---
-- name: Gather instance metadata facts
-  setup:
+- name: 'Gather instance metadata facts'
+  ansible.builtin.setup:
     gather_subset:
       - '!all'
       - hardware
 
-- name: Copy motd and issue files to the instance
-  template:
+- name: 'Copy motd and issue files to the instance'
+  ansible.builtin.template:
     src: '{{ item.src }}'
     dest: '/etc/{{ item.dest }}'
     owner: root

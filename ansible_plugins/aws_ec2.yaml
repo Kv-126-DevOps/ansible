@@ -12,6 +12,6 @@ keyed_groups:
    #   prefix: function
     separator: ""
      # - key: placement.region
-     #prefix: region
+     # prefix: region
 compose:
   ansible_host: private_ip_address
