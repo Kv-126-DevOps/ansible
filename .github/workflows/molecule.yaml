@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: ./Kv-126-DevOps/ansible/roles/common/ #"${{ github.repository }}"
+          path: "${{ github.repository }}"
 
       - name: ansible-lint
         uses: ansible-community/ansible-lint-action@main
