@@ -15,7 +15,4 @@ jobs:
 
       # ansible-lint
       - uses: ansible-community/ansible-lint-action@main
-                  
-                  
-                  
-                  
+                
