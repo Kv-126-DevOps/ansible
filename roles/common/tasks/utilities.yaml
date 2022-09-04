@@ -24,7 +24,7 @@
 
 - name: 'Utilities | Find missing packages'
   ansible.builtin.set_fact:
-    missing_packages: "{{ common_required_package | difference (installed_packages) }}"
+    missing_packages: "{{ common_required_package | difference(installed_packages) }}"
 
 - name: 'Utilities | Install missing packages'
   ansible.builtin.package:
