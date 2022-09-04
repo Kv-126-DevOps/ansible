@@ -4,7 +4,7 @@
   gather_facts: false
   roles:
     - common
-    - json-filter
+    - json_filter
 
 - hosts: rabbit_to_db
   become: true

@@ -7,7 +7,7 @@
     force: true
 
 - name: json-filter | Install python packeges into virtualenv
-  pip:
+  ansible.builtin.pip:
     requirements: '{{ json_filter_workdir }}/requirements.txt'
     virtualenv: '{{ json_filter_workdir }}/venv'
     virtualenv_command: python3 -m venv
