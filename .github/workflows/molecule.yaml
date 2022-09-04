@@ -39,9 +39,19 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
         with:
-          path: "${{ github.repository }}"
+          path: "./Kv-126-DevOps/ansible/roles/common/"
       - name: molecule
         uses: robertdebock/molecule-action@4.0.9
         with:
           image: "${{ matrix.image }}"
           options: parallel
+
+#      - name: Molecule
+#        uses: gofrolist/molecule-action@v2
+#        with:
+#          molecule_working_dir: ./Kv-126-DevOps/ansible/roles/common/
+#          molecule_options: --debug --base-config molecule/_shared/base.yml
+#          molecule_command: test
+#        env:
+#          ANSIBLE_FORCE_COLOR: '1'
+                
