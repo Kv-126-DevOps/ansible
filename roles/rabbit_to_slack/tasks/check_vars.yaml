@@ -1,5 +1,5 @@
 ---
-- name: Check that Passwords Variables are set correctly 
+- name: Check that Passwords Variables are set correctly
   ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
@@ -12,7 +12,7 @@
   tags:
     - rabbit_to_slack_install
 
-- name: Check that String Variables are set correctly 
+- name: Check that String Variables are set correctly
   ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
