@@ -31,7 +31,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       
-      - name: 'Common Role'
+      - name: 'Test Common Role'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test

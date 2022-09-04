@@ -6,13 +6,13 @@
     version: '{{ frontend_git_branch }}'
     force: true
 
-- name: frontend | Install python packeges into virtualenv
+- name: Frontend | Install python packeges into virtualenv
   ansible.builtin.pip:
     requirements: '{{ frontend_workdir }}/requirements.txt'
     virtualenv: '{{ frontend_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
-- name: frontend | Copy service
+- name: Frontend | Copy service
   ansible.builtin.template:
     src: frontend.service.j2
     dest: '/etc/systemd/system/frontend.service'
@@ -23,7 +23,7 @@
   notify:
     - restart frontend.service
 
-- name: frontend | Start service
+- name: Frontend | Start service
   ansible.builtin.service:
     name: frontend.service
     state: started

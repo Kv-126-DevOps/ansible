@@ -1,11 +1,11 @@
 ---
-- import_tasks: check_vars.yaml
+- import_tasks: Check_vars.yaml
   tags:
     - never
     - frontend_service_install
     - frontend_check_vars
 
-- import_tasks: frontend.yaml
+- import_tasks: Frontend.yaml
   tags:
     - never
     - frontend_service_install

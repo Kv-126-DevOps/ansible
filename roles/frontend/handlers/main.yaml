@@ -1,5 +1,5 @@
 ---
-- name: restart frontend.service
+- name: 'Restart frontend.service'
   ansible.builtin.service:
     name: frontend.service
     state: restarted
