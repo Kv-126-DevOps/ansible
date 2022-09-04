@@ -36,7 +36,6 @@
   ansible.builtin.uri:
     url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
     return_content: true
-    register: this
     dest: /tmp
 
 - name: 'Utilities | Install/Update PIP'
