@@ -7,9 +7,10 @@ frontend_workdir: "/opt/frontend"
 
 # Rest_API Variables
 frontend_restapi_host: >-
-  '{{ lookup(
+  "{{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'rest_api_host') | path_join,
     region=env_region
-  ) }}'
+  ) }}"
+
 frontend_restapi_port: 5000
