@@ -25,10 +25,26 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - docker-amazonlinux2
     steps:
 
       - uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: Molecule
-        uses: MonolithProjects/action-molecule@v1.4.1
+
+      - name: molecule
+        uses: robertdebock/molecule-action@4.0.9
+        with:
+          image: "${{ matrix.image }}"
+          options: parallel
+          scenario: my_specific_scenario
+      
+      - name: molecule
+        uses: robertdebock/molecule-action@4.0.9
+        with:
+          namespace: anatolek
+          image: ${{ matrix.config.image }}
+          command: "--debug test"
