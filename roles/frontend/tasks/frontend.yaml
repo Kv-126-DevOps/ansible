@@ -1,18 +1,18 @@
 ---
-- name: frontend | Clone repo. branch:'{{ frontend_git_branch }}'
+- name: "Frontend | Clone repo. branch:'{{ frontend_git_branch }}'"
   ansible.builtin.git:
     repo: https://github.com/Kv-126-DevOps/frontend.git
     dest: '{{ frontend_workdir }}'
     version: '{{ frontend_git_branch }}'
     force: true
 
-- name: Frontend | Install python packeges into virtualenv
+- name: 'Frontend | Install python packeges into virtualenv'
   ansible.builtin.pip:
     requirements: '{{ frontend_workdir }}/requirements.txt'
     virtualenv: '{{ frontend_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
-- name: Frontend | Copy service
+- name: 'Frontend | Copy service'
   ansible.builtin.template:
     src: frontend.service.j2
     dest: '/etc/systemd/system/frontend.service'
@@ -21,9 +21,9 @@
     mode: 0644
     backup: true
   notify:
-    - restart frontend.service
+    - 'Restart frontend.service'
 
-- name: Frontend | Start service
+- name: 'Frontend | Start service'
   ansible.builtin.service:
     name: frontend.service
     state: started
