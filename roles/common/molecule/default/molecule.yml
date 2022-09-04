@@ -4,10 +4,10 @@ dependency:
   enabled: false
 driver:
   name: docker
-lint: |
-  set -e
-  yamllint -c ../../linter_rules/yamllint.yaml .
-  ansible-lint -Rr ../../linter_rules/ansiblelint .
+# lint: |
+#  set -e
+#  yamllint -c ../../linter_rules/yamllint.yaml .
+#  ansible-lint -Rr ../../linter_rules/ansiblelint .
 platforms:
   - name: common_instance
     image: anatolek/docker-amazonlinux2:latest
