@@ -3,4 +3,4 @@
   hosts: all
   gather_facts: false
   roles:
-    - role: json_filter
+    - role: json-filter
