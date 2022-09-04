@@ -38,4 +38,14 @@ jobs:
           molecule_options: --debug
           molecule_working_dir: ./Kv-126-DevOps/ansible/roles/common
         env:
+          PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Molecule test
+        run: |
+          source $VENV
+          echo $MOLECULE_DISTRO && molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: amazonlinux
