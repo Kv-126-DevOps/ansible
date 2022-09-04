@@ -3,9 +3,9 @@ name: CI
 
 on:
   push:
-    branches: [action-molecule]
+    branches: [main, action-molecule]
   pull_request:
-    branches: [action-molecule]
+    branches: [main, action-molecule]
 
 jobs:
 
@@ -16,26 +16,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Ansible-lint
+      - name: 'Ansible lint'
         uses: ansible-community/ansible-lint-action@main
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
-  Molecule_test:
+  Molecule:
     needs:
-      - lint
+      - Lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        image:
-          - docker-amazonlinux2
     steps:
 
       - uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
       
-      - name: Molecule
+      - name: 'Common Role'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test

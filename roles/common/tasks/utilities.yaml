@@ -36,6 +36,7 @@
   ansible.builtin.get_url:
     url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
     dest: /tmp/get-pip.py
+    force: false
     mode: 0644
 
 - name: 'Utilities | Install/Update PIP'
@@ -51,4 +52,4 @@
     extra_args: --upgrade
     executable: pip
   become: true
-#  become_user: ec2-user
+  become_user: ec2-user
