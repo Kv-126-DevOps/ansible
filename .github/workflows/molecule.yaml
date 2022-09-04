@@ -35,8 +35,9 @@ jobs:
         with:
           path: "${{ github.repository }}"
       
-      - name: molecule
-        uses: robertdebock/molecule-action@4.0.9
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
         with:
-          namespace: anatolek
-          image: ${{ matrix.config.image }}
+          molecule_command: test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
