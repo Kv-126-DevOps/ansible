@@ -5,7 +5,7 @@
     - json_filter_service_install
     - json_filter_check_vars
 
-- import_tasks: json-filter.yaml
+- import_tasks: json_filter.yaml
   tags:
     - never
     - json_filter_service_install
