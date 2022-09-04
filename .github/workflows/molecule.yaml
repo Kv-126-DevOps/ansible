@@ -44,7 +44,7 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
-          molecule_options: --debug -extra-vars -e env_region=eu-central
+          molecule_options: --debug -e 'env_region=eu-central'
           molecule_working_dir: ./Kv-126-DevOps/ansible/roles/frontend
         env:
           ANSIBLE_FORCE_COLOR: '1'
