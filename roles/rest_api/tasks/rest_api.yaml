@@ -1,19 +1,19 @@
 ---
 - name: rest-api | Clone repo. branch:'{{ rest_api_git_branch }}'
-  git:
+  ansible.builtin.git:
     repo: https://github.com/Kv-126-DevOps/rest-api.git
     dest: '{{ rest_api_workdir }}'
     version: '{{ rest_api_git_branch }}'
     force: true
 
 - name: rest-api | Install python packeges into virtualenv
-  pip:
+  ansible.builtin.pip:
     requirements: '{{ rest_api_workdir }}/requirements.txt'
     virtualenv: '{{ rest_api_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
 - name: rest-api | Copy service
-  template:
+  ansible.builtin.template:
     src: rest-api.service.j2
     dest: '/etc/systemd/system/rest-api.service'
     owner: root
@@ -24,9 +24,9 @@
     - restart rest-api.service
 
 - name: rest-api | Start service
-  service:
+  ansible.builtin.service:
     name: rest-api.service
     state: started
     daemon-reload: true
     enabled: true
-  become: yes
+  become: true

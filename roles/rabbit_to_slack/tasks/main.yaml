@@ -5,7 +5,7 @@
     - rabbit_to_slack_service_install
     - rabbit_to_slack_check_vars
 
-- import_tasks: rabbit-to-slack.yaml
+- import_tasks: rabbit_to_slack.yaml
   tags:
     - never
     - rabbit_to_slack_service_install
