@@ -11,21 +11,21 @@
   gather_facts: false
   roles:
     - common
-    - rabbit-to-db
+    - rabbit_to_db
 
 - hosts: rabbit_to_slack
   become: true
   gather_facts: false
   roles:
     - common
-    - rabbit-to-slack
+    - rabbit_to_slack
 
 - hosts: rest_api
   become: true
   gather_facts: false
   roles:
     - common
-    - rest-api
+    - rest_api
 
 - hosts: frontend
   become: true
