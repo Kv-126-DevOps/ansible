@@ -3,6 +3,7 @@
 common_required_package:
   - epel-release
   - bind-utils
+  - acl
   - curl
   - htop
   - iotop

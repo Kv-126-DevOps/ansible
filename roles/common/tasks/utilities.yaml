@@ -52,5 +52,4 @@
     extra_args: --upgrade
     executable: pip
   become: true
-  become_method: su
   become_user: ec2-user
