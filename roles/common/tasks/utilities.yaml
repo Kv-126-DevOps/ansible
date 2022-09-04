@@ -35,7 +35,7 @@
 - name: 'Utilities | Download PIP'
   ansible.builtin.uri:
     url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
-    return_content: yes
+    return_content: true
     register: this
     dest: /tmp
 
