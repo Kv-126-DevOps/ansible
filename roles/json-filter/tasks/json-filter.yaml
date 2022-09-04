@@ -1,6 +1,6 @@
 ---
 - name: json-filter | Clone repo. branch:'{{ json_filter_git_branch }}'
-  git:
+  ansible.builtin.git:
     repo: https://github.com/Kv-126-DevOps/json-filter.git
     dest: '{{ json_filter_workdir }}'
     version: '{{ json_filter_git_branch }}'
@@ -13,7 +13,7 @@
     virtualenv_command: python3 -m venv
 
 - name: json-filter | Copy service
-  template:
+  ansible.builtin.template:
     src: json-filter.service.j2
     dest: '/etc/systemd/system/json-filter.service'
     owner: root
@@ -24,7 +24,7 @@
     - restart json-filter.service
 
 - name: json-filter | Start service
-  service:
+  ansible.builtin.service:
     name: json-filter.service
     state: started
     daemon-reload: true
