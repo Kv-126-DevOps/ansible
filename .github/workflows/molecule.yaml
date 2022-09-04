@@ -39,5 +39,6 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
+          molecule_working_dir: ./Kv-126-DevOps/ansible/roles/common
         env:
           ANSIBLE_FORCE_COLOR: '1'
