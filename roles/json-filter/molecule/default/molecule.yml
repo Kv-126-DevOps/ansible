@@ -24,7 +24,7 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   options:
     v: true
-    tags: "json_filter_install"
+    tags: "json_filter_service_install"
   config_options:
     defaults:
       stdout_callback: yaml

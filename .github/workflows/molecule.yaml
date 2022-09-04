@@ -17,8 +17,6 @@ jobs:
 
       - name: ansible-lint
         uses: ansible-community/ansible-lint-action@main
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
 
 #      - name: Molecule
 #        uses: gofrolist/molecule-action@v2
