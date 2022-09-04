@@ -33,10 +33,10 @@
     update_cache: true
 
 - name: 'Utilities | Download PIP'
-  ansible.builtin.uri:
+  ansible.builtin.get_url:
     url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
-    return_content: true
-    dest: /tmp
+    dest: /tmp/get-pip.py
+    mode: 0644
 
 - name: 'Utilities | Install/Update PIP'
   ansible.builtin.command: python /tmp/get-pip.py
