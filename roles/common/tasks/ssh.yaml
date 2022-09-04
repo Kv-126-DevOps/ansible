@@ -6,7 +6,7 @@
     mode: "0600"
     validate: /usr/sbin/sshd -t -f %s
     backup: true
-  notify: restart ssh
+  notify: Restart ssh
 
 - name: Update SSH client config
   ansible.builtin.copy:
