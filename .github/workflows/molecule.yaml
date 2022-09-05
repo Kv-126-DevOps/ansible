@@ -3,43 +3,39 @@ name: CI
 
 on:
   push:
-    branches: [main, action-molecule]
+    branches: [main]
   pull_request:
-    branches: [main, action-molecule]
+    branches: [main]
 
 jobs:
 
-#  Lint:
-#    runs-on: ubuntu-latest
-
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
-
-#      - name: 'Ansible lint'
-#        uses: ansible-community/ansible-lint-action@main
-#        env:
-#          ANSIBLE_FORCE_COLOR: '1'
-
-  Molecule:
-#    needs:
-#      - Lint
+  Lint:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - run: |
-          ls -a
-          cd ./roles/common
+      - name: 'Ansible lint'
+        uses: ansible-community/ansible-lint-action@main
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
-      - name: Run molecule action
-        uses: arista-netdevops-community/action-molecule-avd@v1.0
+  Molecule:
+    needs:
+      - Lint
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+#        with:
+#          path: "${{ github.repository }}"
+      
+      - name: 'Test Common Role'
+        uses: gofrolist/molecule-action@v2
         with:
-          molecule_parentdir: './roles/common'
-          molecule_command: 'test'
-          molecule_options: '--debug'
-          molecule_args: '--all'
-          ansible: ansible>=2.10
-          check_git: true
-          check_git_enforced: true
+          molecule_command: test
+          molecule_options: --debug
+          molecule_working_dir: ./roles/common
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
