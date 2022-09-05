@@ -34,7 +34,7 @@ jobs:
 
       - run: pip install molecule[docker] yamllint ansible-lint
       - run: |
-          cd /roles/frontend/
+          cd ./roles/frontend/
           molecule test
         env:
           PY_COLORS: '1'
