@@ -41,7 +41,8 @@
 
 - name: Immediately restart Jenkins on init config changes.
   ansible.builtin.service: name=jenkins state=restarted
-  when: jenkins_init_prefix.changed
+  when: >
+    jenkins_init_prefix.changed
   tags: ['skip_ansible_lint']
 
 - name: Set HTTP port in Jenkins config.
