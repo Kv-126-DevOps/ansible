@@ -10,7 +10,7 @@ lint: |
   ansible-lint -Rr ../../linter_rules/ansiblelint .
 platforms:
   - name: common_instance
-    image: redbearddog/docker-amazonlinux2:latest
+    image: docker.io/redbearddog/docker-amazonlinux2:latest
     command: ${MOLECULE_DOCKER_COMMAND:-"/usr/lib/systemd/systemd"}
     privileged: true
     pre_build_image: true
