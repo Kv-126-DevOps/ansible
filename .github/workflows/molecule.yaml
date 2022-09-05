@@ -31,12 +31,12 @@ jobs:
 
       - run: |
           ls -a
-          cd ./Kv-126-DevOps/ansible/roles/common
+          cd ./ansible/roles/common
 
       - name: Run molecule action
         uses: arista-netdevops-community/action-molecule-avd@v1.0
         with:
-          molecule_parentdir: './Kv-126-DevOps/ansible/roles/common'
+          molecule_parentdir: './ansible/roles/common'
           molecule_command: 'test'
           molecule_options: '--debug'
           molecule_args: '--all'
