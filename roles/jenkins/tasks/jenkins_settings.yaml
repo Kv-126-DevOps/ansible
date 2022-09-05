@@ -40,10 +40,9 @@
   register: jenkins_home_config
 
 - name: Immediately restart Jenkins on init config changes.
-  ansible.builtin.command: echo "Restart jenkins"
+  ansible.builtin.service: name=jenkins state=restarted
   when: jenkins_init_prefix.changed
   tags: ['skip_ansible_lint']
-  notify: 'Restart jenkins'
 
 - name: Set HTTP port in Jenkins config.
   ansible.builtin.lineinfile:
@@ -78,11 +77,10 @@
   ansible.builtin.meta: flush_handlers
 
 - name: Immediately restart Jenkins on http or user changes.
-  ansible.builtin.command: echo "Restart jenkins"
+  ansible.builtin.service: name=jenkins state=restarted
   when: >
     (jenkins_users_config is defined and jenkins_users_config.changed)
     or (jenkins_http_config is defined and jenkins_http_config.changed)
     or (jenkins_home_config is defined and jenkins_home_config.changed)
     or (jenkins_proxy_config is defined and jenkins_proxy_config.changed)
   tags: ['skip_ansible_lint']
-  notify: 'Restart jenkins'
