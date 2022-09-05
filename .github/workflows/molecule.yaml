@@ -35,7 +35,16 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
-          molecule_options: --debug
+#          molecule_options: --debug
           molecule_working_dir: ./roles/common
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: 'Test frontend Role'
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_command: test
+          molecule_options: --debug
+          molecule_working_dir: ./roles/frontend
         env:
           ANSIBLE_FORCE_COLOR: '1'
