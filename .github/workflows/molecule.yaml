@@ -33,6 +33,6 @@ jobs:
         with:
           molecule_command: test
           molecule_options: --debug
-          molecule_working_dir: /roles/frontend
+          molecule_working_dir: '/roles/frontend/'
         env:
           ANSIBLE_FORCE_COLOR: '1'
