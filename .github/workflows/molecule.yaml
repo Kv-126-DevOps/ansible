@@ -26,6 +26,7 @@ jobs:
 
       - name: Lint playbook
         run: |
+          cd ./
           ansible-playbook site.yml --syntax-check
           ansible-lint site.yml
 
