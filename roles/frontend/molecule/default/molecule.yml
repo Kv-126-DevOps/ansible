@@ -10,7 +10,7 @@ driver:
 #  ansible-lint -Rr ../../linter_rules/ansiblelint .
 platforms:
   - name: common_instance
-    image: anatolek/docker-amazonlinux2:latest
+    image: redbearddog/docker-amazonlinux2:latest
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     command: ${MOLECULE_DOCKER_COMMAND:-"/usr/lib/systemd/systemd"}
