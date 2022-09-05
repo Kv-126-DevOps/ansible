@@ -16,6 +16,6 @@
     state: started
     enabled: true
 
-- name: 'NTP | Setting up {{ common_ntp_timezone }} timezone'
-  community.general.timezone:
-    name: "{{ common_ntp_timezone }}"
+# - name: 'NTP | Setting up {{ common_ntp_timezone }} timezone'
+#  community.general.timezone:
+#    name: "{{ common_ntp_timezone }}"
