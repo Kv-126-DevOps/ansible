@@ -24,25 +24,18 @@ jobs:
   Molecule:
     needs:
       - Lint
+
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-
-      - name: 'Test Common Role'
-        uses: gofrolist/molecule-action@v2
+      - name: Run molecule action
+        uses: arista-netdevops-community/action-molecule-avd@v1.0
         with:
-          molecule_command: test
-          molecule_options: --debug
-          molecule_working_dir: ./roles/common
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-
-      - name: 'Test frontend Role'
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_command: test
-          molecule_options: --debug
-          molecule_working_dir: ./roles/frontend
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+          molecule_parentdir: 'roles/common'
+          molecule_command: 'test'
+          ansible: ansible>=2.10
+          pip_file: 'requirements.txt'
+          check_git: true
+          check_git_enforced: false
