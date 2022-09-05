@@ -28,11 +28,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      - name: 'Front Role'
-        uses: gofrolist/molecule-action@v2
+      - uses: actions/setup-python@v4
         with:
-          molecule_command: test
-          molecule_options: --debug
-          molecule_working_dir: './roles/frontend/'
+          python-version: '3.10' 
+
+      - run: pip install molecule[docker] yamllint ansible-lint
+      - run: |
+          cd /roles/frontend/
+          molecule test
         env:
+          PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+
+#      - name: 'Front Role'
+#        uses: gofrolist/molecule-action@v2
+#        with:
+#          molecule_command: test
+#          molecule_options: --debug
+#          molecule_working_dir: './roles/frontend/'
+#        env:
+#          ANSIBLE_FORCE_COLOR: '1'
