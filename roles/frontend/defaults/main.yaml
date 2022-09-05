@@ -1,4 +1,7 @@
 ---
+env_region: env_region
+env_name: env_name
+env_class: env_class
 # Git branches
 frontend_git_branch: "main"
 
@@ -9,7 +12,7 @@ frontend_workdir: "/opt/frontend"
 frontend_restapi_host: >-
   {{ lookup(
     'aws_ssm',
-    ('/', env_class, env_name, 'rest_api_host') | path_join,
-    region=env_region
+    ('/', '{{ env_class }}', '{{ env_name }}', 'rest_api_host') | path_join,
+    region='{{ env_region }}'
   ) }}
 frontend_restapi_port: 5000
