@@ -21,6 +21,7 @@
     mode: 0644
   with_items: "{{ jenkins_init_changes }}"
   register: jenkins_init_prefix
+  notify: 'Restart jenkins'
 
 - name: Ensure jenkins_home {{ jenkins_home }} exists.
   ansible.builtin.file:
@@ -38,13 +39,6 @@
     line: 'JENKINS_HOME={{ jenkins_home }}'
     mode: 0644
   register: jenkins_home_config
-
-- name: Immediately restart Jenkins on init config changes.
-  ansible.builtin.service: name=jenkins state=restarted
-  when: >
-    jenkins_init_prefix.changed
-  tags: ['skip_ansible_lint']
-  notify: 'Restart jenkins'
 
 - name: Set HTTP port in Jenkins config.
   ansible.builtin.lineinfile:
