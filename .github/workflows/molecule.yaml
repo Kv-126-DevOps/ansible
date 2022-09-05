@@ -28,26 +28,12 @@ jobs:
     steps:
 
       - uses: actions/checkout@v3
-#        with:
-#          path: "${{ github.repository }}"
 
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3
-      
-
-      - uses: BSFishy/pip-action@v1
-        with:
-          packages: |
-            blinker==1.3
-            boto3==1.7.41
-            botocore==1.10.41
-      
       - name: 'Test Common Role'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
-#          molecule_options: --debug
+          molecule_options: --debug
           molecule_working_dir: ./roles/common
         env:
           ANSIBLE_FORCE_COLOR: '1'

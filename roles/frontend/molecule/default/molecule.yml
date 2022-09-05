@@ -38,7 +38,7 @@ scenario:
     - syntax
     - create
     # - prepare
-    - converge
+    # - converge
     - idempotence
     # - side_effect
     # - verify
