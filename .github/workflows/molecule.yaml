@@ -33,9 +33,9 @@ jobs:
       - name: Run molecule action
         uses: arista-netdevops-community/action-molecule-avd@v1.0
         with:
-          molecule_parentdir: 'roles/common/molecule'
+          molecule_parentdir: 'roles/common'
           molecule_command: 'test'
-          ansible: ansible>=2.10
+#          ansible: ansible>=2.10
 #          pip_file: 'requirements.txt'
           check_git: true
           check_git_enforced: false
