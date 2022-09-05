@@ -29,12 +29,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - run: |
+          ls -a
+          cd ./Kv-126-DevOps/ansible/roles/common
+
       - name: Run molecule action
         uses: arista-netdevops-community/action-molecule-avd@v1.0
         with:
           molecule_parentdir: './Kv-126-DevOps/ansible/roles/common'
-          molecule_command: test
-          molecule_options: --debug
+          molecule_command: 'test'
+          molecule_options: '--debug'
+          molecule_args: '--all'
           ansible: ansible>=2.10
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+          check_git: true
+          check_git_enforced: true
