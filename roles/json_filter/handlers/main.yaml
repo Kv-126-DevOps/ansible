@@ -1,5 +1,5 @@
 ---
-- name: restart json-filter.service
+- name: 'Restart json-filter.service'
   ansible.builtin.service:
     name: json-filter.service
     state: restarted

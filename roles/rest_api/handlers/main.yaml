@@ -1,5 +1,5 @@
 ---
-- name: restart rest-api.service
+- name: 'Restart rest-api.service'
   ansible.builtin.service:
     name: rest-api.service
     state: restarted

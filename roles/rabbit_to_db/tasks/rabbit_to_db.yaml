@@ -1,18 +1,18 @@
 ---
-- name: rabbit-to-db | Clone repo. branch:'{{ rabbit_to_db_git_branch }}'
+- name: Rabbit-to-db | Clone repo. branch:'{{ rabbit_to_db_git_branch }}'
   ansible.builtin.git:
     repo: https://github.com/Kv-126-DevOps/rabbit-to-db.git
     dest: '{{ rabbit_to_db_workdir }}'
     version: '{{ rabbit_to_db_git_branch }}'
     force: true
 
-- name: rabbit-to-db | Install python packeges into virtualenv
+- name: Rabbit-to-db | Install python packeges into virtualenv
   ansible.builtin.pip:
     requirements: '{{ rabbit_to_db_workdir }}/requirements.txt'
     virtualenv: '{{ rabbit_to_db_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
-- name: rabbit-to-db| Copy service
+- name: Rabbit-to-db| Copy service
   ansible.builtin.template:
     src: rabbit-to-db.service.j2
     dest: '/etc/systemd/system/rabbit-to-db.service'
@@ -21,9 +21,9 @@
     mode: 0644
     backup: true
   notify:
-    - restart rabbit-to-db.service
+    - 'Restart rabbit-to-db.service'
 
-- name: rabbit-to-db | Start service
+- name: Rabbit-to-db | Start service
   ansible.builtin.service:
     name: rabbit-to-db.service
     state: started

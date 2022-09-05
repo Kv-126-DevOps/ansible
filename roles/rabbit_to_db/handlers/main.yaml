@@ -1,5 +1,5 @@
 ---
-- name: restart rabbit-to-db.service
+- name: 'Restart rabbit-to-db.service'
   ansible.builtin.service:
     name: rabbit-to-db.service
     state: restarted

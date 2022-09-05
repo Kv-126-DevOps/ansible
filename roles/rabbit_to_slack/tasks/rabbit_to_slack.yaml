@@ -1,18 +1,18 @@
 ---
-- name: rabbit-to-slack | Clone repo. branch:'{{ rabbit_to_slack_git_branch }}'
+- name: Rabbit-to-slack | Clone repo. branch:'{{ rabbit_to_slack_git_branch }}'
   ansible.builtin.git:
     repo: https://github.com/Kv-126-DevOps/rabbit_to_slack.git
     dest: '{{ rabbit_to_slack_workdir }}'
     version: '{{ rabbit_to_slack_git_branch }}'
     force: true
 
-- name: rabbit-to-slack | Install python packeges into virtualenv
+- name: Rabbit-to-slack | Install python packeges into virtualenv
   ansible.builtin.pip:
     requirements: '{{ rabbit_to_slack_workdir }}/requirements.txt'
     virtualenv: '{{ rabbit_to_slack_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
-- name: rabbit-to-slack| Copy service
+- name: Rabbit-to-slack| Copy service
   ansible.builtin.template:
     src: rabbit-to-slack.service.j2
     dest: '/etc/systemd/system/rabbit-to-slack.service'
@@ -21,9 +21,9 @@
     mode: 0644
     backup: true
   notify:
-    - restart rabbit-to-slack.service
+    - 'Restart rabbit-to-slack.service'
 
-- name: rabbit-to-slack | Start service
+- name: Rabbit-to-slack | Start service
   ansible.builtin.service:
     name: rabbit-to-slack.service
     state: started

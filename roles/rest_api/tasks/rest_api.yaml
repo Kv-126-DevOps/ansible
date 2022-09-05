@@ -6,13 +6,13 @@
     version: '{{ rest_api_git_branch }}'
     force: true
 
-- name: rest-api | Install python packeges into virtualenv
+- name: Rest-api | Install python packeges into virtualenv
   ansible.builtin.pip:
     requirements: '{{ rest_api_workdir }}/requirements.txt'
     virtualenv: '{{ rest_api_workdir }}/venv'
     virtualenv_command: python3 -m venv
 
-- name: rest-api | Copy service
+- name: Rest-api | Copy service
   ansible.builtin.template:
     src: rest-api.service.j2
     dest: '/etc/systemd/system/rest-api.service'
@@ -21,9 +21,9 @@
     mode: 0644
     backup: true
   notify:
-    - restart rest-api.service
+    - 'Restart rest-api.service'
 
-- name: rest-api | Start service
+- name: Rest-api | Start service
   ansible.builtin.service:
     name: rest-api.service
     state: started
