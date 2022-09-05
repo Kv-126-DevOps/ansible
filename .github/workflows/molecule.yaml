@@ -26,16 +26,17 @@ jobs:
       - Lint
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
+      - name: Run molecule action
+        uses: arista-netdevops-community/action-molecule-avd@v1.0
         with:
-          path: "${{ github.repository }}"
-      
-      - name: 'Test Common Role'
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_command: test
-          molecule_options: --debug
-          molecule_working_dir: ./Kv-126-DevOps/ansible/roles/common
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+          molecule_parentdir: 'roles/common/molecule'
+          molecule_command: 'test'
+          molecule_options: '--debug'
+          molecule_args: '--all'
+          ansible: ansible>=2.10
+#          pip_file: 'requirements.txt'
+          check_git: true
+          check_git_enforced: false
