@@ -15,12 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Ansible Collections
-        run: |
-          ansible-galaxy collection install community.general
-          ansible-galaxy collection install community.docker
-          ansible-galaxy collection install amazon.aws
-          
       - name: 'Ansible lint'
         uses: ansible-community/ansible-lint-action@main
         env:

@@ -46,4 +46,3 @@ scenario:
     - destroy
 verifier:
   name: ansible
-   
