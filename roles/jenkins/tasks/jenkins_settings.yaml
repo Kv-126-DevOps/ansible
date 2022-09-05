@@ -44,6 +44,7 @@
   when: >
     jenkins_init_prefix.changed
   tags: ['skip_ansible_lint']
+  notify: 'Restart jenkins'
 
 - name: Set HTTP port in Jenkins config.
   ansible.builtin.lineinfile:
