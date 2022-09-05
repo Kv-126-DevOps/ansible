@@ -38,6 +38,7 @@ jobs:
           python3 -m pip install molecule[docker] docker yamllint ansible-lint
           ansible-galaxy collection install community.general
           ansible-galaxy collection install community.docker
+          ansible-galaxy collection install amazon.aws
           cd ./roles/frontend/
           molecule test
         env:
