@@ -14,6 +14,6 @@ frontend_restapi_host: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rest_api_host') | path_join,
     region=env_region
-  ) | default('rest_api', true) }}
+  ) }}
 
 frontend_restapi_port: 5000
