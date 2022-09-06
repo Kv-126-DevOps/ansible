@@ -53,7 +53,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Molecule Test FRONT
-        working-directory: ./roles/front/
+        working-directory: /roles/front/
         run: |
           molecule test
         env:
