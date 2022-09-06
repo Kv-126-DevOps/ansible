@@ -45,16 +45,16 @@ jobs:
           ansible-galaxy collection install amazon.aws
 
       - name: Molecule Test COMMON
+        working-directory: ./roles/common/
         run: |
-          cd ./roles/common/
           molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Molecule Test FRONT
+        working-directory: ./roles/front/
         run: |
-          cd ../front/
           molecule test
         env:
           PY_COLORS: '1'
