@@ -53,9 +53,8 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Molecule Test FRONT
-      #  working-directory: /roles/front/
+        working-directory: ./roles/frontend/
         run: |
-          ls -a
           molecule test
         env:
           PY_COLORS: '1'
