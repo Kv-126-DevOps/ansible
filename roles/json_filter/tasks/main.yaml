@@ -1,4 +1,9 @@
 ---
+- import_tasks: git.yaml
+  tags:
+    - never
+    - json_filter_molecule
+
 - import_tasks: check_vars.yaml
   tags:
     - never
