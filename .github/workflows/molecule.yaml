@@ -40,7 +40,7 @@ jobs:
             ansible-galaxy collection install community.docker
             ansible-galaxy collection install amazon.aws
     
-        - name: Molecule Test COMMON
+        - name: 'Common | Molecule Test'
           working-directory: ./roles/common/
           run: |
             molecule --debug test
@@ -67,7 +67,7 @@ jobs:
             ansible-galaxy collection install community.docker
             ansible-galaxy collection install amazon.aws
     
-        - name: Molecule Test COMMON
+        - name: 'Frontend | Molecule Test'
           working-directory: ./roles/frontend/
           run: |
             molecule --debug test
