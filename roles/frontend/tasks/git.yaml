@@ -3,7 +3,7 @@
   ansible.builtin.yum:
     name: git
     state: present
-    
+
 - name: 'Install python packages'
   ansible.builtin.pip:
     name:
