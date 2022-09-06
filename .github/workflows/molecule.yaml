@@ -47,7 +47,7 @@ jobs:
       - name: Molecule Test COMMON
         working-directory: ./roles/common/
         run: |
-          molecule test
+          molecule --dubug test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
