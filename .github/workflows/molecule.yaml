@@ -54,7 +54,7 @@ jobs:
 
       - name: Molecule Test FRONT
         run: |
-          cd ../../roles/common/
+          cd ../../roles/front/
           molecule test
         env:
           PY_COLORS: '1'
