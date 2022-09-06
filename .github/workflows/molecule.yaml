@@ -47,15 +47,15 @@ jobs:
       - name: Molecule Test COMMON
         run: |
           cd ./roles/common/
-          molecule test --debug
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
 
-      - name: Molecule Test COMMON
+      - name: Molecule Test FRONT
         run: |
           cd ../../roles/common/
-          molecule test --debug
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
