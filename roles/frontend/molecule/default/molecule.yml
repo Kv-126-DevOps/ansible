@@ -25,7 +25,8 @@ provisioner:
   options:
     v: true
     tags:
-      run: frontend_git, frontend_install
+      - "frontend_git"
+      - "frontend_install"
     extra-vars: "{'frontend_restapi_host': 'rest_api'}"
   config_options:
     defaults:
