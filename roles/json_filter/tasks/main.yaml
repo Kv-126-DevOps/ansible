@@ -9,9 +9,11 @@
     - never
     - json_filter_service_install
     - json_filter_check_vars
+    - json_filter_molecule
 
 - import_tasks: json_filter.yaml
   tags:
     - never
     - json_filter_service_install
     - json_filter_install
+    - json_filter_molecule
