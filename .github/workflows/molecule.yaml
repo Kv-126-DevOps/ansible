@@ -1,14 +1,14 @@
 ---
 name: CI
-
+    
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
+    
 jobs:
-
+    
   Lint:
     runs-on: ubuntu-latest
     steps:
@@ -18,32 +18,59 @@ jobs:
       - name: 'Ansible lint'
         uses: ansible-community/ansible-lint-action@main
         env:
+          PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-
+    
   Molecule_Common:
-    needs:
-      - Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' 
+      needs:
+        - Lint
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
 
-      - name: Install dependencies and Ansible Collections
-        run: |
-          python3 -m pip install virtualenv
-          ansible-galaxy collection install community.general
-          ansible-galaxy collection install community.docker
-          ansible-galaxy collection install amazon.aws
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.10' 
 
-      - name: Molecule
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_working_dir: ./roles/frontend/
-          molecule_options: --debug
-          molecule_command: test
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            python3 -m pip install molecule[docker] yamllint virtualenv
+            ansible-galaxy collection install community.general
+            ansible-galaxy collection install community.docker
+            ansible-galaxy collection install amazon.aws
+    
+        - name: Molecule Test COMMON
+          working-directory: ./roles/common/
+          run: |
+            molecule --debug test
+          env:
+            ANSIBLE_FORCE_COLOR: '1'
+    
+  Molecule_Frontend:
+      needs:
+        - Lint
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.10' 
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+            python3 -m pip install molecule[docker] yamllint virtualenv
+            ansible-galaxy collection install community.general
+            ansible-galaxy collection install community.docker
+            ansible-galaxy collection install amazon.aws
+    
+        - name: Molecule Test COMMON
+          working-directory: ./roles/frontend/
+          run: |
+            molecule --debug test
+          env:
+            ANSIBLE_FORCE_COLOR: '1'
