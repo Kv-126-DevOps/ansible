@@ -67,7 +67,7 @@ jobs:
             ansible-galaxy collection install community.docker
             ansible-galaxy collection install amazon.aws
     
-        - name: 'Frontend | Molecule Test'
+        - name: 'Json_Filter | Molecule Test'
           working-directory: ./roles/json_filter/
           run: |
             molecule --debug test

@@ -25,7 +25,7 @@ provisioner:
   options:
     v: true
     tags: "json_filter_molecule"
-    extra-vars: 
+    extra-vars:
       - "{'json_filter_rabbit_host': 'rabbit_mq'}"
       - "{'json_filter_rabbit_user': 'mquser'}"
       - "{'json_filter_rabbit_pw': 'mqpass'}"
