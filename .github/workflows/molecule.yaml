@@ -47,7 +47,7 @@ jobs:
       - name: Molecule Test
         run: |
           cd ./roles/frontend/
-          molecule test -e frontend_restapi_host=restapi
+          molecule test
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
