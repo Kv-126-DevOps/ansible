@@ -25,6 +25,7 @@ provisioner:
   options:
     v: true
     tags: "frontend_install"
+    extra-vars: "{'frontend_restapi_host': 'rest_api'}"
   config_options:
     defaults:
       stdout_callback: yaml
