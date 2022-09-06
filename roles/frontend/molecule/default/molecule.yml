@@ -24,7 +24,9 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
   options:
     v: true
-    tags: "frontend_install"
+    tags:
+      - "frontend_git"
+      - "frontend_install"
     extra-vars: "{'frontend_restapi_host': 'rest_api'}"
   config_options:
     defaults:

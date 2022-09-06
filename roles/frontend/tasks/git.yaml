@@ -1,0 +1,15 @@
+---
+- name: Install git
+  ansible.builtin.yum:
+    name: git
+    state: present
+    
+- name: 'Install python packages'
+  ansible.builtin.pip:
+    name:
+      - pip
+      - virtualenv
+    extra_args: --upgrade
+    executable: pip
+  become: true
+#  become_user: ec2-user

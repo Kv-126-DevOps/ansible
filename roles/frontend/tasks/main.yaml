@@ -10,3 +10,8 @@
     - never
     - frontend_service_install
     - frontend_install
+
+- import_tasks: git.yaml
+  tags:
+    - never
+    - frontend_git
