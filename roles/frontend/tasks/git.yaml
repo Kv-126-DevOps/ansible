@@ -4,6 +4,18 @@
     name: git
     state: present
 
+- name: 'Utilities | Download PIP'
+  ansible.builtin.get_url:
+    url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
+    dest: /tmp/get-pip.py
+    force: false
+    mode: 0644
+
+- name: 'Utilities | Install/Update PIP'
+  ansible.builtin.command: python /tmp/get-pip.py
+  become: true
+  changed_when: false
+
 - name: 'Install python packages'
   ansible.builtin.pip:
     name:
