@@ -13,7 +13,7 @@ platforms:
     image: redbearddog/docker-amazonlinux2:latest
     command: ${MOLECULE_DOCKER_COMMAND:-"/usr/lib/systemd/systemd"}
     privileged: true
-    pre_build_image: true
+    pre_build_image: false
     networks:
       - name: common_docker_network
     volumes:
