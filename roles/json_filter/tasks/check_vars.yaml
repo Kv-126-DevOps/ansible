@@ -9,6 +9,7 @@
   loop:
     - "{{ json_filter_rabbit_pw }}"
   no_log: true
+  ignore_errors: true
   tags:
     - json_filter_install
 
