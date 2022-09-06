@@ -1,4 +1,9 @@
 ---
+- import_tasks: git.yaml
+  tags:
+    - never
+    - frontend_molecule
+
 - import_tasks: check_vars.yaml
   tags:
     - never
@@ -11,9 +16,4 @@
     - never
     - frontend_service_install
     - frontend_install
-    - frontend_molecule
-
-- import_tasks: git.yaml
-  tags:
-    - never
     - frontend_molecule
