@@ -44,10 +44,18 @@ jobs:
           ansible-galaxy collection install community.docker
           ansible-galaxy collection install amazon.aws
 
-      - name: Molecule Test
+      - name: Molecule Test COMMON
         run: |
-          cd ./roles/frontend/
-          molecule test
+          cd ./roles/common/
+          molecule test --debug
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Molecule Test COMMON
+        run: |
+          cd ../../roles/common/
+          molecule test --debug
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
