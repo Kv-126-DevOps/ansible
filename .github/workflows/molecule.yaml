@@ -28,13 +28,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Configure my AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.MY_AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.MY_AWS_SECRET_KEY }}
-          aws-region: ${{ secrets.AWS_REGION_NAME }}
       
       - uses: actions/setup-python@v4
         with:
@@ -54,7 +47,7 @@ jobs:
       - name: Molecule Test
         run: |
           cd ./roles/frontend/
-          molecule test
+          molecule test -e frontend_restapi_host=restapi
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
