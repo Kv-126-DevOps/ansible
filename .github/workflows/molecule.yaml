@@ -34,6 +34,7 @@ jobs:
 
       - name: Install dependencies and Ansible Collections
         run: |
+          yum install git
           python3 -m pip install virtualenv
           ansible-galaxy collection install community.general
           ansible-galaxy collection install community.docker
