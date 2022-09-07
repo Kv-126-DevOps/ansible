@@ -25,7 +25,7 @@ provisioner:
   options:
     v: true
     tags: "rabbit_to_db_molecule"
-    extra-vars: |
+    extra-vars: >-
       '{"rabbit_to_db_rabbit_host":"rabbit_mq",
       "rabbit_to_db_rabbit_user":"mquser",
       "rabbit_to_db_rabbit_pw":"mqpass",
