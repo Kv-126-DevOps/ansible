@@ -39,6 +39,7 @@ rabbit_to_db_rabbit_host: >-
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
   ) }}
+
 rabbit_to_db_rabbit_port: 5671
 rabbit_to_db_rabbit_user: >-
   {{ lookup(
@@ -46,6 +47,7 @@ rabbit_to_db_rabbit_user: >-
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
   ) | default('mquser', true) }}
+
 rabbit_to_db_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
@@ -53,4 +55,5 @@ rabbit_to_db_rabbit_pw: >-
     region=env_region,
     decrypt=true
   ) }}
+
 rabbit_to_db_rabbit_queue: "restapi"

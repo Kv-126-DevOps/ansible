@@ -9,7 +9,7 @@
   loop:
     - "{{ rabbit_to_db_postgres_pw }}"
     - "{{ rabbit_to_db_rabbit_pw }}"
-  no_log: true
+#  no_log: true
   tags:
     - rabbit_to_db_install
 

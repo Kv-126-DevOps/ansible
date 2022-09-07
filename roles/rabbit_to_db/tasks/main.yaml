@@ -1,12 +1,19 @@
 ---
+- import_tasks: git.yaml
+  tags:
+    - never
+    - rabbit_to_db_molecule
+
 - import_tasks: check_vars.yaml
   tags:
     - never
     - rabbit_to_db_service_install
     - rabbit_to_db_check_vars
+    - rabbit_to_db_molecule
 
 - import_tasks: rabbit_to_db.yaml
   tags:
     - never
     - rabbit_to_db_service_install
     - rabbit_to_db_install
+    - rabbit_to_db_molecule
