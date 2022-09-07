@@ -5,50 +5,44 @@ env_name: "environment_name"
 env_region: "eu-central-1"
 env_qm_connection: "SSL/HTTP"
 
-# Git branches
-rabbit_to_db_git_branch: "main"
-
-# Paths to services folder
-rabbit_to_db_workdir: "/opt/rabbit-to-db"
-
 # RDS/PostgreSQL Variables
-rabbit_to_db_postgres_host: >-
+postgre_host: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'rds_endpoint') | path_join,
     region=env_region
   ) }}
-rabbit_to_db_postgres_port: 5432
-rabbit_to_db_postgres_user: >-
+postgre_port: 5432
+postgre_usr: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'rds_user') | path_join,
     region=env_region
   ) | default('dbuser', true) }}
-rabbit_to_db_postgres_pw: >-
+postgre_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
     region=env_region
   ) }}
-rabbit_to_db_postgres_db: "postgres"
+postgre_db: "postgres"
 
 # AmazonMQ/RabbitMQ Variables
-rabbit_to_db_rabbit_host: >-
+rabbit_host: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
   ) }}
 
-rabbit_to_db_rabbit_port: 5671
-rabbit_to_db_rabbit_user: >-
+rabbit_port: 5671
+rabbit_user: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
   ) | default('mquser', true) }}
 
-rabbit_to_db_rabbit_pw: >-
+rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_pass') | path_join,
@@ -56,4 +50,10 @@ rabbit_to_db_rabbit_pw: >-
     decrypt=true
   ) }}
 
-rabbit_to_db_rabbit_queue: "restapi"
+rabbit_queue: "restapi"
+
+# Git branches
+rabbit_to_db_git_branch: "main"
+
+# Paths to services folder
+rabbit_to_db_workdir: "/opt/rabbit-to-db"

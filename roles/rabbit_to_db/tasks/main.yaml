@@ -9,6 +9,7 @@
     - never
     - rabbit_to_db_service_install
     - rabbit_to_db_check_vars
+    - rabbit_to_db_molecule
 
 - import_tasks: rabbit_to_db.yaml
   tags:
