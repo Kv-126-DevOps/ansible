@@ -27,4 +27,5 @@
   ansible.builtin.service:
     name: rabbit-to-db.service
     state: started
+    daemon-reload: true
   become: true
