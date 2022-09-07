@@ -11,7 +11,7 @@ postgre_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'rds_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('rds_endpoint', true) }}
 postgre_port: 5432
 postgre_usr: >-
   {{ lookup(
@@ -23,7 +23,7 @@ postgre_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
     region=env_region
-  ) }}
+  ) | default('rdspass', true) }}
 postgre_db: "postgres"
 
 # AmazonMQ/RabbitMQ Variables
@@ -32,7 +32,7 @@ rabbit_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('mq_endpoint', true) }}
 
 rabbit_port: 5671
 rabbit_usr: >-
@@ -48,7 +48,7 @@ rabbit_pw: >-
     ('/', env_class, env_name, 'mq_pass') | path_join,
     region=env_region,
     decrypt=true
-  ) }}
+  ) | default('mqpass', true) }}
 
 rabbit_queue: "restapi"
 
