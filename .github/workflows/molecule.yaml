@@ -61,7 +61,8 @@ jobs:
 
         - name: Install dependencies
           run: |
-            python3 -m pip install molecule[docker] yamllint virtualenv ansible-lint
+            python3 -m pip install molecule[docker] botocore boto3 yamllint virtualenv ansible-lint
+            ansible-galaxy collection install community.general
             ansible-galaxy collection install community.docker
             ansible-galaxy collection install amazon.aws
     
@@ -88,6 +89,7 @@ jobs:
         - name: Install dependencies
           run: |
             python3 -m pip install molecule[docker] yamllint virtualenv ansible-lint
+            ansible-galaxy collection install community.general
             ansible-galaxy collection install community.docker
             ansible-galaxy collection install amazon.aws
     
