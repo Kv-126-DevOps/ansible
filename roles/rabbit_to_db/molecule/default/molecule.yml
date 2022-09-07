@@ -25,13 +25,7 @@ provisioner:
   options:
     v: true
     tags: "rabbit_to_db_molecule"
-    extra-vars: >-
-      '{"rabbit_to_db_rabbit_host":"rabbit_mq",
-      "rabbit_to_db_rabbit_user":"mquser",
-      "rabbit_to_db_rabbit_pw":"mqpass",
-      "rabbit_to_db_postgres_host":"postgres_host",
-      "rabbit_to_db_postgres_user":"dbuser",
-      "rabbit_to_db_postgres_pw":"postgrespass"}'
+    extra-vars: '{"rabbit_to_db_rabbit_host":"rabbit_mq","rabbit_to_db_rabbit_user":"mquser","rabbit_to_db_rabbit_pw":"mqpass","rabbit_to_db_postgres_host":"postgres_host","rabbit_to_db_postgres_user":"dbuser","rabbit_to_db_postgres_pw":"postgrespass"}'
   config_options:
     defaults:
       stdout_callback: yaml
