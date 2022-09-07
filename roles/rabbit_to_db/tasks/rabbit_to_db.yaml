@@ -27,5 +27,5 @@
   ansible.builtin.service:
     name: rabbit-to-db.service 
     state: started
-    enabled: true
+  enabled: true
   become: true
