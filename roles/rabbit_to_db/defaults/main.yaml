@@ -12,6 +12,7 @@ postgre_host: >-
     ('/', env_class, env_name, 'rds_endpoint') | path_join,
     region=env_region
   ) | default('rds_endpoint', true) }}
+
 postgre_port: 5432
 postgre_usr: >-
   {{ lookup(
