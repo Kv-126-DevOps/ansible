@@ -26,6 +26,7 @@ provisioner:
     v: true
     tags: "json_filter_molecule"
     extra-vars: |
+      "{'fake_env': 'fake_env'}"
       "{'json_filter_rabbit_host': 'rabbitmq'}"
       "{'json_filter_rabbit_user': 'mquser'}"
       "{'json_filter_rabbit_pw': 'mqpass'}"
