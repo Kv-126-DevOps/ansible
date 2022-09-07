@@ -14,7 +14,6 @@ postgre_host: >-
   ) | default('rds_endpoint', true) }}
 
 postgre_port: 5432
-
 postgre_usr: >-
   {{ lookup(
     'aws_ssm',
