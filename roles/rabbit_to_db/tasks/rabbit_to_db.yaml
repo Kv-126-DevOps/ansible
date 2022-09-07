@@ -25,7 +25,6 @@
 
 - name: 'Rabbit-to-db | Start service'
   ansible.builtin.service:
-    name: rabbit-to-db.service 
+    name: rabbit-to-db.service
     state: started
-  enabled: true
   become: true
