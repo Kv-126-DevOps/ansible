@@ -27,9 +27,9 @@
     - "{{ env_qm_connection }}"
     - "{{ json_filter_git_branch }}"
     - "{{ json_filter_workdir }}"
+    - "{{ json_filter_host }}"
     - "{{ json_filter_rabbit_host }}"
     - "{{ json_filter_rabbit_user }}"
-    - "{{ json_filter_host }}"
     - "{{ json_filter_queue_slack }}"
     - "{{ json_filter_queue_restapi }}"
   tags:
