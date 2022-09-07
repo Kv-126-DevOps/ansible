@@ -35,7 +35,7 @@ rabbit_host: >-
   ) }}
 
 rabbit_port: 5671
-rabbit_user: >-
+rabbit_usr: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_user') | path_join,
