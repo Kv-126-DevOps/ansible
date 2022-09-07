@@ -15,7 +15,7 @@ json_filter_workdir: "/opt/json-filter"
 json_filter_rabbit_host: >-
   {{ lookup(
     'aws_ssm',
-    ('/', env_class, env_name, 'mq_endpiont') | path_join,
+    ('/', env_class, env_name, 'mq_host') | path_join,
     region=env_region
   ) }}
 json_filter_rabbit_port: 5671
