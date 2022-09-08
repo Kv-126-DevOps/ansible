@@ -10,121 +10,122 @@ on:
 jobs:
        
   molecule-common:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository 🚦
-          uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 🚦
+        uses: actions/checkout@v3
 
-        - name: Setup Python 3.10 🐍
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.10' 
+      - name: Setup Python 3.10 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
 
-        - name: Install dependencies 📦
-          run: |
-            python3 -m pip install molecule[docker] yamllint virtualenv ansible-lint
-            ansible-galaxy collection install community.general
-            ansible-galaxy collection install community.docker
+      - name: Install dependencies 📦
+        run: |
+          python3 -m pip install molecule[docker] yamllint virtualenv ansible-lint
+          ansible-galaxy collection install community.general
+          ansible-galaxy collection install community.docker
     
-        - name: common | Molecule Test 🧪
-          working-directory: ./roles/common/
-          run: |
-            molecule --debug test
-          env:
-            ANSIBLE_FORCE_COLOR: '1'
+      - name: common | Molecule Test 🧪
+        working-directory: ./roles/common/
+        run: |
+          molecule --debug test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
   molecule-json-filter:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository 🚦
-          uses: actions/checkout@v3
+    needs: [molecule-common]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 🚦
+        uses: actions/checkout@v3
 
-        - name: Setup Python 3.10 🐍
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.10' 
+      - name: Setup Python 3.10 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
 
-        - name: Install dependencies 📦
-          run: |
-            python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
-            ansible-galaxy collection install community.general
-            ansible-galaxy collection install community.docker
-            ansible-galaxy collection install amazon.aws
+      - name: Install dependencies 📦
+        run: |
+          python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
+          ansible-galaxy collection install community.general
+          ansible-galaxy collection install community.docker
+          ansible-galaxy collection install amazon.aws
 
-        - name: Configure AWS Credentials 🔑
-          uses: aws-actions/configure-aws-credentials@v1.6.1 # Version at the time of this writing
-          with: # We are loading keys stored in secrets
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: eu-central-1
+      - name: Configure AWS Credentials 🔑
+        uses: aws-actions/configure-aws-credentials@v1.6.1 # Version at the time of this writing
+        with: # We are loading keys stored in secrets
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
 
-        - name: Json_Filter | Molecule Test 🧪
-          working-directory: ./roles/json-filter/
-          run: |
-            molecule --debug test
-          env:
-            ANSIBLE_FORCE_COLOR: '1'
+      - name: Json_Filter | Molecule Test 🧪
+        working-directory: ./roles/json-filter/
+        run: |
+          molecule --debug test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
   molecule-rabbit-to-db:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-        - name: Setup Python 3.10
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.10' 
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
 
-        - name: Install dependencies
-          run: |
-            python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
-            ansible-galaxy collection install community.general
-            ansible-galaxy collection install community.docker
-            ansible-galaxy collection install amazon.aws
+      - name: Install dependencies
+        run: |
+          python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
+          ansible-galaxy collection install community.general
+          ansible-galaxy collection install community.docker
+          ansible-galaxy collection install amazon.aws
         
-        - name: Configure AWS Credentials 🔧
-          uses: aws-actions/configure-aws-credentials@v1.6.1 # Version at the time of this writing
-          with: # We are loading keys stored in secrets
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: eu-central-1
-    
-        - name: rabbit-to-db | Molecule Test
-          working-directory: ./roles/rabbit-to-db/
-          run: |
-            molecule --debug test
-          env:
-            ANSIBLE_FORCE_COLOR: '1'
+      - name: Configure AWS Credentials 🔧
+        uses: aws-actions/configure-aws-credentials@v1.6.1 # Version at the time of this writing
+        with: # We are loading keys stored in secrets
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - name: rabbit-to-db | Molecule Test
+        working-directory: ./roles/rabbit-to-db/
+        run: |
+          molecule --debug test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
   molecule-frontend:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository 🚦
-          uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 🚦
+        uses: actions/checkout@v3
 
-        - name: Setup Python 3.10 🐍
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.10' 
+      - name: Setup Python 3.10 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
 
-        - name: Install dependencies 📦
-          run: |
-            python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
-            ansible-galaxy collection install community.general
-            ansible-galaxy collection install community.docker
-            ansible-galaxy collection install amazon.aws
+      - name: Install dependencies 📦
+        run: |
+          python3 -m pip install molecule[docker] yamllint ansible-lint virtualenv botocore boto3
+          ansible-galaxy collection install community.general
+          ansible-galaxy collection install community.docker
+          ansible-galaxy collection install amazon.aws
 
-        - name: Configure AWS Credentials 🔑
-          uses: aws-actions/configure-aws-credentials@v1.6.1 
-          with:
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws-region: eu-central-1
+      - name: Configure AWS Credentials 🔑
+        uses: aws-actions/configure-aws-credentials@v1.6.1 
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
 
-        - name: frontend | Molecule Test 🧪
-          working-directory: ./roles/frontend/
-          run: |
-            molecule --debug test
-          env:
-            ANSIBLE_FORCE_COLOR: '1'
+      - name: frontend | Molecule Test 🧪
+        working-directory: ./roles/frontend/
+        run: |
+          molecule --debug test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

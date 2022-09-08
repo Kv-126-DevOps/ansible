@@ -5,6 +5,11 @@
     - rabbit_to_db_service_install
     - rabbit_to_db_check_vars
 
+- import_tasks: mol_prep.yaml
+  tags:
+    - never
+    - rabbit_to_db_molecule
+
 - import_tasks: rabbit-to-db.yaml
   tags:
     - never

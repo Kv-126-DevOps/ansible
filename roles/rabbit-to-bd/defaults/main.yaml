@@ -17,19 +17,22 @@ rabbit_to_db_postgres_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'rds_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('rds_endpoint', true) }}
+
 rabbit_to_db_postgres_port: 5432
 rabbit_to_db_postgres_user: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'rds_user') | path_join,
     region=env_region
-  ) | default('dbuser', true) }}
+  ) | default('rds_user', true) }}
+
 rabbit_to_db_postgres_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
     region=env_region
-  ) }}
+  ) | default('rdspass', true) }}
+
 rabbit_to_db_postgres_db: "postgres"
 
 # AmazonMQ/RabbitMQ Variables
@@ -38,7 +41,8 @@ rabbit_to_db_rabbit_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('mq_endpoint', true) }}
+
 rabbit_to_db_rabbit_port: 5671
 rabbit_to_db_rabbit_user: >-
   {{ lookup(
@@ -46,11 +50,13 @@ rabbit_to_db_rabbit_user: >-
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
   ) | default('mquser', true) }}
+
 rabbit_to_db_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_pass') | path_join,
     region=env_region,
     decrypt=true
-  ) }}
+  ) | default('mqpass', true) }}
+
 rabbit_to_db_rabbit_queue: "restapi"
