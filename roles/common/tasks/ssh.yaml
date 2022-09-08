@@ -1,15 +1,15 @@
 ---
-- name: Update SSH daemon config
-  copy:
+- name: "Update SSH daemon config"
+  ansible.builtin.copy:
     src: files/sshd_config
     dest: /etc/ssh/sshd_config
     mode: "0600"
     validate: /usr/sbin/sshd -t -f %s
     backup: true
-  notify: restart ssh
+  notify: "Restart ssh"
 
-- name: Update SSH client config
-  copy:
+- name: "Update SSH client config"
+  ansible.builtin.copy:
     src: files/ssh_config
     dest: /etc/ssh/ssh_config
     mode: "0644"

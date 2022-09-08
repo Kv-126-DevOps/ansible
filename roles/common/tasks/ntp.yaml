@@ -1,6 +1,6 @@
 ---
-- name: 'NTP | Configure Service'
-  template:
+- name: "NTP | Configure Service"
+  ansible.builtin.template:
     src: ntp.conf.j2
     dest: /etc/ntp.conf
     owner: root
@@ -8,14 +8,15 @@
     mode: 0644
     backup: true
   notify:
-    - restart ntp
+    - "Restart ntp"
 
-- name: 'NTP | Start Service'
-  service:
+- name: "NTP | Start Service"
+  ansible.builtin.service:
     name: ntpd
     state: started
     enabled: true
+  changed_when: false
 
-- name: 'NTP | Setting up {{ common_ntp_timezone }} timezone'
-  timezone:
+- name: "NTP | Setting up {{ common_ntp_timezone }} timezone"
+  ansible.builtin.timezone:
     name: "{{ common_ntp_timezone }}"

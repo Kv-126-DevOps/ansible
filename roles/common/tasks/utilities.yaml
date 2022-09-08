@@ -1,13 +1,13 @@
 ---
-- name: 'Utilities | Install and enable epel repositories'
-  shell: "{{ item }}"
+- name: "Utilities | Install and enable epel repositories"
+  ansible.builtin.command: "{{ item }}"
   loop:
     - amazon-linux-extras install epel -y
     - yum-config-manager --enable epel
   become: true
 
-- name: 'Utilities | Disable repository priority protections'
-  template:
+- name: "Utilities | Disable repository priority protections"
+  ansible.builtin.template:
     src: priorities.conf.j2
     dest: /etc/yum/pluginconf.d/priorities.conf
     owner: root
@@ -15,11 +15,11 @@
     mode: 0644
     backup: true
 
-- name: 'Utilities | Retrieve the installed packages'
-  package_facts:
+- name: "Utilities | Retrieve the installed packages"
+  ansible.builtin.package_facts:
 
 - name: 'Utilities | Get names of installed packages'
-  set_fact:
+  ansible.builtin.set_fact:
     installed_packages: "{{ ansible_facts.packages.keys() }}"
 
 - name: 'Utilities | Find missing packages'
@@ -27,21 +27,21 @@
     missing_packages: "{{ common_required_package | difference (installed_packages) }}"
 
 - name: 'Utilities | Install missing packages'
-  package:
+  ansible.builtin.package:
     name: "{{ missing_packages }}"
     state: present
     update_cache: true
 
-- name: 'Utilities | Install/Update PIP'
-  shell: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
+- name: "Utilities | Install/Update PIP"
+  ansible.builtin.command: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
   become: true
 
-- name: Install python packages
-  pip:
+- name: "Install python packages"
+  ansible.builtin.pip:
     name:
       - pip
       - virtualenv
     extra_args: --upgrade
     executable: pip
   become: true
-  become_user: ec2-user
+#  become_user: ec2-user
