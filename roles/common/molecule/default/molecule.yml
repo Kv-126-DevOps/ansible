@@ -28,7 +28,6 @@ provisioner:
   config_options:
     defaults:
       stdout_callback: yaml
-      remote_user: 'ec2-user'
   log: false  # set to 'true' if you need detailed info about creating platforms instances
 scenario:
   test_sequence:
