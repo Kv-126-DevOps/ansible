@@ -67,6 +67,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
   molecule-rabbit-to-db:
+    needs: [molecule-common]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -99,6 +100,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
   molecule-frontend:
+    needs: [molecule-common]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository 🚦
