@@ -17,7 +17,8 @@ rabbit_to_slack_rabbit_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('mq_endpoint', true) }}
+
 rabbit_to_slack_rabbit_port: 5671
 rabbit_to_slack_rabbit_user: >-
   {{ lookup(
@@ -25,12 +26,14 @@ rabbit_to_slack_rabbit_user: >-
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
   ) | default('mquser', true) }}
+
 rabbit_to_slack_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_pass') | path_join,
     region=env_region,
     decrypt=true
-  ) }}
+  ) | default('mqpass', true) }}
+
 rabbit_to_slack_rabbit_queue: "slack"
 rabbit_to_slack_hook: "webhook_url"

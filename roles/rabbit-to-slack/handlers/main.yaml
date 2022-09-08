@@ -1,8 +1,8 @@
 ---
-- name: restart rabbit-to-slack.service
-  service:
+- name: "Restart rabbit-to-slack service"
+  ansible.builtin.service:
     name: rabbit-to-slack.service
     state: restarted
     daemon-reload: true
     enabled: true
-  become: yes
+  become: true
