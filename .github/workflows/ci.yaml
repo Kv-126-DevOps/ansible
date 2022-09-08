@@ -12,7 +12,7 @@ jobs:
   molecule_common:
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout repository ✅
+        - name: Checkout repository 🚦
           uses: actions/checkout@v3
 
         - name: Setup Python 3.10 🐍
@@ -36,7 +36,7 @@ jobs:
   molecule-json-filter:
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout repository ✅
+        - name: Checkout repository 🚦
           uses: actions/checkout@v3
 
         - name: Setup Python 3.10 🐍
@@ -100,7 +100,7 @@ jobs:
   molecule-frontend:
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout repository ✅
+        - name: Checkout repository 🚦
           uses: actions/checkout@v3
 
         - name: Setup Python 3.10 🐍

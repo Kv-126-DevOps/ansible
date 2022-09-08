@@ -3,8 +3,8 @@
   ansible.builtin.command: "{{ item }}"
   loop:
     - amazon-linux-extras install epel -y
-    - yum-config-manager --enable epel
   become: true
+  changed_when: false
 
 - name: "Utilities | Disable repository priority protections"
   ansible.builtin.template:
@@ -23,8 +23,8 @@
     installed_packages: "{{ ansible_facts.packages.keys() }}"
 
 - name: 'Utilities | Find missing packages'
-  set_fact:
-    missing_packages: "{{ common_required_package | difference (installed_packages) }}"
+  ansible.builtin.set_fact:
+    missing_packages: "{{ common_required_package | difference(installed_packages) }}"
 
 - name: 'Utilities | Install missing packages'
   ansible.builtin.package:
@@ -32,9 +32,17 @@
     state: present
     update_cache: true
 
+- name: "Utilities | Download PIP"
+  ansible.builtin.get_url:
+    url: https://bootstrap.pypa.io/pip/3.5/get-pip.py
+    dest: /tmp/get-pip.py
+    force: false
+    mode: 0644
+
 - name: "Utilities | Install/Update PIP"
-  ansible.builtin.command: curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python
+  ansible.builtin.command: python /tmp/get-pip.py
   become: true
+  changed_when: false
 
 - name: "Install python packages"
   ansible.builtin.pip:
