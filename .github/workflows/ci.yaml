@@ -9,7 +9,7 @@ on:
     
 jobs:
        
-  molecule_common:
+  molecule-common:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repository 🚦

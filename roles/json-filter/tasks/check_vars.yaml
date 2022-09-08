@@ -1,24 +1,24 @@
 ---
-- name: Check that Passwords Variables are set correctly 
-  assert:
+- name: "Check that Passwords Variables are set correctly"
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is string }}"
       - "{{ item | length > 0 }}"
-    quiet: yes
+    quiet: true
   loop:
     - "{{ json_filter_rabbit_pw }}"
-  no_log: true
+#  no_log: true
   tags:
     - json_filter_install
-  
-- name: Check that String Variables are set correctly 
-  assert:
+
+- name: "Check that String Variables are set correctly"
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is string }}"
       - "{{ item | length > 0 }}"
-    quiet: yes
+    quiet: true
   loop:
     - "{{ env_class }}"
     - "{{ env_name }}"
@@ -34,12 +34,12 @@
   tags:
     - json_filter_install
 
-- name: Check that Integer Variables are set correctly 
-  assert:
+- name: "Check that Integer Variables are set correctly"
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is number }}"
-    quiet: yes
+    quiet: true
   loop:
     - "{{ json_filter_rabbit_port }}"
   tags:

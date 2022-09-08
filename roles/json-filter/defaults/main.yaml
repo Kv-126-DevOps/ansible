@@ -17,7 +17,8 @@ json_filter_rabbit_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'mq_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('mq_endpoint', true) }}
+
 json_filter_rabbit_port: 5671
 json_filter_rabbit_user: >-
   {{ lookup(
@@ -25,13 +26,14 @@ json_filter_rabbit_user: >-
     ('/', env_class, env_name, 'mq_user') | path_join,
     region=env_region
   ) | default('mquser', true) }}
+
 json_filter_rabbit_pw: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'mq_pass') | path_join,
     region=env_region,
     decrypt=true
-  ) }}
+  ) | default('mqpass', true) }}
 
 json_filter_host: "0.0.0.0"
 json_filter_queue_slack: slack
