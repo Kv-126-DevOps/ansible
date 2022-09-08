@@ -16,17 +16,21 @@ rest_api_postgres_host: >-
     'aws_ssm',
     ('/', env_class, env_name, 'rds_endpoint') | path_join,
     region=env_region
-  ) }}
+  ) | default('rds_endpoint', true) }}
+
 rest_api_postgres_port: 5432
+
 rest_api_postgres_user: >-
   {{ lookup(
     'aws_ssm',
     ('/', env_class, env_name, 'rds_user') | path_join,
     region=env_region
-  ) | default('dbuser', true) }}
+  ) | default('rdsuser', true) }}
+
 rest_api_postgres_pw: >-
   {{ lookup('aws_ssm',
     ('/', env_class, env_name, 'rds_pass') | path_join,
     region=env_region
-  ) }}
+  ) | default('rdspass', true) }}
+
 rest_api_postgres_db: "postgres"

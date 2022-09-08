@@ -8,7 +8,7 @@
     quiet: true
   loop:
     - "{{ rabbit_to_slack_rabbit_pw }}"
-  no_log: true
+#  no_log: true
   tags:
     - rabbit_to_slack_install
 
