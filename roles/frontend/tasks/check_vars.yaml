@@ -1,6 +1,6 @@
 ---
-- name: Check that String Variables are set correctly
-  assert:
+- name: "Check that String Variables are set correctly"
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is string }}"
@@ -13,8 +13,8 @@
   tags:
     - frontend_install
 
-- name: Check that Int Variables are set correctly
-  assert:
+- name: "Check that Int Variables are set correctly"
+  ansible.builtin.assert:
     that:
       - "{{ item is defined }}"
       - "{{ item is number }}"
