@@ -4,9 +4,16 @@
     - never
     - frontend_service_install
     - frontend_check_vars
+    - frontend_molecule
+
+- import_tasks: mol_prep.yaml
+  tags:
+    - never
+    - frontend_molecule
 
 - import_tasks: frontend.yaml
   tags:
     - never
     - frontend_service_install
     - frontend_install
+    - frontend_molecule
