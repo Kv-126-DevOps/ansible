@@ -6,10 +6,6 @@ on:
     branches: [CI_molecule]
   pull_request:
     branches: [CI_molecule]
-  
-permissions:
-  id-token: write
-  contents: read
     
 jobs:
        
@@ -57,11 +53,10 @@ jobs:
           ansible-galaxy collection install amazon.aws
 
       - name: Configure AWS Credentials 🔑
-        uses: aws-actions/configure-aws-credentials@v1 # Version at the time of this writing
+        uses: aws-actions/configure-aws-credentials@v1.6.1 # Version at the time of this writing
         with: # We are loading keys stored in secrets
-#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          role-to-assume: arn:aws:iam::193191278047:role/GitHub_Actions
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
       - name: Json_Filter | Molecule Test 🧪
