@@ -1,0 +1,35 @@
+---
+name: CI Common Role
+    
+on:
+  push:
+    branches: [CI_molecule]
+    paths: ["roles/common/*"]
+  pull_request:
+    branches: [CI_molecule]
+    
+jobs:
+       
+  molecule-common:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository 🚦
+        uses: actions/checkout@v3
+
+      - name: Setup Python 3.10 🐍
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+
+      - name: Install dependencies 📦
+        run: |
+          python3 -m pip install molecule[docker] yamllint virtualenv ansible-lint
+          ansible-galaxy collection install community.general
+          ansible-galaxy collection install community.docker
+    
+      - name: common | Molecule Test 🧪
+        working-directory: ./roles/common/
+        run: |
+          molecule --debug test
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
