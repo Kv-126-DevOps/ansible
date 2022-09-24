@@ -33,3 +33,4 @@ jobs:
           molecule --debug test
         env:
           ANSIBLE_FORCE_COLOR: '1'
+...
